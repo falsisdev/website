@@ -2,6 +2,9 @@ const app = require(`express`)();
 app.listen(3000,function(){
 console.log("Siteye Bağlanıldı");
 });
+app.get("/css", function(req, res){
+  res.sendFile(__dirname + "/style.css")
+})
 app.set("view engine", "ejs");
 app.set('views', __dirname+'/ejs');
 const fetch = require("node-fetch")
