@@ -4,7 +4,7 @@ Welcome to my personal website's Github Repository
 This site is open source on [Github](https://github.com/falsisdev/site) but LICENSED by [Apache-2.0](https://apache.com).
 [This](https://dev.falsisdev.ga/) is the website's preview.
 
-<a href="https://falsisdev.ga"><img src="https://cdn.discordapp.com/attachments/539846437203214358/864533694169350184/unknown.png"></a>
+<a href="https://falsisdev.ga"><img src="https://cdn.discordapp.com/attachments/539846437203214358/864536289121533962/preview.gif"></a>
 
 ## Languages
 
