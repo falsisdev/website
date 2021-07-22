@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     var avatar = `https://cdn.discordapp.com/avatars/${z.data.discord_user.id}/${z.data.discord_user.avatar}.webp`
     var customstatus2 = {
       state: "",
-      name: "Şuanda Durumumda Birşey Bulunmuyor.",
+      name: "I'm not playing anything",
       details: "",
       image: ""
     }
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
     var avatar = `https://cdn.discordapp.com/avatars/${z.data.discord_user.id}/${z.data.discord_user.avatar}.webp`
     var customstatus2 = {
       state: "",
-      name: "Şuanda Durumumda Birşey Bulunmuyor.",
+      name: "I'm not playing anything",
       details: "",
       image: ""
     }
@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
     var avatar = `https://cdn.discordapp.com/avatars/${z.data.discord_user.id}/${z.data.discord_user.avatar}.webp`
     var customstatus2 = {
       state: "",
-      name: "Şuanda Durumumda Birşey Bulunmuyor.",
+      name: "I'm not playing anything",
       details: "",
       image: ""
     }
@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
       state: z.data.activities[0].state,
       name: z.data.activities[0].name,
       details: z.data.activities[0].details,
-      image: fspotify ? spotify.album_art_url : `https://cdn.discordapp.com/app-assets/${z.data.activities[0].application_id}/${z.data.activities[0].assets.large_image}.png`
+      image: fspotify ? z.data.spotify.album_art_url : `https://cdn.discordapp.com/app-assets/${z.data.activities[0].application_id}/${z.data.activities[0].assets.large_image}.png`
     }
     }catch(error){
             var spotify = "";
@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
     var avatar = `https://cdn.discordapp.com/avatars/${z.data.discord_user.id}/${z.data.discord_user.avatar}.webp`
     var customstatus2 = {
       state: "",
-      name: "Şuanda Durumumda Birşey Bulunmuyor.",
+      name: "I'm not playing anything",
       details: "",
       image: ""
     }
