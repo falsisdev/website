@@ -6,7 +6,7 @@ This site is open source on [Github](https://github.com/falsisdev/site) but LICE
 
 <a href="https://falsisdev.ga"><img src="https://cdn.discordapp.com/attachments/539846437203214358/868499189133352970/unknown.png"></a>
 
-## Languages
+## Technologies
 
 <a href="https://falsisdev.ga"><img src="https://img.shields.io/badge/Node.js-181a22?style=for-the-badge&logo=node.js&logoColor=green"></a> <a href="https://falsisdev.ga"><img src="https://img.shields.io/badge/EJS-181a22?style=for-the-badge&logo=html5&logoColor=orange"></a> <a href="https://falsisdev.ga"><img src="https://img.shields.io/badge/CSS-181a22?style=for-the-badge&logo=css3&logoColor=blue"></a>
 
