@@ -20,7 +20,9 @@ let appid;
 let device;
 let checkActivities;
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
-fetch(lanyard).then(json => json.json()).then(result => {
+////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
+app.get("/", function(req, res){
+  fetch(lanyard).then(json => json.json()).then(result => {
 checkActivities = JSON.stringify(result.data.activities) === "[]" //boolean
 checkSpotify = result.data.listening_to_spotify//boolean
 spotify = checkSpotify ? result.data.spotify  : false
@@ -73,8 +75,6 @@ githubUser = {
 	following: result.following//number
 }//githubUser
 })//github-fetch
-////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
-app.get("/", function(req, res){
 res.render('index', {checkSpotify, checkActivities, spotify, user, activity, assets, appid, device, githubUser})
 })//get()
 app.get("/css", (req, res) => {
