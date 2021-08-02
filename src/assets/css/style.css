@@ -64,11 +64,21 @@
 /* LINKLER */
 .link{
   color: var(--pink);
-  opacity: 0.7;
+  opacity: 1;
   text-decoration: none
 }
 .link:hover{
   color: var(--pink);
+  opacity: 0.8;
+  text-decoration: none
+}
+.link2{
+  color: var(--blurple);
+  opacity: 0.7;
+  text-decoration: none
+}
+.link2:hover{
+  color: var(--blurple);
   opacity: 0.9;
   text-decoration: none
 }
@@ -96,7 +106,7 @@ word-wrap: break-word;
 .card{
   padding-bottom: 25px;
   padding-top: 25px;
-  background-color:  var(--black);
+  background-color:  #222331;
   color:  white;
   background-repeat: false;
   font-family: "Poppins", sans-serif;
