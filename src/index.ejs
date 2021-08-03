@@ -1,29 +1,16 @@
 <html>
-<!- ---------------------------------------------- -->
+<!------------------------------------------------->
 <head>
-<!- ---------------------------------------------- -->
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="FalsisDev | A Full-Stack Web Developer." name="description">
-<meta name="author" content="FalsisDev">
-<meta content="FalsisDev" property="og:site_name">
-<meta name="theme-color" content="#303136">
-<meta property="og:image" content="https://cdn.discordapp.com/attachments/539846437203214358/870582609812549662/unknown.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="og:type" content="website">
-<meta name="twitter:image" content="https://cdn.discordapp.com/attachments/539846437203214358/870582609812549662/unknown.png"/>
-<meta property="og:image:width" content="300">
-<meta property="og:image:height" content="300">
-<!- ---------------------------------------------- -->
-<link rel="stylesheet" href="/css">
-<link rel="icon" href="<%= user.avatarURL %>" type="image/x-icon" />
-<script src="https://kit.fontawesome.com/e0330794a8.js" crossorigin="anonymous"></script><!-- fontawesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!- ---------------------------------------------- -->
+<%- include('meta') %>
+<%- include('links') %>
+<!------------------------------------------------->
 <title>FalsisDev - A Full-stack Developer</title>
-<!- ---------------------------------------------- -->
+<!------------------------------------------------->
+<script src="https://kit.fontawesome.com/e0330794a8.js" crossorigin="anonymous"></script><!-- fontawesome -->
 </head>
-<!- ---------------------------------------------- -->
+<!------------------------------------------------->
+<br>
+<br>
 <body>
 <div class="card" align="left">
 <img class="profile-<%= user.status %>" src="<%= user.avatarURL %>">
@@ -88,7 +75,7 @@ Discord.go test codes
     </div>
     <br>
     <div style="padding-left:20px;padding-right:20px;" class="card">
-<h3> <a href="https://github.com/falsisdev/site" class="link">site</a></h3>
+<h3> <a href="/redirect/repo" class="link">site</a></h3>
 My personal Website
 <br>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#3eb049" width="18px" height="15px"><path d="M189.3493042,120.4835815v58.8653259L64.5898361,236.4528351l124.7594681,59.1477203v57.6854858L0,263.4552307v-52.5425415L189.3493042,120.4835815z M318.1947327,173.7742462c0-15.0402374-13.82901-24.4914246-24.832489-16.9712982c-11.0034485,7.5201111-11.0034485,26.4225006,0,33.9426117C304.3657227,198.265686,318.1947327,188.8144989,318.1947327,173.7742462z M273.0758362,219.9854126c-37.3124695-20.4545593-37.3124847-71.8686066-0.0000305-92.3231583c37.3125-20.454567,84.2062988,5.252449,84.2062988,46.1615677S310.3883057,240.4399567,273.0758362,219.9854126z M472.9125977,339.9120789c0-15.0402527-13.82901-24.4914246-24.8324585-16.9713135c-11.003479,7.5201416-11.0034485,26.4225159,0,33.942627C459.0836182,364.4035034,472.9125977,354.9523315,472.9125977,339.9120789z M427.7937012,386.12323c-37.3124695-20.4545593-37.3124695-71.8685913,0-92.3231506S512,299.0525513,512,339.9616699S465.1061707,406.5777893,427.7937012,386.12323z M313.1390686,393.3019104l194.40979-274.6038208h-66.4275208L243.4711914,393.3019104H313.1390686z"/></svg> EJS | <font color="f1ed62"><i class="fas fa-star"></i></font> 3 | <font color="90ee90"><i class="fas fa-balance-scale"></i></font> Apache License 2.0
@@ -105,13 +92,13 @@ My personal Website
 </body>
 <br>
 <br>
-<div align="center"><font color="white" size="5px"><a class="github" href="https://github.com/falsisdev"><i class="fab fa-github"></i></a>  <a class="github" href="https://discord.com/users/539843855567028227"><i class="fab fa-discord"></i></a>  <a class="github" href="https://open.spotify.com/user/315l5ib3a4fd2obidm76lipspxji?si=fcf653d3bc0d4cb7"><i class="fab fa-spotify"></i></a>  <a class="github" href="https://youtube.com/c/Falsis"><i class="fab fa-youtube"></i></a></font></div>
+<div align="center"><font color="white" size="5px"><a class="github" href="/redirect/github"><i class="fab fa-github"></i></a>  <a class="github" href="/redirect/discord"><i class="fab fa-discord"></i></a>  <a class="github" href="/redirect/spotify"><i class="fab fa-spotify"></i></a>  <a class="github" href="/redirect/youtube"><i class="fab fa-youtube"></i></a></font></div>
 <br>
 <br>
 <div style="background-color:292b42;" align="center">
 <font color="white">
   <br>
-This website is open source on <a class="link2" href="https://github.com/falsisdev/site">Github</a>.
+This website is open source on <a class="link2" href="/redirect/repo">Github</a>.
 <br><br>
 </font>
 </div>
