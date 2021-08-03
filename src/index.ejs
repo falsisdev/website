@@ -10,7 +10,8 @@
 </head>
 <!------------------------------------------------->
 <br>
-<br>
+<div align="center" style="border-radius: 10px;width: 100%;padding-bottom: .25rem;background-color:<%= user.status === 'dnd' ? 'ED4245' :  user.status === 'idle' ? 'faa61a' : user.status === 'online' ? '57F287' : user.status === 'offline' ? '99aab5' : 'EB459E' %>;">
+</div>
 <body>
 <div class="card" align="left">
 <img class="profile-<%= user.status %>" src="<%= user.avatarURL %>">
