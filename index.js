@@ -4,6 +4,7 @@ const path = require('path')
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
 const lanyard = 'https://api.lanyard.rest/v1/users/539843855567028227'
 const github = 'https://api.github.com/users/falsisdev'
+const repos = 'https://api.github.com/users/falsisdev/repos'
 const port = {
 	port: 3000
 }
@@ -21,6 +22,28 @@ let device;
 let checkActivities;
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
+app.get("/redirect/:name", function(req, res) {
+	if(req.params.name === "discord"){
+		res.redirect("https://discord.com/users/539843855567028227")
+	}
+	if(req.params.name === "youtube"){
+		res.redirect("https://youtube.com/c/Falsis")
+	}
+	if(req.params.name === "github"){
+		res.redirect("https://github.com/falsisdev")
+	}
+	if(req.params.name === "repo"){
+		res.redirect("https://github.com/falsisdev/site")
+	}
+	if(!req.params.name){
+		res.send("Redirect failed")
+	}
+	if(req.params.name === "spotify"){
+	res.redirect("https://open.spotify.com/user/315l5ib3a4fd2obidm76lipspxji?si=fcf653d3bc0d4cb7")
+}else{
+	res.redirect(req.params.name)
+}
+})
 app.get("/", function(req, res){
   fetch(lanyard).then(json => json.json()).then(result => {
 checkActivities = JSON.stringify(result.data.activities) === "[]" //boolean
@@ -59,6 +82,7 @@ device = {
 })//lanyard-fetch
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
 let githubUser;
+let githubRepos;
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
 fetch(github).then(json => json.json()).then(result => {
 githubUser = {
@@ -75,7 +99,7 @@ githubUser = {
 	following: result.following//number
 }//githubUser
 })//github-fetch
-res.render('index', {checkSpotify, checkActivities, spotify, user, activity, assets, appid, device, githubUser})
+res.render('index', {checkSpotify, checkActivities, spotify, user, activity, assets, appid, device, githubUser, githubRepos})
 })//get()
 app.get("/css", (req, res) => {
 	res.sendFile(__dirname + '/src/assets/css/style.css');
@@ -83,4 +107,5 @@ app.get("/css", (req, res) => {
 app.listen(port.port, function() {
   console.log('📀 Successfully connected to the website')
 });
+////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
