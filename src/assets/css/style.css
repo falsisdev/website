@@ -113,10 +113,22 @@ word-wrap: break-word;
   word-wrap: break-word;
   border-radius: 10px;
 }
+.card .image{
+  border-radius: 10px;
+  border-color: var(--pink);
+}
+.image{
+  border-radius: 10px;
+  border-color: var(--pink);
+}
+.author {
+  opacity: 0.8;
+  color: white;
+}
 abbr {
     text-decoration: none
 }
-h1 {
+h1, h2 {
   color: var(--pink);
 }
 .github{
