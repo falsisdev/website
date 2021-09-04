@@ -32,8 +32,11 @@ app.get("/redirect/:name", function(req, res) {
 	if(req.params.name === "github"){
 		res.redirect("https://github.com/falsisdev")
 	}
+  if(req.params.name === "org"){
+    res.redirect("https://github.com/kremlindev")
+  }
 	if(req.params.name === "repo"){
-		res.redirect("https://github.com/falsisdev/site")
+		res.redirect("https://github.com/kremlindev/site")
 	}
 	if(!req.params.name){
 		res.send("Redirect failed")
