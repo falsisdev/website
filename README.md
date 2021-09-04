@@ -8,7 +8,7 @@
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872733331500970024/unknown.png">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872733231072575498/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/872733023932661790/unknown.png">
+<img src="https://media.discordapp.net/attachments/775822548519616562/883726310780833833/unknown.png?width=832&height=156">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872733433179299892/unknown.png">
 
 - 📝 Activity Card<br>
@@ -17,24 +17,20 @@
 
 - 📩 About Me<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/872045735871406111/unknown.png">
+<img src="https://media.discordapp.net/attachments/775822548519616562/883726629032034354/unknown.png?width=832&height=134">
 
-- 🔒 Github Repositories<br>
+-🔭 Github Repositories<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872045790518972446/unknown.png">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872045822911590400/unknown.png">
 
 - 🎯 Blog
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/873582084348858388/unknown.png">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/873582188434718730/unknown.png">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/873582300682657862/unknown.png">
 
 - Technologies, Social Media Accounts & Footer<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872048006554329128/unknown.png">
-
-## 👁 All Site Preview
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/873582515913371718/unknown.png">
 
 <img src="https://img.shields.io/github/license/falsisdev/site?color=red&style=for-the-badge">
