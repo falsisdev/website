@@ -1,6 +1,7 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-👁 [Live Preview](https://dev.falsisdev.ga/)
+👁 [Live Preview](https://falsisdev.repl.co/)
+
 
 ## 📀 Features
 
