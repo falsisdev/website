@@ -144,35 +144,4 @@ app.get("/css", (req, res) => {
 app.listen(port.port, function() {
   console.log('📀 Successfully connected to the website')
 });
-app.get("/blog", function(req, res) {
-	fetch(lanyard).then(json => json.json()).then(result => {
-	user = {
-		username: result.data.discord_user.username,
-		public_flags: result.data.discord_user.public_flags,
-		id: result.data.discord_user.id,//number
-		tag: result.data.discord_user.discriminator,//number
-		avatar: result.data.discord_user.avatar,
-		avatarURL: `https://cdn.discordapp.com/avatars/${result.data.discord_user.id}/${result.data.discord_user.avatar}.webp`,
-		status: result.data.discord_status
-	}//user
-})
-	 res.render("blog", {user})
-})
-app.get("/blog/:num", function(req, res) {
-	fetch(lanyard).then(json => json.json()).then(result => {
-	user = {
-		username: result.data.discord_user.username,
-		public_flags: result.data.discord_user.public_flags,
-		id: result.data.discord_user.id,//number
-		tag: result.data.discord_user.discriminator,//number
-		avatar: result.data.discord_user.avatar,
-		avatarURL: `https://cdn.discordapp.com/avatars/${result.data.discord_user.id}/${result.data.discord_user.avatar}.webp`,
-		status: result.data.discord_status
-	}//user
-})
-	 if(req.params.num == 01) res.render("blog01", {user})
-	 if(req.params.num == 02) res.render("blog02", {user})
-	 if(req.params.num == 03) res.render("blog03", {user})
-})
-////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
