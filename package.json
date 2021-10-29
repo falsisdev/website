@@ -1,7 +1,7 @@
 {
   "name": "personal_website",
   "version": "1.0.0",
-  "description": "",
+  "description": "🧪 My personal website's open-source codes<br> 👁 [Live Preview](https://falsisdev.repl.co/)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,14 @@
   "author": "falsisdev",
   "license": "Apache-2.0",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.5",
+    "path": "^0.12.7",
+    "tsc": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "typescript": "^4.4.4"
   }
 }
