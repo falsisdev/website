@@ -25,11 +25,6 @@
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872045790518972446/unknown.png">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872045822911590400/unknown.png">
 
-- 🎯 Blog
-
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/873582188434718730/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/873582300682657862/unknown.png">
-
 - Technologies, Social Media Accounts & Footer<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/872048006554329128/unknown.png">
