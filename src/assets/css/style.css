@@ -95,6 +95,14 @@
   position: absolute;
   font-size: 13px;
 }
+.ani-title{
+  position: absolute;
+  font-size: 20px;
+}
+.ani-text{
+  position: absolute;
+  font-size: 13px;
+}
 /* BODY */
 body{
 background-color: var(--background);
@@ -128,7 +136,7 @@ word-wrap: break-word;
 abbr {
     text-decoration: none
 }
-h1, h2 {
+h1, h2, h3, h4, h5, h6{
   color: var(--pink);
 }
 .github{

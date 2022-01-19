@@ -138,6 +138,64 @@ githubUser = {
 })//github-fetchh
 res.render('index', {checkSpotify, checkActivities, spotify, user, activity, assets, appid, device, githubUser, githubRepos})
 })//get()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.get("/list", function(req, res){
+  fetchh(lanyard).then(json => json.json()).then(result => {
+checkActivities = JSON.stringify(result.data.activities) === "[]" //boolean
+checkSpotify = result.data.listening_to_spotify//boolean
+spotify = checkSpotify ? result.data.spotify  : false
+user = {
+	username: result.data.discord_user.username,
+	public_flags: result.data.discord_user.public_flags,
+	id: result.data.discord_user.id,//number
+	tag: result.data.discord_user.discriminator,//number
+	avatar: result.data.discord_user.avatar,
+	avatarURL: `https://cdn.discordapp.com/avatars/${result.data.discord_user.id}/${result.data.discord_user.avatar}.webp`,
+	status: result.data.discord_status
+}//user
+activity = {
+	  start: checkActivities ? null : result.data.activities[0].timestamps.start,//number
+    text1: checkActivities ? null : result.data.activities[0].name,
+    text2: checkActivities ? null : result.data.activities[0].details,
+    text3: checkActivities ? null : result.data.activities[0].state
+}//activity
+assets = {
+	small: {
+		text: checkActivities ? null : result.data.activities[0].assets.small_text,
+		image: checkActivities ? null : result.data.activities[0].assets.small_image
+	},//small
+	large: {
+		text: checkActivities ? null : result.data.activities[0].assets.large_text,
+		image: checkActivities ? null : result.data.activities[0].assets.large_image
+	}//large
+}//assets
+appid = checkActivities ? null : result.data.activities[0].application_id//number
+device = {
+	mobile: result.data.active_on_discord_mobile,//boolean
+	pc: result.data.active_on_discord_desktop,//boolean
+}//device
+})//lanyard-fetchh
+////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
+let githubUser: GU;
+let githubRepos: any;
+////////////////////////----------------------\\\\\\\\\\\\\\\\\\\\\\\\\
+fetchh(github).then(json => json.json()).then(result => {
+githubUser = {
+	username: result.name,
+	nickname: result.login,
+	avatar: result.avatar_url,
+	url: result.html_url,
+	website: result.blog,
+	location: result.location,
+	bio: result.bio,
+	repos: result.public_repos,//number
+	gists: result.public_gists,//number
+	followers: result.followers,//number
+	following: result.following//number
+}//githubUser
+})//github-fetchh
+res.render('list', {checkSpotify, checkActivities, spotify, user, activity, assets, appid, device, githubUser, githubRepos})
+})//get()
 app.get("/css", (req, res) => {
 	res.sendFile(process.cwd() + '/src/assets/css/style.css');
 })
