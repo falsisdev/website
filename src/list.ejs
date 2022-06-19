@@ -1,0 +1,664 @@
+<%
+  let pageName = "Anime List";
+  let checkSpotify = user.data.listening_to_spotify;
+  let checkActivities = JSON.stringify(user.data.activities) === "[]";
+  let spotify = checkSpotify ? user.data.spotify : false;
+  let activity = {
+    start: checkActivities ? null : user.data.activities[0].timestamps.start,
+    text1: checkActivities ? null : user.data.activities[0].name,
+    text2: checkActivities ? null : user.data.activities[0].details,
+    text3: checkActivities ? null : user.data.activities[0].state
+  }
+  let assets = {
+    small: {
+      text: checkActivities ? null : user.data.activities[0].assets.small_text,
+      image: checkActivities ? null : user.data.activities[0].assets.small_image
+    },
+    large: {
+      text: checkActivities ? null : user.data.activities[0].assets.large_text,
+      image: checkActivities ? null : user.data.activities[0].assets.large_image
+    }
+  }
+  let device = {
+    mobile: user.data.active_on_discord_mobile,
+    pc: user.data.active_on_discord_desktop,
+  }
+  let discordUser = {
+    username: user.data.discord_user.username,
+    public_flags: user.data.discord_user.public_flags,
+    id: user.data.discord_user.id,//number
+    tag: user.data.discord_user.discriminator,//number
+    avatar: user.data.discord_user.avatar,
+    avatarURL: `https://cdn.discordapp.com/avatars/${user.data.discord_user.id}/${user.data.discord_user.avatar}.webp`,
+    status: user.data.discord_status
+  }
+  let appid = checkActivities ? null : user.data.activities[0].application_id
+  let links = [{
+    name: "AnimeciX",
+    icon: "fa-solid fa-list-dropdown",
+    color: "#121212",
+    url: "animecix"
+  }]
+%>
+<%- include('static/Header') %>
+<title><%= pageName %> - FalsisDev</title>
+<link rel="icon" href="<%= discordUser.avatarURL %>" type="image/x-icon" />
+<body class="mt-8 max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300">
+  <div align="center" class="rounded-t-[10px] w-full pb-[0.25rem] bg-[#<%= discordUser.status === 'dnd' ? 'ED4245' :  discordUser.status === 'idle' ? 'faa61a' : discordUser.status === 'online' ? '57F287' : discordUser.status === 'offline' ? '99aab5' : 'EB459E' %>]">
+</div>
+ <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word rounded-b-[10px]">
+    <img class="ml-8 rounded-full border-[3.2px] w-[8rem] h-[8rem] border-[#<%= discordUser.status === 'dnd' ? 'ED4245' :  discordUser.status === 'idle' ? 'faa61a' : discordUser.status === 'online' ? '57F287' : discordUser.status === 'offline' ? '99aab5' : 'EB459E' %>]" src="<%= discordUser.avatarURL %>"/>
+    <div class="ml-4 mt-8">
+      <h1 class="absolute pl-[10px] text-red-500 text-4xl"><%= discordUser.username %><span class="text-[15px] font-bold text-gray-200">#<%= discordUser.tag %></span></h1>
+      
+      <p class="text-[19px] text-gray-200/90 pt-10 ml-2">An Alone Web Developer</p>
+      
+    </div>
+ </div>
+ <div class="mt-5">
+   <div class="bg-[#080808] w-full p-4 text-[18px] text-center rounded-lg">
+      <h1><span class="text-red-500"><i class="fa-solid fa-triangle-exclamation"></i></span><span style="color: white;"> This website is currently in </span><span class="text-green-300">early-access</span>. <span style="color: white;">Please report bugs if any.</span></h1>
+   </div>
+ </div>
+ <div class="mt-5">
+  <div class="bg-[#080808] w-full p-4 rounded-lg">
+     <div class="mt-2">
+       <h1 class="font-semibold text-3xl text-white text-center"><span class="text-red-400">My List</span> is here 🤝</h1>
+       <div class="mt-3 text-center">
+       <p style="color: white;" class="p-3 text-gray-200/90 text-[18px] mt-3"> ✨ Animes i've watched so far 🔻<br><br>
+        <a href="/redirect/animecix" class="p-2 rounded-lg pb-2 px-5 text-white bg-[#121212]"><i class="fa-solid fa-list mr-2"></i> AnimeciX</a>
+     </div>
+  </div>
+</div>
+<div class="mt-5">
+  <div class="bg-[#080808] w-full p-4 rounded-lg">
+    
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="5-Toubun No Hanayome"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/gotoubun.jpg"></abbr><br>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Go Toubun No Hanayome (2019)</h3></font><p><br>‏‏‏‏‏‏‏‏   Uesugi Fuutarou is a poor, antisocial ace student who one day meets the rich transfer student Nakano Itsuki. They argue but when Uesugi realizes he is to be her tutor, he tries to get on better terms. While trying to do so he meets four other girls.<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Comedy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="91 Days"><img height="300px" width="200px" style="border-radius:20px" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/60/91_Days_Poster.jpg/220px-91_Days_Poster.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Ninety-one Days (2016)</h3></font><p><br><br>‏‏‏‏‏‏‏‏   During Prohibition, the law held no power and the mafia ruled the town. The story takes place in Lawless, a town thriving on black market sales of illicitly brewed liquor. One day, Avilio receives a letter from a mysterious sender, prompting him to return to Lawless for revenge. He then infiltrates the Vanetti family, the ones responsible for his family's murder, and sets about befriending the don's son, Nero, to set his vengeance in motion. Killing brings more killing, and revenge spawns more revenge. How will the 91-day story of these men guided by a tragic fate end?!<br>
+‏‏‏‏‏‏‏‏   Genre: Drama/Crime <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Akame Ga Kill!"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/akamegakill.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Akame Ga Kill! (2014)</h3></font><p><br><br>‏‏‏‏‏‏‏‏   Tatsumi is a fighter who, accompanied by his two childhood friends, sets off to the Capital in search of a way to make money to assist his poverty-stricken village. After being separated from his friends, Tatsumi not only fails to enlist in the army, but is swindled out of all his money. He is then taken in by a noble family who offer him help; after finding himself in a messy situation Tatsumi is rescued by a group of assassins known as Night Raid, and is invited to join their ranks. Composed of the swordswoman Akame, a young woman armed with a huge pair of scissors named Sheele, the string manipulator Lubbock, the armored warrior Bulat, the sniper Mine, the beast fighter Leone and their leader Najenda, Night Raid is also part of the revolutionary forces assembled to overthrow Prime Minister Honest, who manipulates the young emperor for his and his men's personal gain, leading the rest of the nation to poverty and strife.<br>
+‏‏‏‏‏‏‏‏   Genre: Drama/Crime/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Another"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/another.jpg"></abbr>
+  <br>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Another (2012)</h3><p><br>‏‏‏‏‏‏‏‏   26 years ago, in a third-year classroom of a middle school, there was a student named Misaki. As an honors student who was also good at sports, the charming girl was popular with her classmates. When she suddenly died, her classmates decided to carry on as if she was still alive until graduation. Then, in the spring of 1998, a boy named Kouichi Sakakibara transfers to that classroom, and he grows suspicious of the fearful atmosphere in that classroom. In particular, there is a beautiful, aloof girl named Misaki Mei who wears an eyepatch and is always alone drawing pictures.<br>
+‏‏‏‏‏‏‏‏   Genre: Drama/Crime/Action & Adventure/Thriller <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Assasination Classroom"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/ansatsu.jpg"></abbr>
+  <br>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Ansatsu Kyoushitsu (2015)</h3><p><br>‏‏‏‏‏‏‏‏   In the blink of an eye, the night sky is forever changed when, with a great explosion, the moon is blasted into a permanent crescent. Confronting the governments of the world, a yellow tentacled monster boasts that it was the one responsible for the catastrophe, and in a year's time, it will do the same to Earth. Zooming around at Mach 20, the creature makes a peculiar demand: a teaching position at the prestigious Kunugigaoka Junior High School. Desperate to keep the creature in one place, the government agrees, and so the students of Class 3-E find themselves faced with an impossible task—assassinate the creature responsible for destroying the moon. But as the enigmatic creature—whom they dub Koro-sensei—educates them in both assassination and academia, the children slowly find the courage to rise up and take aim at their target: the greatest teacher the world has ever seen.
+  <br>‏‏‏‏‏‏‏‏   Genre: Drama/Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+  
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Blue Exorcits"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/aono.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Ao no Exorcist (2011)</h3><p><br>‏‏‏‏  Humans and demons are two sides of the same coin, as are Assiah and Gehenna, their respective worlds. The only way to travel between the realms is by the means of possession, like in ghost stories. However, Satan, the ruler of Gehenna, cannot find a suitable host to possess and therefore, remains imprisoned in his world. In a desperate attempt to conquer Assiah, he sends his son instead, intending for him to eventually grow into a vessel capable of possession by the demon king. <br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Banana Fish"><img height="300px" width="200px" style="border-radius:20px" src="https://upload.wikimedia.org/wikipedia/zh/c/ca/Banana_Fish_Key_Visual.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Banana Fish (2018)</h3><p><br>‏‏‏‏   Aslan Jade Callenreese, known as Ash Lynx, was a runaway picked off the streets of New York City and raised by the infamous godfather of the mafia, Dino Golzine. Now 17 years old and the boss of his own gang, Ash begins investigating the mysterious "Banana Fish"—the same two words his older brother, Griffin, has muttered since his return from the Iraq War. However, his inquiries are hindered when Dino sends his men after Ash at an underground bar he uses as a hideout.<br>
+‏‏‏‏‏‏‏‏   Genre: Drama/Crime/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="My Hero Academia"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/bokunohero.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Boku no Hero Academia (2016)</h3><p><br>‏‏‏‏   Izuku has dreamt of being a hero all his life—a lofty goal for anyone, but especially challenging for a kid with no superpowers. That’s right, in a world where eighty percent of the population has some kind of super-powered “quirk,” Izuku was unlucky enough to be born completely normal. But that’s not enough to stop him from enrolling in one of the world’s most prestigious hero academies.<br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+  
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Bungo Stray Dogs"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/bungou.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Bungou Stray Dogs (2016)</h3><p><br>‏‏‏‏  For weeks, Atsushi Nakajima's orphanage has been plagued by a mystical tiger that only he seems to be unaware of. Suspected to be behind the strange incidents, the 18-year-old is abruptly kicked out of the orphanage and left hungry, homeless, and wandering through the city.
+<br>‏‏‏‏‏‏‏‏   Genre: Dram/Crime/Mystery/Comedy <br>
+
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Charlotte"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/charotte.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Charlotte (2015)</h3><p><br>‏‏‏‏   Very few adolescent boys and girls have an onset of special abilities. Yu Otosaka is one such man who uses his ability unbeknownst to others in order to lead a satisfying school life. Then one day, a girl named Nao Tomori suddenly appears before him. Their encounter reveals the destiny for wielders of special abilities.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Code Geass: Lelouch of The Rebellion"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/codegeass.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Code Geass: Hangyaku no Lelouch (2006)</h3><p><br>‏‏‏‏  The year is 2017 of the Imperial calendar and parts of the world are uner the control of the Holy Britannian Empire. Lelouch Lamperouge, an exiled Britannian prince, encounters a strange girl known as C.C., who gifts him with a great and terrible power. The Geass. With this powerful ability, Lelouch can get anyone to do as he wills. But the power of Geass: is it a blessing…or a curse?<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+    
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Clasroom of The Elite"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/classroom.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e (2017)</h3><p><br>‏‏‏‏  Kiyotaka Ayanokoji has just enrolled at Tokyo Koudo Ikusei Senior High School, where it's said that 100% of students go on to college or find employment. But he ends up in Class 1-D, which is full of all the school's problem children. What's more, every month, the school awards students points with a cash value of 100,000 yen, and the classes employ a laissez-faire policy in which talking, sleeping, and even sabotage are permitted during class. One month later, Ayanokoji, Horikita, and the students of Class D learn the truth of the system in place within their school...<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Comedy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Franxx no shi no boifurendo."><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/002.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Darling in the FranXX (2018)</h3><p><br>‏‏‏‏  The distant future: Humanity established the mobile fort city, Plantation, upon the ruined wasteland. Within the city were pilot quarters, Mistilteinn, otherwise known as the “Birdcage.” That is where the children live... Their only mission in life was the fight. Their enemies are the mysterious giant organisms known as Kyoryu. The children operate robots known as FRANXX in order to face these still unseen enemies. Among them was a boy who was once called a child prodigy: Code number 016, Hiro. One day, a mysterious girl called Zero Two appears in front of Hiro. “I’ve found you, my Darling.”<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Romance/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Deadman Wonderland"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/9/75299.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Deadman Wonderland (2011)</h3><p><br>‏‏‏‏  It looked like it would be a normal day for Ganta Igarashi and his classmates—they were preparing to go on a class field trip to a certain prison amusement park called Deadman Wonderland, where the convicts perform dangerous acts for the onlookers' amusement. However, Ganta's life is quickly turned upside down when his whole class gets massacred by a mysterious man in red. Framed for the incident and sentenced to death, Ganta is sent to the very jail he was supposed to visit. <br>
+‏‏‏‏‏‏‏‏   Genre: Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+
+  <br><abbr title="Death Note"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire4/697c8b5ff2f49a97348b5507c06e11831576116356_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Death Note (2006)</h3><p><br>‏‏‏‏  Light Yagami is an ace student with great prospects and he's bored out of his mind. But all that changes when he finds the Death Note, a notebook dropped by a rogue Shinigami death god.<br>
+‏‏‏‏‏‏‏‏   Genre: Crime/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Dr. Stone"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire3/a2afe488cbf6448cda89eb8f87852aec1610654741_full.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Dr. Stone (2019)</h3><p><br>‏‏‏‏  Several thousand years after a mysterious phenomenon that turns all of humanity to stone, the extraordinarily intelligent, science-driven boy, Senku Ishigami, awakens. Facing a world of stone and the total collapse of civilization, Senku makes up his mind to use science to rebuild the world. Starting with his super strong childhood friend Taiju Oki, who awakened at the same time, they will begin to rebuild civilization from nothing... Depicting two million years of scientific history from the Stone Age to present day, the unprecedented crafting adventure story is about to begin!<br>
+‏‏‏‏‏‏‏‏   Genre: Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+  
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Domestic Girlfriend"><img height="300px" width="200px" style="border-radius:20px" src="https://image.tmdb.org/t/p/w300/yT5HNeqQaoF4TmmQi3RMj8P7uwZ.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Domestic na Kanojo (2019)</h3><p><br>‏‏‏‏  In their teenage years, few things can hurt people more than the heartaches that come with unrequited love. Such is the case for Natsuo Fujii, who has found himself entranced by his school's ever-cheerful teacher Hina. Deflated by this unreachable desire, Natsuo humors his friends and attends a mixer. There he meets Rui, a girl whose lack of excitement rivals that of himself. After bonding over their mutual awkwardness, Rui takes Natsuo to her house and asks him to have sex with her, hoping that the experience will stop her friends from treating her like a clueless child. With his hopeless feelings towards Hina still on his mind, Natsuo hesitantly agrees.
+
+<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Ecchi<br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+  <div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Franxx no shi no boifurendo."><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire2/f4ca1a545a471a9ce6e43eef8e8d72541539734102_full.jpg"></abbr>
+
+    <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Fairy Tail (2009)</h3><p><br>‏‏‏‏ The story follows a teenage girl named Lucy Heartfilla who is determined to join the notorious magical Fairy Tail Guild. During a daring rescue, she encounters Natsu who is part of the guild and eventually offers her a place. They become teammates performing various missions for the Fairy Tail Guild. Be prepared for an action-packed adventure!<br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Mystery/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+  
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Metal Simyager: Kardeşlik"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire4/fabddf1040abbd18948b9aacc18011b31475523493_full.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Fullmetal Alchemist: Brotherhood (2009)</h3><p><br>‏‏‏‏  After a horrific alchemy experiment goes wrong in the Elric household, brothers Edward and Alphonse are left in a catastrophic new reality. Ignoring the alchemical principle banning human transmutation, the boys attempted to bring their recently deceased mother back to life. Instead, they suffered brutal personal loss: Alphonse's body disintegrated while Edward lost a leg and then sacrificed an arm to keep Alphonse's soul in the physical realm by binding it to a hulking suit of armor.<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Action & Adventure/Sci-fi & Fantasy <br>
+
+ ‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Goblin Slayer"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire4/0b07451e9b20be6c024833a762a2e6a81538837010_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Goblin Slayer (2018)</h3><p><br>‏‏‏‏ "I'm not saving the world. I just kill goblins." Rumor has it that, in a certain guild in the middle of nowhere, there is an extraordinary man who has climbed all the way to the Silver rank just by killing goblins. At the same guild, a priestess who's just become a new adventurer has formed her first party... and the man who ends up rescuing that party when they get into trouble is none other than the Goblin Slayer. <br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+
+  <br><abbr title="High School DxD"><img height="300px" width="200px" style="border-radius:20px" src="https://m.media-amazon.com/images/M/MV5BYjhlYWI2MGUtNjk4ZS00OWJjLWJiZTEtYWYxNTY5MzVhYzI0XkEyXkFqcGdeQXVyNDgyODgxNjE@._V1_.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    High School DxD (2012)</h3><p><br>‏‏‏‏  After being killed on his first date, idiotic and perverted Issei Hyodo is resurrected as a demon by Rias Gremory only to be recruited into her club of high-class devils.<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Comedy/Ecchi/Harem/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Don't Toy With me Miss Nagatoro"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire2/aba45cd799e37a0ad8e745a7a822d3561618005905_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Ijiranaide, Nagatoro-san (2021)</h3><p><br>‏‏‏‏  "A girl in a lower grade just made me cry!" One day, Senpai visits the library after school and becomes the target of a super sadistic junior! The name of the girl who teases, torments, and tantalizes Senpai is "Nagatoro!" She's annoying yet adorable. It's painful, but you still want to be by her side. This is a story about an extremely sadistic and temperamental girl and you'll feel something awaken inside of you.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Comedy<br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Jujutsu Kaisen"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire3/02c909684baa37d6ef70a9df742d58951610752067_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Jujutsu Kaisen (2020)</h3><p><br>‏‏‏‏  Yuji Itadori is a boy with tremendous physical strength, though he lives a completely ordinary high school life. One day, to save a classmate who has been attacked by curses, he eats the finger of Ryomen Sukuna, taking the curse into his own soul. From then on, he shares one body with Ryomen Sukuna. Guided by the most powerful of sorcerers, Satoru Gojo, Itadori is admitted to Tokyo Jujutsu High School, an organization that fights the curses... and thus begins the heroic tale of a boy who became a curse to exorcise a curse, a life from which he could never turn back.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Kaguya-sama: Love is War"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire4/faa002ac9675024246d94d4b8f4133561547263949_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kaguya-sama wa Kokurasetai (2019)</h3><p><br>‏‏‏‏  From a good family? Check! A good personality? Check! Shuchiin Academy is where all these elite students with bright futures flock to. As the two leaders of the student council, Kaguya Shinomiya and Miyuki Shirogane have supposedly fallen in love… But after almost half a year, nothing has happened!? They both have too much pride and can’t be honest. Things have gotten troublesome, and they are now caught in a war of "How to get the other to confess their love first." This is a whole new romantic comedy, following an outbreak of cunning warfare between two elite students in love.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Comedy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Redo of Healer"><img height="300px" width="200px" style="border-radius:20px" src="https://external-preview.redd.it/9W_uWpRotGsYky5VEXk2tLl1RTtig--Rj446RbbCoyY.png?auto=webp&s=6f1736da72b9f901656a44e057f72dabaae0e337"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kaifuku Jutsushi no Yarinaoshi (2021)</h3><p><br>‏‏‏‏  When Keyaru acquired his powers as a Hero who specialized in healing all injuries regardless of severity, it seemed that he would walk the path to a great future. But what awaited him instead was great agony; he was subjected to years of seemingly endless hellish torture and abuse. Keyaru's healing skills allowed him to secretly collect the memories and abilities of those he treated, gradually making him stronger than anyone else. But by the time he reached his full potential, it was far too late—he had already lost everything.<br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Ecchi/Harem/Action & Adventure/Sci-fi & Fantasy <br>
+
+ ‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Rent-a-Girlfriend"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1485/107693.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kanojo, Okarishimasu (2020)</h3><p><br>‏‏‏‏  Kazuya Kinoshita is a 20-year-old college student who has a wonderful girlfriend: the bright and sunny Mami Nanami. But suddenly, he doesn't. Without warning, Mami breaks up with him, leaving him utterly heartbroken and lonely. Seeking to soothe the pain, he hires a rental girlfriend through an online app. His partner is Chizuru Mizuhara, who through her unparalleled beauty and cute demeanor, manages to gain Kazuya's affection.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Comedy/Ecchi <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Demon Slayer"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire3/09211a5ab1a7a41cbd18c90b1c8f076b1641869179_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kimetsu no Yaiba (2019)</h3><p><br>‏‏‏‏  It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a living, finds his family slaughtered by a demon. To make matters worse, his younger sister Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his sister back into a human, and kill the demon that massacred his family.<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+
+  <br><abbr title="Parasyte: the maxim"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire2/7d31dfaf49397a8cc1e490ccedea04e21422401583_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kiseijuu: Sei no Kakuritsu (2014)</h3><p><br>‏‏‏‏  They arrived in silence and darkness, descending from the skies with a hunger for human flesh. Parasites - alien creatures who must invade and take control of a human host to survive – have come to Earth. No one knows their secret except high school student, Shinichi Izumi, who’s right hand has been invaded by an alien parasite. Shinichi and Migi, the parasite in his hand, begrudgingly form a friendship and find themselves caught in the middle of a war between humans and parasites.<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Kiss x Sis"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/3/25518.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kiss x Sis (2010)</h3><p><br>‏‏‏‏  After Keita Suminoe's mother passed away, his father promptly remarried, introducing two step-sisters into Keita's life: twins Ako and Riko. But since their fateful first encounter, a surge of incestuous love for their younger brother overcame the girls, beginning a lifelong feud for his heart.
+<br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Ecchi/Harem <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Kiznaiver"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/kiznaiver.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kiznaiver (2016)</h3><p><br>‏‏‏‏   Katsuhira Agata is a quiet and reserved teenage boy whose sense of pain has all but vanished. His friend, Chidori Takashiro, can only faintly remember the days before Katsuhira had undergone this profound change. Now, his muffled and complacent demeanor make Katsuhira a constant target for bullies, who exploit him for egregious sums of money. But their fists only just manage to make him blink, as even emotions are far from his grasp.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Miss Kobayashi's Dragon Maid"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire4/6d3bd07ec5e5d3e3f3a5f35e50f50dec1628229684_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Kobayashi-san Chi no Maid Dragon (2017)</h3><p><br>‏‏‏‏  Miss Kobayashi is your average office worker who lives a boring life, alone in her small apartment–until she saves the life of a female dragon in distress. The dragon, named Tohru, has the ability to magically transform into an adorable human girl (albeit with horns and a long tail!), who will do anything to pay off her debt of gratitude, whether Miss Kobayashi likes it or not. With a very persistent and amorous dragon as a roommate, nothing comes easy, and Miss Kobayashi’s normal life is about to go off the deep end!<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Comedy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Love of Kill"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1959/116458.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Koroshi Ai (2022)</h3><p><br>‏‏‏‏  Novice bounty hunter Chateau Dankworth never expected to encounter someone capable of overpowering her in combat. Even less so that the mysterious man would take an immediate interest in her—to the point of aiding her missions. However, Chateau makes it clear that she has no plans of entertaining any personal involvement with him.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="The Future Diary"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/mirai.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Mirai Nikki (2011)</h3><p><br>‏‏‏‏   Lonely high school student, Yukiteru Amano, spends his days writing a diary on his cellphone, while conversing with his two seemingly imaginary friends Deus Ex Machina, who is the god of time and space, and Murmur, the god's servant. Revealing himself to be an actual entity, Deus grants Yukiteru a "Random Diary," which shows highly descriptive entries based on the future and forces him into a bloody battle royale with 11 other holders of similarly powerful future diaries.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Mushoku Tensei: Isekai Ittara Honki Dasu"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/mushoku.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Mushoku Tensei: Isekai Ittara Honki Dasu (2021)</h3><p><br>‏‏‏‏   Despite being bullied, scorned, and oppressed all of his life, a 34-year-old shut-in still found the resolve to attempt something heroic—only for it to end in a tragic accident. But in a twist of fate, he awakens in another world as Rudeus Greyrat, starting life again as a baby born to two loving parents.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Ecchi/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="My Dress Up Darling"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/sono.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Sono Bisque Doll wa Koi wo Suru (2022)<p><br>‏‏‏‏  Wakana Gojo is a high school boy who wants to become a kashirashi--a master craftsman who makes traditional Japanese Hina dolls. Though he's gung-ho about the craft, he knows nothing about the latest trends, and has a hard time fitting in with his class. The popular kids--especially one girl, Marin Kitagawa--seem like they live in a completely different world. That all changes one day, when she shares an unexpected secret with him, and their completely different worlds collide.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Comedy/Ecchi <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="The Seven Deadly Sins"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/7.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Nanatsu no Taizai (2014)<p><br>‏‏‏‏  In a world similar to the European Middle Ages, the feared yet revered Holy Knights of Britannia use immensely powerful magic to protect the region of Britannia and its kingdoms. However, a small subset of the Knights supposedly betrayed their homeland and turned their blades against their comrades in an attempt to overthrow the ruler of Liones. They were defeated by the Holy Knights, but rumors continued to persist that these legendary knights, called the "Seven Deadly Sins," were still alive. Ten years later, the Holy Knights themselves staged a coup d’état, and thus became the new, tyrannical rulers of the Kingdom of Liones.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Ecchi/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="No Game No Life"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire1/5a4525c6fc5508fa27f0ed229ad2cbde1396985147_full.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    No Game No Life (2014)<p><br>‏‏‏‏  They are both NEETs and Hikikomoris… but on the internet, the genius gamer siblings Sora and Shiro are known as the undefeatable “__” (blank). Sora and Shiro’s talents and skills are so abnormally good they are considered as urban legend. One day a young boy Teto appears before them, claiming to be “One’s Lord”<br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Noblesse"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire4/0ed5852794fe3e504e5f8ff028f28ce31601933917_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Noblesse (2020)<p><br>‏‏‏‏  Raizel awakens from his 820-year slumber. He holds the special title of Noblesse, a pure-blooded Noble and protector of all other Nobles. In an attempt to protect Raizel, his servant Frankenstein enrolls him at Ye Ran High School, where Raizel learns the simple and quotidian routines of the human world through his classmates. However, the Union, a secret society plotting to take over the world, dispatches modified humans and gradually encroaches on Raizel’s life, causing him to wield his mighty power to protect those around him...<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Comedy/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Noragami"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire2/e81af69b67788b5bfda50b2789bbc7ee1481243074_full.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Noragami (2014)<p><br>‏‏‏‏  Yato may just be a minor god now, but he’s determined to make it big and he’s got a plan. Unfortunately, things just don’t seem to be going his way. He doesn’t have a single shrine dedicated to him, his partner has just quit, and now he’s got to find a new divine weapon. Just when things look bleak, he meets a girl named Hiyori and changes her life forever.<br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Orange: Future"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire3/4052cb0ee15e76c3795319b0a08c1ecb1467466859_full.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Orange (2016)<p><br>‏‏‏‏  During the spring of her second year of high school, Naho receives a letter. Its sender is herself from ten years in the future. Naho thinks it's a prank at first, but when the things written in the letter start to come true one by one, she realizes that the letter is telling her events that will happen in her future. It tells her that she'll fall in love with Kakeru, a new student who transfers to her school, and that he'll die in the winter of his 17th year. After learning the regrets and wishes of the 26-year-old Naho following Kakeru's death, what can the 16-year-old Naho do differently?<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="King's Game"><img height="300px" width="200px" style="border-radius:20px" src="https://images-na.ssl-images-amazon.com/images/I/81B0mhsI8xL.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Ousama Game The Animation (2017)<p><br>‏‏‏‏  It can be rough transferring to a new school—even more so if you don't want to make any friends, like Nobuaki Kanazawa. But the reason for his antisocial behavior soon becomes clear when his class receives a text from someone called "The King." Included are instructions for the "King's Game," and all class members must participate. Those who refuse to play, quit halfway, or don't follow an order in the allotted time of 24 hours will receive a deadly punishment.<br>
+‏‏‏‏‏‏‏‏   Genre: Dram <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Platinum End"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire2/0b4058ac696f38e436191cceb9b749b91633623149_full.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Platinum End (2021)<p><br>‏‏‏‏  "I will give you the hope to live." Kakehashi Mirai lost his parents in an accident and lived in misery with the relatives who took him in. Having lost hope in everything, he jumped off the roof of a building on the day of his middle school graduation. But then he met an angel...<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Re: Zero Starting Life in Another World"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/re0.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Re: Zero Kara Hajimeru Isekai Seikatsu (2016)<p><br>‏‏‏‏  Natsuki Subaru, an ordinary high school student, is on his way home from the convenience store when he finds himself transported to another world. As he's lost and confused in a new world where he doesn't even know left from right, the only person to reach out to him was a beautiful girl with silver hair. Determined to repay her somehow for saving him from his own despair, Subaru agrees to help the girl find something she's looking for...<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Shiki"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/9/23690.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏  Shiki (2010)<p><br>‏‏‏‏  Fifteen-year-old Megumi Shimizu dreamed of a glamorous life in the big city; however, her unexpected death in the quiet village of Sotoba marks the beginning of what appears to be a ferocious epidemic that turns the hot summer into a season of blood and terror. A young doctor named Toshio Ozaki begins to doubt the nature of the disease and comes to understand that to discover the truth, he must abandon his humanity. 
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Attack on Titan"><img height="300px" width="200px" style="border-radius:20px" src="https://img1.ak.crunchyroll.com/i/spire3/dac363972d628a7009e04fdeb9d7104a1641869274_full.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Shingeki no Kyojin (2013)<p><br>‏‏‏‏  Known in Japan as Shingeki no Kyojin, many years ago, the last remnants of humanity were forced to retreat behind the towering walls of a fortified city to escape the massive, man-eating Titans that roamed the land outside their fortress. Only the heroic members of the Scouting Legion dared to stray beyond the safety of the walls – but even those brave warriors seldom returned alive. Those within the city clung to the illusion of a peaceful existence until the day that dream was shattered, and their slim chance at survival was reduced to one horrifying choice: kill – or be devoured!<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#99aab5">Unknown</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Shinmai Maou no Tastement"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1654/112033.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Shinmai Maou no Tastement (2015)<p><br>‏‏‏‏  Running into your new stepsister in the bathroom is not the best way to make a good first impression, which Basara Toujou learns the hard way. When his father suddenly brings home two beautiful girls and introduces them as his new siblings, he has no choice but to accept into his family the Naruse sisters: busty redhead Mio and petite silver-haired Maria.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Ecchi/Harem/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="World's End Harem"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1491/117296.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Shuumatsu no Harem (2021)<p><br>‏‏‏‏  The Man-Killer Virus: a lethal disease that has eradicated 99.9% of the world's male population. Mizuhara Reito has been in cryogenic sleep for the past five years, leaving behind Tachibana Erisa, the girl of his dreams. When Reito awakens from the deep freeze, he emerges into a sex-crazed new world where he himself is the planet's most precious resource. 
+<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Ecchi/Harem/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Rascal Does Not Dream of Bunny Girl Senpai"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1301/93586.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai (2018)<p><br>‏‏‏‏  The rare and inexplicable Puberty Syndrome is thought of as a myth. It is a rare disease which only affects teenagers, and its symptoms are so supernatural that hardly anyone recognizes it as a legitimate occurrence. However, high school student Sakuta Azusagawa knows from personal experience that it is very much real, and happens to be quite prevalent in his school.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Romance/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+  
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Spy x Family"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1616/120089.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Spy x Family (2022)<p><br>‏‏‏‏ For the agent known as "Twilight," no order is too tall if it is for the sake of peace. Operating as Westalis' master spy, Twilight works tirelessly to prevent extremists from sparking a war with neighboring country Ostania. For his latest mission, he must investigate Ostanian politician Donovan Desmond by infiltrating his son's school: the prestigious Eden Academy. Thus, the agent faces the most difficult task of his career: get married, have a child, and play family.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Crime/Comedy/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Sword Art Online"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1993/93837.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Sword Art Online (2012)<p><br>‏‏‏‏  In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of "NerveGear" technology, players can control their avatars within the game using nothing but their own thoughts.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Takt Op. Destiny"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1449/117797.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Takt Op. Destiny (2021)<p><br>‏‏‏‏  The United States of America has been in chaos ever since the emergence of D2s, an invasive species originating from a black meteorite that fell to Earth. A public decree banned citizens from playing any melodies, to prevent further casualties caused by the D2s' hatred for music—even now, in 2047, this prohibition is still in effect. Humanity's only form of defense against the D2s are Musicarts, young women representing pieces of classical music; and Conductors, the ones controlling them.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="The Detective is Already Dead"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1843/115815.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Tantei wa Mou, Shindeiru (2021)<p><br>‏‏‏‏  Kimihiko Kimizuka has found himself inadvertently entangled in various crimes more times than he can remember, referring to himself as a magnet for trouble. One day, as if it was nothing out of the ordinary, a group of unknown men kidnaps him, forcing him to board a flight—where he also encounters a hijacking. Amid the resulting chaos, however, Kimizuka meets a stunning silver-haired beauty, going by the codename Siesta, who then saves the day.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Mystery/Crime/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="That Time I Got Reincarnated as a Slime"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/tenseishitara.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Tensei Shitara Slime Datta Ken (2018)<p><br>‏‏‏‏  After being killed by a passing robber, a normal 37-year-old guy finds himself reincarnated in another world as a blind slime with unique skills. With a new name "Rimuru Tempest" he got after meeting his new friend, the "catastrophe level" Storm Dragon Veldora, he starts his slime life in another world with his increasing number of minions.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Tokyo Ghoul"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/tokyoghoul.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Tokyo Ghoul (2014)<p><br>‏‏‏‏  A sinister threat is invading Tokyo: flesh-eating "ghouls" who appear identical to humans and blend into their population. Reserved college student Ken Kaneki buries his nose in books and avoids the news of the growing crisis. However, the appearance of an attractive woman named Rize Kamishiro shatters his solitude when she forwardly asks him on a date.<br>
+
+ While walking Rize home, Kaneki discovers she isn't as kind as she first appeared, and she has led him on with sinister intent. After a tragic struggle, he later awakens in a hospital to learn his life was saved by transplanting the now deceased Rize's organs into his own body.
+<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Crime/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Tokyo Revengers"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.falsisdev.repl.co/covers/toman.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Tokyo Revengers (2021)<p><br>‏‏‏‏  Takemichi Hanagaki's life is at an all-time low. Just when he thought it couldn't get worse, he finds out that Hinata Tachibana, his ex-girlfriend, was murdered by the Tokyo Manji Gang: a group of vicious criminals that has been disturbing society's peace for quite some time.
+<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font>
+</div>
+<br>
+<br>
+
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Vinland Saga"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1500/103005.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Vinland Saga (2019)<p><br>‏‏‏‏  Young Thorfinn grew up listening to the stories of old sailors that had traveled the ocean and reached the place of legend, Vinland. It's said to be warm and fertile, a place where there would be no need for fighting—not at all like the frozen village in Iceland where he was born, and certainly not like his current life as a mercenary. War is his home now. Though his father once told him, "You have no enemies, nobody does. There is nobody who it's okay to hurt," as he grew, Thorfinn knew that nothing was further from the truth.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Violet Evergarden"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/11/89398.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Violet Evergarden (2018)<p><br>‏‏‏‏  The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War's final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.
+
+  <br><br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Wonder Egg Pritority"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1079/110751.jpg"></abbr>
+
+  <br><font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Wonder Egg Pritority (2021)<p><br>‏‏‏‏  Following the suicide of her best and only friend, Koito Nagase, Ai Ooto is left grappling with her new reality. With nothing left to live for, she follows the instructions of a mysterious entity and gets roped into purchasing an egg, or specifically, a Wonder Egg.
+<br>
+‏‏‏‏‏‏‏‏   Genre: Dram/Comedy/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: Unrecommended</a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="The Promised Neverland"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/1815/110626.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Yakusoku no Neverland (2019)<p><br>‏‏‏‏  Surrounded by a forest and a gated entrance, the Grace Field House is inhabited by orphans happily living together as one big family, looked after by their "Mama," Isabella. Although they are required to take tests daily, the children are free to spend their time as they see fit, usually playing outside, as long as they do not venture too far from the orphanage—a rule they are expected to follow no matter what. However, all good times must come to an end, as every few months, a child is adopted and sent to live with their new family, never to be heard from again.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram/Action & Adventure/Sci-fi & Fantasy <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<abbr title="Your Lie in April"><img height="300px" width="200px" style="border-radius:20px" src="https://cdn.myanimelist.net/images/anime/3/67177.jpg"></abbr>
+<font style="color: #5865F2;opacity: 2.0;"><h3 class="ani-title">‏‏‏‏‏‏‏‏    Shigatsu wa Kimi no Uso (2015)<p><br>‏‏‏‏  Music accompanies the path of the human metronome, the prodigious pianist Kousei Arima. But after the passing of his mother, Saki Arima, Kousei falls into a downward spiral, rendering him unable to hear the sound of his own piano.<br>
+
+ ‏‏‏‏‏‏‏‏   Genre: Dram <br>
+‏‏‏‏‏‏‏‏   Recommention Status: <font color="#e74c3c">Recommended</font></a>
+</div>
+<br>
+<br>
+<!--                                          -->
+<div style="padding-left:20px;"class="p-2 rounded-lg pb-2 px-5 text-white">
+<font style="color: #5865F2;opacity: 2.0;"><h1 class="ani-title"> <i class="fas fa-stopwatch-20"></i> ‏‏‏‏‏‏‏‏Counter</h1></font><br><br><i class="fas fa-tv"></i> ‏‏‏‏‏‏‏Anime Count: 74<br>
+   <i class="fas fa-book-open"></i> Manga Count: <a href="https://mangadex.org/list/98ed6f8f-5a2a-462f-8271-6dfa6df58739/-read" class="Text-red-500" target="_blank">21</a> <br><br>
+   <i class="fas fa-snowboarding"></i> Action & Adventure: 40 <br>
+   <i class="fas fa-flask"></i> Sci-fi & Fantasy: 33 <br>
+   <i class="fas fa-heart-broken"></i> Dram: 33 <br>
+
+  <br><i class="fa-solid fa-masks-theater"></i> Comedy: 26 <br>
+   <i class="fas fa-user-secret"></i> Mystery/Crime: 22 <br>
+   <i class="fas fa-users-slash"></i> Ecchi/Harem/Hentai: 15<br>
+</div>
+<br>
+<br>
+        </div>
+     </div>
+  </div>
+</div>
+</body>
+  <style>
+.ani-title {
+  color: #e74c3c;
+}</style>
+<%- include('static/Footer') %>
+  <br>
