@@ -28,3 +28,5 @@
 
 - Footer<br>
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/988118863726133339/unknown.png">
+
+<img src="https://img.shields.io/github/license/falsisdev/website?color=red&style=for-the-badge">
