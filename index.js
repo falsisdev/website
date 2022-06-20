@@ -27,7 +27,7 @@ app.get("/redirect/:name", function (req, res) {
         : p === "youtube"
         ? "https://youtube.com/c/Falsis"
         : p === "github"
-        ? "https://github.com" + config.account.github
+        ? "https://github.com/" + config.account.github
         : p === "animecix"
         ? "https://animecix.net/lists/110787"
         : p === "spotify"
