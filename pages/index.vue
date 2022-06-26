@@ -23,6 +23,7 @@
    </div>
  </div>
   <p v-if="lanyardActivities.activity.check == false"></p>
+   <p v-else-if="lanyardActivities.activity.name == 'Spotify'"></p>
   <div v-else-if="lanyardActivities.activity.check == true" class="mt-5">
    <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word rounded-b-[10px]">
       <img :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity.image}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">

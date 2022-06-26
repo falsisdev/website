@@ -1,32 +1,32 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-👁 [Live Preview](https://falsisdev.repl.co/)
+👁 [Live Preview](https://falsis.ga/)
 
 
 ## 📀 Features
 
 - 📫 Status Line<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988117350106665020/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988117401289777183/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988117453336887296/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988117511390240838/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990624459897602188/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990624517254692944/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990624363885756467/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990624652843966504/unknown.png">
+
+- 🎶 Activity Card<br>
+
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990625122257883166/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990625866096726077/unknown.png">
 
 - 📩 About Me<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988117936055156846/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990625986846539857/unknown.png">
 
--🔭 Github Repositories<br>
+- 🔭 Github Repositories<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988118148060418048/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990626066873860136/unknown.png">
 
-- 📝 Anime List<br>
+- 👣 Footer<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988118586394550322/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988118646884806666/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988118793110835271/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/990626149522612244/unknown.png">
 
-- Footer<br>
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/988118863726133339/unknown.png">
-
-<img src="https://img.shields.io/github/license/falsisdev/website?color=red&style=for-the-badge">
+<img src="https://img.shields.io/github/license/falsisdev/website?color=red&style=for-the-badge"> <img src="https://img.shields.io/badge/Vuejs-323330?style=for-the-badge&logo=vue.js"> <img src="https://img.shields.io/badge/Nuxtjs-323330?style=for-the-badge&logo=nuxt.js">
