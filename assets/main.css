@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body { background-color: black ; font-family: 'Poppins', sans-serif; color: white;}
+p {
+color: white;  
+}
+::selection{
+color: #e74c3c;
+}
