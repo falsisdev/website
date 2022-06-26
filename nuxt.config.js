@@ -1,5 +1,9 @@
 export default {
   components: true,
+  generate: {
+  dir: 'dist',
+    subFolders: false
+   },
   server: {
     host: 'localhost',
     port: 3000
