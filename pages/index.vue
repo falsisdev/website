@@ -19,6 +19,7 @@
         <span class="absolute pl-[10px] text-green-500 text-1x2">{{ lanyardActivities.spotify.song }}</span>
         <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">by {{ lanyardActivities.spotify.artist }}</span>
         <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">on {{ lanyardActivities.spotify.album }}</span>
+        <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.spotify.elapsed[0] }} / {{ lanyardActivities.spotify.elapsed[1] }}</span>
       </div>
    </div>
  </div>
@@ -32,6 +33,7 @@
         <span class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name ||"" }}</span>
         <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
         <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.details || "" }}</span>
+        <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">Elapsed: {{ lanyardActivities.activity.elapsed  }} </span>
       </div>
    </div>
  </div>
@@ -137,6 +139,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
         lanyardActivities: {
           spotify: {
             check: [],
+            elapsed: [],
             trackid: [],
             timestamps: [],
             song: [],
@@ -147,6 +150,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
           activity: {
             check: [],
             timestamps: [],
+            elapsed: [],
             state: [],
             name: [],
             details: [],
@@ -201,6 +205,15 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.spotify.song = null
       this.lanyardActivities.spotify.cover = null
       }else{
+        function millisToMinutesAndSeconds(millis) {
+             var minutes = Math.floor(millis / 60000);
+             var seconds = ((millis % 60000) / 1000).toFixed(0);
+             if(minutes >= 60){
+              return Math.floor(minutes / 60) + ":" +  Number(minutes - (Math.floor(minutes / 60) * 60)) + ":" + (seconds < 10 ? '0' : '') + seconds;
+             }
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
+      this.lanyardActivities.spotify.elapsed = [millisToMinutesAndSeconds(Date.now() - this.lanyard.data.spotify.timestamps.start), millisToMinutesAndSeconds(this.lanyard.data.spotify.timestamps.end - this.lanyard.data.spotify.timestamps.start)]
       this.lanyardActivities.spotify.trackid = this.lanyard.data.spotify.track_id
       this.lanyardActivities.spotify.timestamps = [this.lanyard.data.spotify.timestamps.start, this.lanyard.data.spotify.timestamps.end]
       this.lanyardActivities.spotify.song = this.lanyard.data.spotify.song
@@ -213,6 +226,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.activity.check = String(this.lanyard.data.activities) == String([]) ? false : true
       if(this.lanyardActivities.activity.check == false) {
       this.lanyardActivities.activity.timestamps = null
+      this.lanyardActivities.activity.elapsed = null
       this.lanyardActivities.activity.state = null
       this.lanyardActivities.activity.name = null
       this.lanyardActivities.activity.id = null
@@ -222,9 +236,19 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.activity.image = null
       }else {
         try {
+                   function millisToMinutesAndSeconds(millis) {
+             var minutes = Math.floor(millis / 60000);
+             var seconds = ((millis % 60000) / 1000).toFixed(0);
+             if(minutes >= 60){
+              return Math.floor(minutes / 60) + ":" +  Number(minutes - (Math.floor(minutes / 60) * 60)) + ":" + (seconds < 10 ? '0' : '') + seconds;
+             }
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      }
       this.lanyardActivities.activity.timestamps = this.lanyard.data.activities[0].timestamps.start
+      this.lanyardActivities.activity.elapsed = millisToMinutesAndSeconds(Date.now() - this.lanyard.data.activities[0].timestamps.start)
         }catch(err){
           this.lanyardActivities.activity.timestamps = null
+          this.lanyardActivities.activity.elapsed = null
         }
       this.lanyardActivities.activity.state = this.lanyard.data.activities[0].state
       this.lanyardActivities.activity.name = this.lanyard.data.activities[0].name
