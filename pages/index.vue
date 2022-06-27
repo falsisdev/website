@@ -33,7 +33,7 @@
         <span class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name ||"" }}</span>
         <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
         <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.details || "" }}</span>
-        <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.elapsed == "" ? "" : `Elapsed: ${lanyardActivities.activity.elapsed}`  }} </span>
+        <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.elapsed == "" && null ? "" : `Elapsed: ${lanyardActivities.activity.elapsed}`  }} </span>
       </div>
    </div>
  </div>
