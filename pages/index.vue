@@ -26,7 +26,8 @@
    <p v-else-if="lanyardActivities.activity.name == 'Spotify'"></p>
   <div v-else-if="lanyardActivities.activity.check == true" class="mt-5">
    <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word rounded-b-[10px]">
-      <img :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity.image}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
+      <img v-if="lanyardActivities.activity.image.charAt(0) + lanyardActivities.activity.image.charAt(1) + lanyardActivities.activity.image.charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity.image.slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
+      <img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity.image}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
       <div class="ml-4">
         <span class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name ||"" }}</span>
         <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
