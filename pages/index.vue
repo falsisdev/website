@@ -27,10 +27,11 @@
    <p v-else-if="lanyardActivities.activity.name == 'Spotify'"></p>
   <div v-else-if="lanyardActivities.activity.check == true" class="mt-5">
    <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word rounded-b-[10px]">
-      <img v-if="lanyardActivities.activity.image.charAt(0) + lanyardActivities.activity.image.charAt(1) + lanyardActivities.activity.image.charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity.image.slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
-      <img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity.image}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
+        <img v-if="lanyardActivities.activity.name = 'Brawlhalla'" src="https://www.brawlhalla.com/c/uploads/2021/07/hattori.png" class="ml-8 rounded-md w-[8rem] h-[8rem]">
+      <img v-else-if="lanyardActivities.activity['image'].charAt(0) + lanyardActivities.activity['image'].charAt(1) + lanyardActivities.activity['image'].charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity['image'].slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
+      <img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity['image']}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
       <div class="ml-4">
-        <span class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name ||"" }}</span>
+        <span class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name || "" }}</span>
         <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
         <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.details || "" }}</span>
         <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.elapsed == null ? "" : `Elapsed: ${lanyardActivities.activity.elapsed}`  }} </span>
@@ -248,7 +249,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.activity.details = null
       this.lanyardActivities.activity.created_at = null
       this.lanyardActivities.activity.appid = null
-      this.lanyardActivities.activity.image = null
+      this.lanyardActivities.activity['image'] = null
       }else {
         try {
                    function millisToMinutesAndSeconds(millis) {
@@ -261,15 +262,16 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       }
       this.lanyardActivities.activity.timestamps = this.lanyard.data.activities[0].timestamps.start
       this.lanyardActivities.activity.elapsed = millisToMinutesAndSeconds(Date.now() - this.lanyard.data.activities[0].timestamps.start)
+            this.lanyardActivities.activity['image'] = this.lanyard.data.activities[0].assets.large_image
         }catch(err){
           this.lanyardActivities.activity.timestamps = null
           this.lanyardActivities.activity.elapsed = null
+                this.lanyardActivities.activity['image'] = null
         }
       this.lanyardActivities.activity.state = this.lanyard.data.activities[0].state
       this.lanyardActivities.activity.name = this.lanyard.data.activities[0].name
       this.lanyardActivities.activity.details = this.lanyard.data.activities[0].details
       this.lanyardActivities.activity.appid = this.lanyard.data.activities[0].application_id
-      this.lanyardActivities.activity.image = this.lanyard.data.activities[0].assets.large_image
       }
       /* GITHUB */
       this.github.username = this.githubf.login
