@@ -54,7 +54,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
      </div>
      <div align="center">
      <div v-for="item in links" class="p-2 mt-3 text-center content-center inline-block">
-        <a :href="`/redirect/${item.url}`" :class="`p-2 rounded-lg pb-2 px-5 text-white bg-[${item.color}]`"><i :class="`${item.icon} mr-2`"></i> {{ item.name }}</a>
+        <a :href="`${item.url}`" :class="`p-2 rounded-lg pb-2 px-5 text-white bg-[${item.color}]`"><i :class="`${item.icon} mr-2`"></i> {{ item.name }}</a>
      </div>
      </div>
   </div>
@@ -120,13 +120,28 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
            name: "Github",
            icon: "fa-brands fa-github",
            color: "#333",
-           url: "github"
+           url: "https://github.com/falsisdev"
         },{
            name: "Spotify",
            icon: "fa-brands fa-spotify",
            color: "#1db954",
-           url: "spotify"
-        }],
+           url: "https://open.spotify.com/user/315l5ib3a4fd2obidm76lipspxji?si=1ea7f02ae26d40a1"
+        },{
+          name: "Instagram",
+          icon: "fa-brands fa-instagram",
+          color: "#E1306C",
+          url: "https://instagram.com/falsisdev"
+        },{
+          name: "Discord",
+          icon: "fa-brands fa-discord",
+          color: "#5865F2",
+          url: "https://discord.com/users/539843855567028227"
+        }/*, {
+          name: "YouTube",
+          icon: "fa-brands fa-youtube",
+          color: "#ED4245",
+          url: "https://youtube.com/c/Falsis"
+        }*/],
         lanyard: [],
         githubf: [],
         lanyardUser: {
