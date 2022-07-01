@@ -14,12 +14,12 @@
 
 - 🎶 Activity Card<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/990625122257883166/unknown.png">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/990625866096726077/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/992442257653387314/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/992442345582776430/unknown.png">
 
 - 📩 About Me<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/990625986846539857/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/992442419217977344/unknown.png">
 
 - 🔭 Github Repositories<br>
 
