@@ -72,7 +72,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
   <div class="bg-[#080808] w-full p-4 rounded-lg">
      <div class="mt-2">
        <h1 class="font-semibold text-3xl text-white text-center"><span class="text-red-400">GitHub</span> Repositories</h1>
-          <p v-if="github.repocount == 0" class="mt-3 text-center text-red-500">Hiç bir sonuç bulunamadı!</p>
+          <p v-if="github.repocount == 0" class="mt-3 text-center text-red-500">No results found!</p>
           <div v-else class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
             <div v-for="item in github.repos">
           <a :href="`https://github.com/falsisdev/${item.name}`">
@@ -145,12 +145,12 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
           icon: "fa-brands fa-discord",
           color: "#5865F2",
           url: "https://discord.com/users/539843855567028227"
-        }/*, {
-          name: "YouTube",
-          icon: "fa-brands fa-youtube",
-          color: "#ED4245",
-          url: "https://youtube.com/c/Falsis"
-        }*/],
+        }, {
+          name: "Osu!",
+          icon: `fa-solid fa-play`,
+          color: "#FF66AA",
+          url: "https://osu.ppy.sh/users/25156234"
+        }],
         lanyard: [],
         githubf: [],
         lanyardUser: {
