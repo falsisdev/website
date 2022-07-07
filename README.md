@@ -14,7 +14,7 @@
 
 - 🎶 Activity Card<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/992442257653387314/unknown.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/994507943552757790/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/992442345582776430/unknown.png">
 
 - 📩 About Me<br>
