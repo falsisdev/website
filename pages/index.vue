@@ -24,7 +24,7 @@
       <div class="ml-4">
         <span class="absolute pl-[10px] text-green-500 text-1x2">{{ lanyardActivities.spotify.song }}</span>
         <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">by {{ lanyardActivities.spotify.artist }}</span>
-        <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">on {{ lanyardActivities.spotify.album }}</span>
+        <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">on {{ lanyardActivities.spotify.album.large_text }}</span>
         <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.spotify.elapsed[0] }} / {{ lanyardActivities.spotify.elapsed[1] }}</span>
       </div>
    </div>
