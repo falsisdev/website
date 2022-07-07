@@ -229,7 +229,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardUser.username = this.lanyard.data.discord_user.username
       this.lanyardUser.tag = this.lanyard.data.discord_user.discriminator
       this.lanyardUser.id = this.lanyard.data.discord_user.id
-      this.lanyardUser.avatar = `https://cdn.discordapp.com/avatars/${this.lanyard.data.discord_user.id}/${this.lanyard.data.discord_user.avatar}.webp`
+      this.lanyardUser.avatar = `https://cdn.discordapp.com/avatars/${this.lanyard.data.discord_user.id}/${this.lanyard.data.discord_user.avatar}${this.lanyard.data.discord_user.avatar.substring(0, 2) == 'a_' ? '.gif' : '.webp'}`
       this.lanyardUser.status = this.lanyard.data.discord_status
 
       /* SPOTIFY */
