@@ -34,15 +34,15 @@
   <div v-else-if="lanyardActivities.activity.check == true" class="mt-5">
   <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word">
   <b class="pl-[35px] text-white-500 text-1x3 pr-[690px]">PLAYING A GAME</b>
-  </div>
+      <i v-if="lanyardActivities.activity.small == null"></i><img class="w-[2rem] h-[2rem] rounded-full" v-else-if="lanyardActivities.activity['small'].substring(0, 3) == 'mp:' == true" :src="`https://${lanyardActivities.activity['small'].slice(62)}`"><img v-else class="w-[2rem] h-[2rem] rounded-full" :Src="lanyardActivities.activity.small">
+        </div>
    <div class="flex pb-[25px] bg-[#080808] break-word rounded-b-[10px]">
-      <img v-if="lanyardActivities.activity['image'].charAt(0) + lanyardActivities.activity['image'].charAt(1) + lanyardActivities.activity['image'].charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity['image'].slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
-      <img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity['image']}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
+          <i v-if="lanyardActivities.activity.image == null"></i><img v-else-if="lanyardActivities.activity['image'].charAt(0) + lanyardActivities.activity['image'].charAt(1) + lanyardActivities.activity['image'].charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity['image'].slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]"><img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity['image']}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
       <div class="ml-4">
-        <span class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name || "" }}</span>
-        <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
-        <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.details || "" }}</span>
-        <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.elapsed == null ? "" : `Elapsed: ${lanyardActivities.activity.elapsed}`  }} </span>
+        <i v-if="lanyardActivities.activity.name == null"></i><span v-else class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name || "" }}</span>
+        <i v-if="lanyardActivities.activity.state == null"></i><span v-else class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
+        <i v-if="lanyardActivities.activity.details == null"></i><span v-else class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.details || "" }}</span>
+        <i v-if="String(String(lanyardActivities.activity['elapsed']).split(':').join('')) == String('NaNNaN')"></i><span v-else class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.elapsed == null ? "" : `Elapsed: ${String(parseInt(lanyardActivities.activity.elapsed.substring(0, 2)) < 10 ? 0 + lanyardActivities.activity.elapsed : lanyardActivities.activity.elapsed)}`  }} </span>
       </div>
    </div>
  </div>
@@ -75,6 +75,15 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
           <p v-if="github.repocount == 0" class="mt-3 text-center text-red-500">No results found!</p>
           <div v-else class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
             <div v-for="item in github.repos">
+            <span v-if="item.fork == true"><a :href="`https://github.com/falsisdev/${item.name}`">
+            <div class="bg-[#080707] rounded-lg ml-5 p-3">
+              <h1 class="text-white text-[18px]"><i class="fa-brands fa-github text-white mr-1"></i>  {{ item.name }}</h1>
+              <div class="flex gap-x-5">
+                <div class="mt-3 text-white"><i class="fa-solid fa-code-branch text-white mr-1"></i> forked from {{ item.name }}</div> <!-- çaktırma ve sessizce uzaklaş -->
+              </div>
+             </div>
+           </a></span>
+            <span v-else>
           <a :href="`https://github.com/falsisdev/${item.name}`">
             <div class="bg-[#080707] rounded-lg ml-5 p-3">
               <h1 class="text-white text-[18px]"><i class="fa-brands fa-github text-white mr-1"></i>  {{ item.name }}</h1>
@@ -85,6 +94,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
               </div>
              </div>
            </a>
+           </span>
         </div>
         </div>
      </div>
@@ -179,7 +189,8 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
             name: [],
             details: [],
             appid: [],
-            image: []
+            image: [],
+            small: [],
           },
         },
         device: [],
@@ -258,6 +269,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.activity.created_at = null
       this.lanyardActivities.activity.appid = null
       this.lanyardActivities.activity['image'] = null
+      this.lanyardActivities.activity['small'] = null
       }else {
         try {
                    function millisToMinutesAndSeconds(millis) {
@@ -271,10 +283,12 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.activity.timestamps = this.lanyard.data.activities[0].timestamps.start
       this.lanyardActivities.activity.elapsed = millisToMinutesAndSeconds(Date.now() - this.lanyard.data.activities[0].timestamps.start)
             this.lanyardActivities.activity['image'] = this.lanyard.data.activities[0].assets.large_image
+            this.lanyardActivities.activity['small'] = this.lanyard.data.activities[0].assets.small_image || null
         }catch(err){
           this.lanyardActivities.activity.timestamps = null
           this.lanyardActivities.activity.elapsed = null
                 this.lanyardActivities.activity['image'] = null
+                this.lanyardActivities.activity['small'] = null
         }
       this.lanyardActivities.activity.state = this.lanyard.data.activities[0].state
       this.lanyardActivities.activity.name = this.lanyard.data.activities[0].name
