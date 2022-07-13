@@ -31,10 +31,11 @@
  </div>
   <p v-if="lanyardActivities.activity.check == false"></p>
    <p v-else-if="lanyardActivities.activity.name == 'Spotify'"></p>
-  <div v-else-if="lanyardActivities.activity.check == true" class="mt-5">
+   <i v-else-if="lanyardActivities.activity.check == true" v-if="lanyardActivities.activity.image == null"></i>
+  <div v-else class="mt-5">
   <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word">
   <b class="pl-[35px] text-white-500 text-1x3 pr-[690px]">PLAYING A GAME</b>
-      <i v-if="lanyardActivities.activity.small == null"></i><img class="w-[2rem] h-[2rem] rounded-full" v-else-if="lanyardActivities.activity['small'].substring(0, 3) == 'mp:' == true" :src="`https://${lanyardActivities.activity['small'].slice(62)}`"><img v-else class="w-[2rem] h-[2rem] rounded-full" :Src="lanyardActivities.activity.small">
+      <i v-if="lanyardActivities.activity.small == null"></i><img class="w-[2rem] h-[2rem] rounded-full" v-else-if="lanyardActivities.activity['small'].substring(0, 3) == 'mp:' == true" :src="`https://${lanyardActivities.activity['small'].slice(62)}`"><img v-else class="w-[2rem] h-[2rem] rounded-full" :Src="lanyardActivities.activity.small">   
         </div>
    <div class="flex pb-[25px] bg-[#080808] break-word rounded-b-[10px]">
           <i v-if="lanyardActivities.activity.image == null"></i><img v-else-if="lanyardActivities.activity['image'].charAt(0) + lanyardActivities.activity['image'].charAt(1) + lanyardActivities.activity['image'].charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity['image'].slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]"><img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity['image']}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
@@ -284,16 +285,20 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.lanyardActivities.activity.elapsed = millisToMinutesAndSeconds(Date.now() - this.lanyard.data.activities[0].timestamps.start)
             this.lanyardActivities.activity['image'] = this.lanyard.data.activities[0].assets.large_image
             this.lanyardActivities.activity['small'] = this.lanyard.data.activities[0].assets.small_image || null
+                  this.lanyardActivities.activity.state = this.lanyard.data.activities[0].state
+      this.lanyardActivities.activity.name = this.lanyard.data.activities[0].name
+      this.lanyardActivities.activity.details = this.lanyard.data.activities[0].details
+      this.lanyardActivities.activity.appid = this.lanyard.data.activities[0].application_id
         }catch(err){
           this.lanyardActivities.activity.timestamps = null
           this.lanyardActivities.activity.elapsed = null
                 this.lanyardActivities.activity['image'] = null
                 this.lanyardActivities.activity['small'] = null
+                      this.lanyardActivities.activity.state = null
+      this.lanyardActivities.activity.name = null
+      this.lanyardActivities.activity.details = null
+      this.lanyardActivities.activity.appid = null
         }
-      this.lanyardActivities.activity.state = this.lanyard.data.activities[0].state
-      this.lanyardActivities.activity.name = this.lanyard.data.activities[0].name
-      this.lanyardActivities.activity.details = this.lanyard.data.activities[0].details
-      this.lanyardActivities.activity.appid = this.lanyard.data.activities[0].application_id
       }
       /* GITHUB */
       this.github.username = this.githubf.login
