@@ -49,7 +49,7 @@
  </div>
  <div class="mt-5">
    <div class="bg-[#080808] w-full p-4 text-[18px] text-center rounded-lg">
-      <h1><span class="text-red-500"><i class="fa-solid fa-triangle-exclamation"></i></span><span style="color: white;"> This website is currently in </span><span class="text-green-300">early-access</span>. <span style="color: white;">Please report bugs if any.</span></h1>
+      <h1><span class="text-red-500"><i class="fa-solid fa-triangle-exclamation"></i></span><span style="color: white;"> This website is currently in </span><span class="text-green-300">early-access</span>. <span style="color: white;">If found any bugs, please report.</span></h1>
    </div>
  </div>
   <div class="mt-5">
