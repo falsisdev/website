@@ -31,7 +31,7 @@
       </div>
    </div>
  </div>
-  <span v-if="lanyardActivities.activity.check == false & lanyardActivities.activity.check == true">
+  <span v-if="lanyardActivities.spotify.check == false & lanyardActivities.activity.check == true">
   <i v-if="lanyardActivities.activity.image == null"></i>
   <div v-else class="mt-5">
   <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word">
@@ -114,7 +114,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
               <h1 class="text-white text-[18px]"><i class="fa-brands fa-github text-white mr-1"></i> {{ item.description.lenght > 23 ? `${item.description.substring(0, 20)}...` : item.description }}</h1>
               <div class="flex gap-x-5">
                 <div class="mt-3 text-white"><i class="fas fa-comments text-white mr-1"></i> {{ item.comments }}</div>
-                <div class="mt-3 text-white"><i class="fas fa-file text-white mr-1"></i> {{ Object.size(item.files) }}</div>
+                <div class="mt-3 text-white"><i class="fas fa-file text-white mr-1"></i> {{ size(item.files) }}</div>
               </div>
              </div>
            </a>
@@ -236,16 +236,16 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
         }
       }
     },
-    methods: [
-      Object.size = function(obj) {
+    methods: {
+ size(obj){
   var size = 0,
     key;
   for (key in obj) {
     if (obj.hasOwnProperty(key)) size++;
   }
   return size;
-} 
-    ],
+ }
+    },
     async fetch() {
       try {
       this.lanyard = await fetch(lanyardURL).then(res => res.json())
