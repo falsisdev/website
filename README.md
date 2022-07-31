@@ -1,6 +1,6 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-🎨 Theme Name: Emerald Theme with NuxtTailwind by Falsis
+🎨 Theme Name: Emerald Theme with NuxtTailwind by Falsis<br>
 👁 [Live Preview](https://falsis.ga/)
 
 
