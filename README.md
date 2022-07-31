@@ -6,39 +6,39 @@
 
 ## 📀 Features
 
-- 📫 Profile Card<br>
+### 📫 Profile Card<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231991417815041/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231302411108382/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231342873555004/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231399265980456/unknown.png?size=4096">
 
-- 🎶 Activity Card<br>
+### 🎶 Activity Card<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/994507943552757790/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003232344385257513/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003235279479525447/unknown.png?size=4096">
 
-- 🔔 Changeable Notify Card<br>
+### 🔔 Changeable Notify Card<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231479003893810/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231538617528371/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231590819844126/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231650274103296/unknown.png?size=4096">
 
-- 📩 About Me<br>
+### 📩 About Me<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231700018548818/unknown.png?size=4096">
 
-- 🔭 Github Repositories and Gists<br>
+### 🔭 Github Repositories and Gists<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231737171693640/unknown.png?size=4096">
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231781350277120/unknown.png?size=4096">
 
-- 👣 Footer<br>
+### 👣 Footer<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003235904678264852/unknown.png?size=4096">
 
-- 👁️ Full Page Preview<br>
+### 👁️ Full Page Preview<br>
 
 <img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231861801226240/unknown.png?size=4096">
 
