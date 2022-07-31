@@ -12,7 +12,7 @@ export default {
     viewer: true
   },
   loading: {
-   color: "#57F287",
+   color: "#10b981",
    failedColor: "#57F287",
    height: "3px",
    throttle: 0
