@@ -1,11 +1,13 @@
 <template>
 <main>
     <body class="mt-8 max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300">
-      <div align="center" :class="`rounded-t-[10px] w-full pb-[0.25rem] bg-[#${lanyardUser.status === 'dnd' ? 'ED4245' :  lanyardUser.status === 'idle' ? 'faa61a' : lanyardUser.status === 'online' ? '57F287' : lanyardUser.status === 'offline' ? '99aab5' : 'EB459E'}]`"> </div>
+      <div align="center" class="rounded-t-[10px] w-full pb-[0.25rem] bg-emerald-500"> </div>
 <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word rounded-b-[10px]">
-    <img :class="`ml-8 rounded-full border-[3.2px] w-[8rem] h-[8rem] border-[#${lanyardUser.status === 'dnd' ? 'ED4245' :  lanyardUser.status === 'idle' ? 'faa61a' : lanyardUser.status === 'online' ? '57F287' : lanyardUser.status === 'offline' ? '99aab5' : 'EB459E'}]`" :src="lanyardUser.avatar"/>
+    <img :class="`ml-8 rounded-full w-[8rem] h-[8rem]`" :src="lanyardUser.avatar"/>
     <div class="ml-4 mt-8">
-      <h1 class="absolute pl-[10px] text-red-500 text-4xl">{{ lanyardUser.username }}<span class="text-[15px] font-bold text-gray-200">#{{ lanyardUser.tag }}</span></h1>
+      <h1 class="absolute pl-[10px] text-emerald-400 text-4xl">{{ lanyardUser.username }}<span class="text-[15px] font-bold text-gray-200">#{{ lanyardUser.tag }}</span>
+      <span :class="`text-[15px] font-bold text-[#${lanyardUser.status === 'dnd' ? 'ED4245' :  lanyardUser.status === 'idle' ? 'faa61a' : lanyardUser.status === 'online' ? '10b981' : lanyardUser.status === 'offline' ? '99aab5' : '10b981'}]`"><i :class="device == 'Desktop' ? 'fa-solid fa-desktop' : device == 'Mobile' ? 'fa-solid fa-mobile' : device == 'Web' ? 'fa-brands fa-firefox-browser' : ''"></i></span>
+      </h1>
       
       <p class="text-[19px] text-gray-200/90 pt-10 ml-2">An Alone Web Developer</p>
       
@@ -29,9 +31,8 @@
       </div>
    </div>
  </div>
-  <p v-if="lanyardActivities.activity.check == false"></p>
-   <p v-else-if="lanyardActivities.activity.name == 'Spotify'"></p>
-   <i v-else-if="lanyardActivities.activity.check == true" v-if="lanyardActivities.activity.image == null"></i>
+  <span v-if="lanyardActivities.activity.check == false & lanyardActivities.activity.check == true">
+  <i v-if="lanyardActivities.activity.image == null"></i>
   <div v-else class="mt-5">
   <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word">
   <b class="pl-[35px] text-white-500 text-1x3 pr-[690px]">PLAYING A GAME</b>
@@ -40,27 +41,28 @@
    <div class="flex pb-[25px] bg-[#080808] break-word rounded-b-[10px]">
           <i v-if="lanyardActivities.activity.image == null"></i><img v-else-if="lanyardActivities.activity['image'].charAt(0) + lanyardActivities.activity['image'].charAt(1) + lanyardActivities.activity['image'].charAt(2) == 'mp:' == true" :src="`https://${lanyardActivities.activity['image'].slice(62)}`" class="ml-8 rounded-md w-[8rem] h-[8rem]"><img v-else :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity['image']}.png`" class="ml-8 rounded-md w-[8rem] h-[8rem]">
       <div class="ml-4">
-        <i v-if="lanyardActivities.activity.name == null"></i><span v-else class="absolute pl-[10px] text-red-500 text-1x2">{{ lanyardActivities.activity.name || "" }}</span>
+        <i v-if="lanyardActivities.activity.name == null"></i><span v-else class="absolute pl-[10px] text-emerald-400 text-1x2">{{ lanyardActivities.activity.name || "" }}</span>
         <i v-if="lanyardActivities.activity.state == null"></i><span v-else class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.state || "" }}</span>
         <i v-if="lanyardActivities.activity.details == null"></i><span v-else class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.details || "" }}</span>
         <i v-if="String(String(lanyardActivities.activity['elapsed']).split(':').join('')) == String('NaNNaN')"></i><span v-else class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl">{{ lanyardActivities.activity.elapsed == null ? "" : `Elapsed: ${String(parseInt(lanyardActivities.activity.elapsed.substring(0, 2)) < 10 ? 0 + lanyardActivities.activity.elapsed : lanyardActivities.activity.elapsed)}`  }} </span>
       </div>
    </div>
- </div>
+ </div></span>
+ 
  <div class="mt-5">
    <div class="bg-[#080808] w-full p-4 text-[18px] text-center rounded-lg">
-      <h1><span class="text-red-500"><i class="fa-solid fa-triangle-exclamation"></i></span><span style="color: white;"> This website is currently in </span><span class="text-green-300">early-access</span>. <span style="color: white;">If found any bugs, please report.</span></h1>
+      <h1><span class="text-emerald-400"><i class="fa-solid fa-triangle-exclamation"></i></span><span style="color: white;"> This website is currently in </span><span :class="`text-${lanyardUser.status == 'dnd' ? 'red' :  lanyardUser.status == 'idle' ? 'orange' : lanyardUser.status == 'online' ? 'emerald' : lanyardUser.status == 'offline' ? 'grey' : 'emerald'}-400`">early-access</span>. <span style="color: white;">Please report bugs if any.</span></h1>
    </div>
  </div>
   <div class="mt-5">
   <div class="bg-[#080808] w-full p-4 rounded-lg">
      <div class="mt-2">
-       <h1 class="font-semibold text-3xl text-white text-center"><span class="text-red-400">Hello</span>, I’m Falsis ✌️</h1>
+       <h1 class="font-semibold text-3xl text-white text-center"><span class="text-emerald-400">Hello</span>, I’m Falsis ✌️</h1>
        <p style="color: white;" class="p-3 text-gray-200/90 text-[18px] mt-3">
-I'm a <a href="https://en.wikipedia.org/wiki/Front-end_web_development" class="Text-red-500"> Front-end Web Developer</a>!<br>
-So, I'm interested in <a href="https://en.wikipedia.org/wiki/HTML" class="Text-red-500" title="Hyper Text Markup Language"> <font color="orange"><i class="fa-brands fa-html5"></i></font></a>, <a href="https://en.wikipedia.org/wiki/CSS" class="Text-red-500" title="Cascading Style Sheets"> <font color="#1589FF"><i class="fa-brands fa-css3-alt"></i></font></a> and <a href="https://en.wikipedia.org/wiki/JavaScript" title="JavaScript" class="Text-red-500"> <font color="yellow"><i class="fab fa-js-square"></i></font></a>!<br>
-Also, I know <a href="https://en.wikipedia.org/wiki/Go_(programming_language)" class="Text-red-500" title="The Go Programming Language"><font color="#add8e6"><i class="fa-brands fa-golang"></i></font></a>, <a href="https://en.wikipedia.org/wiki/Dart_(programming_language)" class="Text-red-500" title="Dart"><font color="#1589FF">Dart</font></a> and <a href="https://tr.wikipedia.org/wiki/Typescript" class="Text-red-500">TypeScript</a>...<br>
-If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Text-red-500"><font color="white"><i class="fa-brands fa-github"></i> </font></a> profile!</p>
+I'm a <a href="https://en.wikipedia.org/wiki/Front-end_web_development" class="Text-emerald-400"> Front-end Web Developer</a>!<br>
+So, I'm interested in <a href="https://en.wikipedia.org/wiki/HTML" class="Text-emerald-400" title="Hyper Text Markup Language"> <font color="orange"><i class="fa-brands fa-html5"></i></font></a>, <a href="https://en.wikipedia.org/wiki/CSS" class="Text-emerald-400" title="Cascading Style Sheets"> <font color="#1589FF"><i class="fa-brands fa-css3-alt"></i></font></a> and <a href="https://en.wikipedia.org/wiki/JavaScript" title="JavaScript" class="Text-emerald-400"> <font color="yellow"><i class="fab fa-js-square"></i></font></a>!<br>
+Also, I know <a href="https://en.wikipedia.org/wiki/Go_(programming_language)" class="Text-emerald-400" title="The Go Programming Language"><font color="#add8e6"><i class="fa-brands fa-golang"></i></font></a>, <a href="https://en.wikipedia.org/wiki/TypeScript" class="text-blue-600" title="TypeScript">TypeScript</a> and <a href="https://tr.wikipedia.org/wiki/Dart_(programlama_dili)" class="text-blue-400">Dart</a>...<br>
+If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Text-emerald-400"><font color="white"><i class="fa-brands fa-github"></i> </font></a> profile!</p>
      </div>
      <div align="center">
      <div v-for="item in links" class="p-2 mt-3 text-center content-center inline-block">
@@ -72,8 +74,8 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
 <div class="mt-5">
   <div class="bg-[#080808] w-full p-4 rounded-lg">
      <div class="mt-2">
-       <h1 class="font-semibold text-3xl text-white text-center"><span class="text-red-400">GitHub</span> Repositories</h1>
-          <p v-if="github.repocount == 0" class="mt-3 text-center text-red-500">No results found!</p>
+       <h1 class="font-semibold text-3xl text-white text-center"><span class="text-emerald-400">GitHub</span> Repositories</h1>
+          <p v-if="github.repocount == 0" class="mt-3 text-center text-emerald-400">No results found!</p>
           <div v-else class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
             <div v-for="item in github.repos">
             <span v-if="item.fork == true"><a :href="`https://github.com/falsisdev/${item.name}`">
@@ -101,9 +103,29 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
      </div>
   </div>
 </div>
+<div class="mt-5">
+  <div class="bg-[#080808] w-full p-4 rounded-lg">
+     <div class="mt-2">
+       <h1 class="font-semibold text-3xl text-white text-center"><span class="text-emerald-400">GitHub</span> Gists</h1>
+          <div class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
+            <div v-for="item in github.gists">
+          <a :href="item.html_url">
+            <div class="bg-[#080707] rounded-lg ml-5 p-3">
+              <h1 class="text-white text-[18px]"><i class="fa-brands fa-github text-white mr-1"></i> {{ item.description.lenght > 23 ? `${item.description.substring(0, 20)}...` : item.description }}</h1>
+              <div class="flex gap-x-5">
+                <div class="mt-3 text-white"><i class="fas fa-comments text-white mr-1"></i> {{ item.comments }}</div>
+                <div class="mt-3 text-white"><i class="fas fa-file text-white mr-1"></i> {{ Object.size(item.files) }}</div>
+              </div>
+             </div>
+           </a>
+        </div>
+        </div>
+     </div>
+  </div>
+</div>
     <div class="py-10 text-white border-t border-zinc-600/20 mt-5 ">
-  <p class="float-left">© 2021 - 2022 FalsisDev - All Rights Reserved.</p>
-  <p class="text-white float-right">Designed with <i class="fa fa-heart mx-1 text-pink-400"></i> by <a class="hover:text-green-400 font-medium" href="/">Falsis</a></p>
+  <p class="float-left">© 2021 / 2022 - <a class="hover:text-green-400 font-medium" href="https://github.com/falsisdev/website"><i class="fa-brands fa-github text-white mr-1"></i> FalsisDev</a> - All Rights <a class="hover:text-green-400 font-medium" href="https://github.com/falsisdev/website/blob/third/LICENSE">Reserved</a>.</p>
+  <p class="text-white float-right">Designed with <i class="fa-regular fa-heart mx-1 text-emerald-400"></i> by <a class="hover:text-green-400 font-medium" href="/">Falsis</a></p>
 </div></body>
     </main>
 </template>
@@ -209,10 +231,21 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
           gistcount: [],
           followers: [],
           following: [],
-          repos: [] //aslında array içinde object ama burada object açmıyorum aşağıda fetch'leyince object oluşturulacak
+          repos: [], //aslında array içinde object ama burada object açmıyorum aşağıda fetch'leyince object oluşturulacak
+          gists: []
         }
       }
     },
+    methods: [
+      Object.size = function(obj) {
+  var size = 0,
+    key;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) size++;
+  }
+  return size;
+} 
+    ],
     async fetch() {
       try {
       this.lanyard = await fetch(lanyardURL).then(res => res.json())
@@ -315,6 +348,7 @@ If you wanna see them, visit my <a href="https://github.com/falsisdev" class="Te
       this.github.followers = this.githubf.followers
       this.github.following = this.githubf.following
       this.github.repos = await fetch(`${githubURL}/repos`).then(res => res.json()) //burda array içinde objectler oluşturuldu.
+      this.github.gists = await fetch(`${githubURL}/gists`).then(res => res.json())
     }
       }
   </script>

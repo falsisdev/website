@@ -4,7 +4,7 @@ p {
 color: white;  
 }
 ::selection{
-color: #e74c3c;
+color: #10b981;
 }
 ::-webkit-scrollbar {
     width: 3px;
