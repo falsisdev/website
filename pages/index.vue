@@ -21,6 +21,7 @@
               >#{{ lanyardUser.tag }}</span
             >
             <span
+              id="platform"
               :class="`text-[15px] font-bold text-[#${lanyardUser.status === 'dnd' ? 'ED4245' :  lanyardUser.status === 'idle' ? 'faa61a' : lanyardUser.status === 'online' ? '10b981' : lanyardUser.status === 'offline' ? '99aab5' : '10b981'}]`"
               ><i
                 :class="device == 'Desktop' ? 'fa-solid fa-desktop' : device == 'Mobile' ? 'fa-solid fa-mobile' : device == 'Web' ? 'fa-brands fa-firefox-browser' : ''"
@@ -197,7 +198,7 @@
               Also, I know
               <a
                 href="https://en.wikipedia.org/wiki/Go_(programming_language)"
-                class="Text-emerald-400"
+                class="text-emerald-400"
                 title="The Go Programming Language"
                 ><font color="#add8e6"
                   ><i class="fa-brands fa-golang"></i></font></a
@@ -219,6 +220,15 @@
                 ><font color="white"><i class="fa-brands fa-github"></i> </font
               ></a>
               profile!
+              <br />
+              Don't forget to visit
+              <NuxtLink
+                to="/list"
+                class="animate-pulse text-emerald-400"
+                title="My List"
+              >
+              My Anime List!!
+              </NuxtLink>
             </p>
           </div>
           <div align="center">
@@ -380,6 +390,46 @@
        ]
      }
      },
+   /* async mounted() {
+      const OPCODES = {
+        INFO: 0,
+        HELLO: 1,
+        INIT: 2,
+        HEARTBEAT: 3,
+      };
+      this.$socket.$on("message", ({ data }) => {
+        const JSONdata = JSON.parse(data);
+        if(JSONdata.op == OPCODES.HELLO)  {
+          this.$socketManager.send(
+          JSON.stringify({
+            op: OPCODES.INIT,
+            d: {
+                subscribe_to_id: "539843855567028227",
+            }
+          })
+          )
+        setInterval(function() {
+        this.$socketManager.send(
+            JSON.stringify({
+              op: OPCODES.HEARTBEAT,
+            })
+        )
+        , JSONdata.d.heartbeat_interval})
+        }else if(JSONdata.op == OPCODES.INFO){
+        const colors = {
+          online: "#57F287",
+          idle: "#faa61a",
+          dnd: "#ED4245",
+          offline: "#99aab5"
+        };
+        if(JSONdata.t == "INIT_STATE"){
+          const u = JSONdata.d;
+
+          document.getElementById("platform").className = `text-[15px] font-bold text-[${colors[u.discord_status]}]`
+        }
+        }
+      })
+     },*/
     data() {
      return {
        title: "Home - FalsisDev",

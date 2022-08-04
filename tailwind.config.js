@@ -3,6 +3,9 @@ module.exports = {
   content: [],
   theme: {
       extend: {},
+      fontFamily: {
+        'display': ["Arial Bold"]
+      }
   },
   plugins: [],
 }

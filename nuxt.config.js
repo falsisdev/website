@@ -1,50 +1,54 @@
 export default {
   components: true,
   generate: {
-      dir: 'dist',
-      subFolders: false
+      dir: "dist",
+      subFolders: false,
   },
   server: {
-      host: 'localhost',
-      port: 3000
+      host: "localhost",
+      port: 3000,
   },
   tailwindcss: {
-      viewer: true
+      viewer: true,
   },
   loading: {
       color: "#10b981",
       failedColor: "#57F287",
       height: "3px",
-      throttle: 0
+      throttle: 0,
   },
   loadingIndicator: {
-      name: 'circle',
-      color: '#10b981',
-      background: '#080808'
+      name: "circle",
+      color: "#10b981",
+      background: "#080808",
   },
   script: [{
-      src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+      src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js",
   }],
   link: [{
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap'
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css?family=Roboto&display=swap",
   }],
   meta: [{
-          charset: 'utf-8'
+          charset: "utf-8",
       },
       {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1'
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
       },
       {
-          author: 'FalsisDev',
-          name: 'FalsisDev',
+          author: "FalsisDev",
+          name: "FalsisDev",
           color: "#57F287",
-          content: 'FalsisDev | A Front-End Web Developer.'
+          content: "FalsisDev | A Front-End Web Developer.",
       }
   ],
-  modules: ['@nuxtjs/axios', '@nuxtjs/tailwindcss', '@nuxt/components'],
-  target: 'static',
-  css: ['~/assets/main.css'],
+  modules: ["@nuxtjs/axios", "@nuxtjs/tailwindcss", "@nuxt/components", "@deepsource/nuxt-websocket"],
+  websocket: {
+    url: "wss://api.lanyard.rest/socket",
+    reconnectInterval: 1000,
+  },
+  target: "static",
+  css: ["~/assets/main.css"],
   devServerHandlers: [],
 }
