@@ -12,7 +12,7 @@
       >
         <img
           :class="`ml-8 rounded-full w-[8rem] h-[8rem]`"
-          :src="lanyardUser.avatar"
+          :src="`${lanyardUser.avatar}?size=4096`"
         />
         <div class="ml-4 mt-8">
           <h1 class="absolute pl-[10px] text-emerald-400 text-4xl">
