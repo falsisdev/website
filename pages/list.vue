@@ -42,9 +42,9 @@ export default {
         this.names = animeNames
         for(let item of animeNames) {
             if(item == "code-geass-boukoku-no-akito") {
-                this.images.push(`https://cdn3.falsisdev.repl.co/anime/images?name=code-geass-boukoku-no-akito&type=cover&order=3`)
+                this.images.push(`https://cdn.falsis.ga/anime/images?name=code-geass-boukoku-no-akito&type=cover&order=3`)
             }else{
-            this.images.push(`https://cdn3.falsisdev.repl.co/anime/images?name=${item}&type=cover`)
+            this.images.push(`https://cdn.falsis.ga/anime/images?name=${item}&type=cover`)
             }
         }
     }
