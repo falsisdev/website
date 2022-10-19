@@ -7,5 +7,5 @@ module.exports = {
         'display': ["Arial Bold"]
       }
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

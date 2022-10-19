@@ -1,10 +1,10 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-🎨 Theme Name: Emerald Theme with NuxtTailwind by Falsis<br>
+🎨 Theme Name: Dracula<br>
 👁 [Live Preview](https://falsis.ga/)
 
 
-## 📀 Features
+<!--## 📀 Features
 
 ### 📫 Profile Card<br>
 
@@ -40,7 +40,7 @@
 
 ### 👁️ Full Page Preview<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231861801226240/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231861801226240/unknown.png?size=4096">-->
 
 **Note**: `Spotify Activity takes precedence over game activity. If there is Spotify activity, the game activity will not work.`<br><br>
 <img src="https://img.shields.io/github/license/falsisdev/website?color=red&style=for-the-badge"> <img src="https://img.shields.io/badge/Vuejs-323330?style=for-the-badge&logo=vue.js"> <img src="https://img.shields.io/badge/Nuxtjs-323330?style=for-the-badge&logo=nuxt.js"> <img src="https://img.shields.io/badge/TailwindCSS-323330?style=for-the-badge&logo=tailwindcss">

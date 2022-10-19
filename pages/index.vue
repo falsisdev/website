@@ -1,21 +1,23 @@
-<template>
-  <main>
+<template data-theme="dracula">
+  <main data-theme="dracula">
     <body
-      class="mt-8 max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300 scroll-auto"
+      class="mt-8 bg-[#2a303c] max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300 scroll-auto"
+      data-theme="dracula"
     >
+    <div class="flex flex-wrap flex-row align-items-center justify-center">
       <div
-        align="center"
-        class="rounded-t-[10px] w-full pb-[0.25rem] bg-emerald-500"
-      ></div>
-      <div
-        class="flex pb-[25px] pt-[25px] bg-[#080808] break-word rounded-b-[10px]"
+        class="card w-72 bg-base-100 shadow-xl"
       >
+      <div class="card-body align-items-center justify-center">
+      <figure><div :class="`avatar pl-[10px]`">
+        <div class="w-24 rounded-full">
         <img
-          :class="`ml-8 rounded-full w-[8rem] h-[8rem]`"
           :src="`${lanyardUser.avatar}?size=4096`"
         />
-        <div class="ml-4 mt-8">
-          <h1 class="absolute pl-[10px] text-emerald-400 text-4xl">
+        </div>
+        </div>
+        </figure>
+          <h1 class="card-title align-items-center justify-center">
             {{ lanyardUser.username
             }}<span class="text-[15px] font-bold text-gray-200"
               >#{{ lanyardUser.tag }}</span
@@ -28,52 +30,36 @@
               ></i
             ></span>
           </h1>
-
-          <p class="text-[19px] text-gray-200/90 pt-10 ml-2">
+          <p class="align-items-center justify-center text-center">
             An Alone Web Developer
           </p>
-        </div>
+      </div>
       </div>
       <p v-if="lanyardActivities.spotify.check == false"></p>
-      <div v-else-if="lanyardActivities.spotify.check == true" class="mt-5">
-        <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word">
-          <b class="pl-[35px] text-white-500 text-1x3 pr-[690px]"
-            >LISTENING TO SPOTIFY</b
-          >
-          <svg
-            class="pr-[10px]"
-            xmlns="http://www.w3.org/2000/svg"
-            height="30px"
-            width="30px"
-            version="1.1"
-            viewBox="0 0 168 168"
-          >
-            <path
-              fill="#1ED760"
-              d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"
-            />
-          </svg>
-        </div>
-        <div class="flex pb-[25px] bg-[#080808] break-word rounded-b-[10px]">
+      <div v-else-if="lanyardActivities.spotify.check == true" class="pl-[5px]">
+        <div class="card w-72 bg-base-100 shadow-xl image-full">
+          <figure>
           <img
-            :Src="lanyardActivities.spotify.cover"
-            class="ml-8 rounded-md border-[3.2px] w-[8rem] h-[8rem] border-green-500"
+            :src="lanyardActivities.spotify.cover"
           />
-          <div class="ml-4">
+          </figure>
+          <div class="card-body">
+            <h1
+              class="card-title"
+              >{{ lanyardActivities.spotify.song }}</h1
+            >
+            <p>
             <span
-              class="absolute pl-[10px] text-green-500 text-1x2"
-              >{{ lanyardActivities.spotify.song }}</span
-            >
-            <span class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl"
               >by {{ lanyardActivities.spotify.artist }}</span
-            >
-            <span class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl"
+            ><br>
+            <span
               >on {{ lanyardActivities.spotify.album.large_text }}</span
-            >
-            <span class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl"
+            ><br>
+            <span
               >{{ lanyardActivities.spotify.elapsed[0] }} /
               {{ lanyardActivities.spotify.elapsed[1] }}</span
             >
+            </p>
           </div>
         </div>
       </div>
@@ -81,50 +67,36 @@
         v-if="lanyardActivities.spotify.check == false & lanyardActivities.activity.check == true"
       >
         <i v-if="lanyardActivities.activity.image == null"></i>
-        <div v-else class="mt-5">
-          <div class="flex pb-[25px] pt-[25px] bg-[#080808] break-word">
-            <b class="pl-[35px] text-white-500 text-1x3 pr-[690px]"
-              >PLAYING A GAME</b
-            >
-            <i v-if="lanyardActivities.activity.small == null"></i
-            ><img
-              class="w-[2rem] h-[2rem] rounded-full"
-              v-else-if="lanyardActivities.activity['small'].substring(0, 3) == 'mp:' == true"
-              :src="`https://${lanyardActivities.activity['small'].slice(62)}`"
-            /><img
-              v-else
-              class="w-[2rem] h-[2rem] rounded-full"
-              :Src="lanyardActivities.activity.small"
-            />
-          </div>
-          <div class="flex pb-[25px] bg-[#080808] break-word rounded-b-[10px]">
-            <i v-if="lanyardActivities.activity.image == null"></i
+        <div v-else class="pl-[5px]">
+          <div class="card w-72 bg-base-100 shadow-xl image-full">
+            <figure><i v-if="lanyardActivities.activity.image == null"></i
             ><img
               v-else-if="lanyardActivities.activity['image'].charAt(0) + lanyardActivities.activity['image'].charAt(1) + lanyardActivities.activity['image'].charAt(2) == 'mp:' == true"
               :src="`https://${lanyardActivities.activity['image'].slice(62)}`"
-              class="ml-8 rounded-md w-[8rem] h-[8rem]"
+              width="400"
+              height="400"
             /><img
               v-else
               :src="`https://cdn.discordapp.com/app-assets/${lanyardActivities.activity.appid}/${lanyardActivities.activity['image']}.png`"
-              class="ml-8 rounded-md w-[8rem] h-[8rem]"
-            />
-            <div class="ml-4">
+              width="400"
+              height="400"
+            /></figure>
+          <div class="card-body">
               <i v-if="lanyardActivities.activity.name == null"></i
-              ><span
+              ><h1
                 v-else
-                class="absolute pl-[10px] text-emerald-400 text-1x2"
-                >{{ lanyardActivities.activity.name || "" }}</span
+                class="card-title"
+                >{{ lanyardActivities.activity.name || "" }}</h1
               >
+              <p>
               <i v-if="lanyardActivities.activity.state == null"></i
               ><span
                 v-else
-                class="absolute pt-[20px] pl-[10px] text-white-500 text-1xl"
                 >{{ lanyardActivities.activity.state || "" }}</span
               >
               <i v-if="lanyardActivities.activity.details == null"></i
               ><span
                 v-else
-                class="absolute pt-[40px] pl-[10px] text-white-500 text-1xl"
                 >{{ lanyardActivities.activity.details || "" }}</span
               >
               <i
@@ -132,108 +104,16 @@
               ></i
               ><span
                 v-else
-                class="absolute pt-[60px] pl-[10px] text-white-500 text-1xl"
-                >{{ lanyardActivities.activity.elapsed == null ? "" : `Elapsed: ${String(parseInt(lanyardActivities.activity.elapsed.substring(0, 2)) < 10 ? 0 + lanyardActivities.activity.elapsed : lanyardActivities.activity.elapsed)}`  }}
+                >{{ lanyardActivities.activity.elapsed == null ? "" : `Elapsed: ${lanyardActivities.activity.elapsed}`  }}
               </span>
+              </p>
             </div>
           </div>
         </div></span
-      >
-
-      <div class="mt-5">
-        <div class="bg-[#080808] w-full p-4 text-[18px] text-center rounded-lg">
-          <h1>
-            <span class="text-emerald-400"
-              ><i class="fa-solid fa-triangle-exclamation"></i></span
-            ><span style="color: white"> This website is currently in </span
-            ><span
-              :class="`text-${lanyardUser.status == 'dnd' ? 'red' :  lanyardUser.status == 'idle' ? 'orange' : lanyardUser.status == 'online' ? 'emerald' : lanyardUser.status == 'offline' ? 'grey' : 'emerald'}-400`"
-              >early-access</span
-            >. <span style="color: white">Please report bugs if any.</span>
-          </h1>
-        </div>
-      </div>
-      <div class="mt-5">
-        <div class="bg-[#080808] w-full p-4 rounded-lg">
-          <div class="mt-2">
-            <h1 class="font-semibold text-3xl text-white text-center">
-              <span class="text-emerald-400">Hello</span>, I’m Falsis ✌️
-            </h1>
-            <p
-              style="color: white"
-              class="p-3 text-gray-200/90 text-[18px] mt-3"
-            >
-              I'm a
-              <a
-                href="https://en.wikipedia.org/wiki/Front-end_web_development"
-                class="duration-300 hover:text-emerald-400"
-              >
-                Front-end Web Developer</a
-              >!<br />
-              So, I'm interested in
-              <a
-                href="https://en.wikipedia.org/wiki/HTML"
-                class="Text-emerald-400"
-                title="Hyper Text Markup Language"
-              >
-                <font color="orange"
-                  ><i class="fa-brands fa-html5"></i></font></a
-              >,
-              <a
-                href="https://en.wikipedia.org/wiki/CSS"
-                class="Text-emerald-400"
-                title="Cascading Style Sheets"
-              >
-                <font color="#1589FF"
-                  ><i class="fa-brands fa-css3-alt"></i></font
-              ></a>
-              and
-              <a
-                href="https://en.wikipedia.org/wiki/JavaScript"
-                title="JavaScript"
-                class="Text-emerald-400"
-              >
-                <font color="yellow"><i class="fab fa-js-square"></i></font></a
-              >!<br />
-              Also, I know
-              <a
-                href="https://en.wikipedia.org/wiki/Go_(programming_language)"
-                class="text-emerald-400"
-                title="The Go Programming Language"
-                ><font color="#add8e6"
-                  ><i class="fa-brands fa-golang"></i></font></a
-              >,
-              <a
-                href="https://en.wikipedia.org/wiki/TypeScript"
-                class="text-blue-600"
-                title="TypeScript"
-                >TypeScript</a
-              >
-              and
-              <a
-                href="https://tr.wikipedia.org/wiki/Dart_(programlama_dili)"
-                class="text-blue-400"
-                >Dart</a
-              >...<br />
-              If you wanna see them, visit my
-              <a href="https://github.com/falsisdev" class="Text-emerald-400"
-                ><font color="white"><i class="fa-brands fa-github"></i> </font
-              ></a>
-              profile!
-              <br />
-              Don't forget to visit
-              <NuxtLink
-                to="/list"
-                class="animate-pulse text-emerald-400"
-                title="My List"
-              >
-              My Anime List!!
-              </NuxtLink>
-            </p>
-          </div>
-          <div align="center">
+      ></div><br>
+      <div align="center">
             <div
-              v-for="item in links"
+              v-for="item in links" v-bind:key="item"
               class="p-2 mt-3 text-center content-center inline-block"
             >
               <a
@@ -243,25 +123,103 @@
               >
             </div>
           </div>
-        </div>
-      </div>
-      <div class="mt-5">
-        <div class="bg-[#080808] w-full p-4 rounded-lg">
+      <div class="w-full align-items-center justify-center">
+        <div class="align-items-center justify-center p-4 rounded-lg">
           <div class="mt-2">
             <h1 class="font-semibold text-3xl text-white text-center">
-              <span class="text-emerald-400">GitHub</span> Repositories
+              <span class="text-primary">Hello</span>, I’m Falsis ✌️
+            </h1>
+            <p
+              style="color: white"
+              class="p-3 text-gray-200/90 text-[18px] mt-3"
+            >
+              I'm a
+              <a
+                href="https://en.wikipedia.org/wiki/Front-end_web_development"
+                class="duration-300 hover:text-primary"
+              >
+                Front-end Web Developer</a
+              >!<br />
+              So, I'm interested in
+              <a
+                href="https://en.wikipedia.org/wiki/HTML"
+                class="Text-primary"
+                title="Hyper Text Markup Language"
+              >
+                <font color="orange"
+                  ><i class="fa-brands fa-html5"></i></font></a
+              >,
+              <a
+                href="https://en.wikipedia.org/wiki/CSS"
+                class="Text-primary"
+                title="Cascading Style Sheets"
+              >
+                <font color="#1589FF"
+                  ><i class="fa-brands fa-css3-alt"></i></font
+              ></a>
+              and
+              <a
+                href="https://en.wikipedia.org/wiki/JavaScript"
+                title="JavaScript"
+                class="Text-primary"
+              >
+                <font color="yellow"><i class="fab fa-js-square"></i></font></a
+              >!<br />
+              Also, I know
+              <a
+                href="https://en.wikipedia.org/wiki/Go_(programming_language)"
+                class="text-primary"
+                title="The Go Programming Language"
+                ><font color="#add8e6"
+                  ><i class="fa-brands fa-golang"></i></font></a
+              >,
+              <a
+                href="https://en.wikipedia.org/wiki/TypeScript"
+                class="text-primary"
+                title="TypeScript"
+                >TypeScript</a
+              >
+              and
+              <a
+                href="https://tr.wikipedia.org/wiki/Dart_(programlama_dili)"
+                class="text-primary"
+                >Dart</a
+              >...<br />
+              If you wanna see them, visit my
+              <a href="https://github.com/falsisdev" class="Text-primary"
+                ><font color="white"><i class="fa-brands fa-github"></i> </font
+              ></a>
+              profile!
+              <br />
+              Don't forget to visit
+              <NuxtLink
+                to="/list"
+                class="animate-pulse text-primary"
+                title="My List"
+              >
+              My Anime List!!
+              </NuxtLink>
+            </p>
+          </div>
+        </div>
+      </div>
+     <div class="mt-5">
+        <div class="p-4 rounded-lg">
+          <div class="mt-2">
+            <h1 class="font-semibold text-3xl text-white text-center">
+              <span class="text-primary">GitHub</span> Repositories
             </h1>
             <p
               v-if="github.repocount == 0"
-              class="mt-3 text-center text-emerald-400"
+              class="mt-3 text-center text-primary"
             >
               No results found!
             </p>
             <div v-else class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
-              <div v-for="item in github.repos">
+              <div v-for="item in github.repos" v-bind:key="item">
                 <span v-if="item.fork == true"
                   ><a :href="`https://github.com/falsisdev/${item.name}`">
-                    <div class="bg-[#080707] rounded-lg ml-5 p-3">
+                    <div class="rounded-lg ml-5 p-3">
                       <h1 class="text-white text-[18px]">
                         <i class="fa-brands fa-github text-white mr-1"></i>
                         {{ item.name }}
@@ -273,14 +231,13 @@
                           ></i>
                           forked from {{ item.name }}
                         </div>
-                        <!-- çaktırma ve sessizce uzaklaş -->
                       </div>
                     </div>
                   </a></span
                 >
                 <span v-else>
                   <a :href="`https://github.com/falsisdev/${item.name}`">
-                    <div class="bg-[#080707] rounded-lg ml-5 p-3">
+                    <div class="rounded-lg ml-5 p-3">
                       <h1 class="text-white text-[18px]">
                         <i class="fa-brands fa-github text-white mr-1"></i>
                         {{ item.name }}
@@ -308,15 +265,15 @@
         </div>
       </div>
       <div class="mt-5">
-        <div class="bg-[#080808] w-full p-4 rounded-lg">
+        <div class="p-4 rounded-lg">
           <div class="mt-2">
             <h1 class="font-semibold text-3xl text-white text-center">
-              <span class="text-emerald-400">GitHub</span> Gists
+              <span class="text-primary">GitHub</span> Gists
             </h1>
             <div class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
-              <div v-for="item in github.gists">
+              <div v-for="item in github.gists" v-bind:key="item">
                 <a :href="item.html_url">
-                  <div class="bg-[#080707] rounded-lg ml-5 p-3">
+                  <div class="rounded-lg ml-5 p-3">
                     <h1 class="text-white text-[18px]">
                       <i class="fa-brands fa-github text-white mr-1"></i>
                       {{ item.description.lenght > 23 ? `${item.description.substring(0, 20)}...` : item.description }}
@@ -342,21 +299,21 @@
         <p class="float-left">
           © 2021 / 2022 -
           <a
-            class="duration-300 hover:text-green-400 font-medium"
+            class="duration-300 hover:text-primary font-medium"
             href="https://github.com/falsisdev/website"
             ><i class="fa-brands fa-github text-white mr-1"></i> FalsisDev</a
           >
           - All Rights
           <a
-            class="duration-300 hover:text-green-400 font-medium"
+            class="duration-300 hover:text-primary font-medium"
             href="https://github.com/falsisdev/website/blob/third/LICENSE"
             >Reserved</a
           >.
         </p>
         <p class="text-white float-right">
           Designed with
-          <i class="fa-regular fa-heart mx-1 text-emerald-400"></i> by
-          <a class="duration-300 hover:text-green-400 font-medium" href="/#top"
+          <i class="fa-regular fa-heart mx-1 text-primary"></i> by
+          <a class="duration-300 hover:text-primary font-medium" href="/#top"
             >Falsis</a
           >
         </p>
@@ -377,7 +334,10 @@
          },
          {
            rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-         }
+         },
+         {
+          rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css'
+         },
          ],
        script: [
          {
