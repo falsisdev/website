@@ -1,7 +1,7 @@
 <template data-theme="dracula">
   <main data-theme="dracula">
     <body
-      class="mt-8 bg-[#2a303c] max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300 scroll-auto"
+      class="mt-8 max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300 scroll-auto"
       data-theme="dracula"
     >
     <div class="flex flex-wrap flex-row align-items-center justify-center">
