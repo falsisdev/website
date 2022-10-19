@@ -1,5 +1,5 @@
-<template>
-<main>
+<template data-theme="dracula">
+<main data-theme="dracula">
     <body
       class="mt-8 max-w-screen-lg py-1 mx-auto transition-all duration-300 scroll-auto"
     >
@@ -10,7 +10,7 @@
             <div 
             class="flex flex-wrap rounded-lg"
             >
-            <span v-for="item of images">
+            <span v-for="item of images" v-bind:key="item">
             <a :href="`https://animecix.net/search?query=${names[images.indexOf(item)]}`">
             <img
             :src="item"
