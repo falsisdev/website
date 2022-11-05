@@ -17,7 +17,7 @@
 </div>
     <body
       class="p-5 mx-auto transition-all duration-300 scroll-auto select-none"
-      :data-theme="randomtheme"
+      data-theme="night"
     >
 
     <div class="toast toast-bottom toast-end">
@@ -621,8 +621,6 @@ size(obj){
      this.github.following = this.githubf.following
      this.github.repos = await fetch(`${githubURL}/repos`).then(res => res.json()) //burda array içinde objectler oluşturuldu.
      this.github.gists = await fetch(`${githubURL}/gists`).then(res => res.json())
-     let themes = ["dracula", "night"]
-     this.randomtheme = themes[Math.floor(Math.random()*themes.length)];
    }
      }
 </script>
