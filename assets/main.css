@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
- body {
-     background-color: black ;
-     font-family: 'Poppins', sans-serif;
-     color: white;
-     overflow-x: hidden;
-     overflow-y: auto;
-}
  p {
      color: white;
-}
- ::selection{
-     color: #df6db1;
 }
  ::-webkit-scrollbar {
      width: 3px;

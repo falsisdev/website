@@ -1,9 +1,40 @@
-<template data-theme="dracula">
-  <main data-theme="dracula">
+<template>
+  <main>
+  <div class="navbar bg-base-100">
+  <div class="flex-1">
+  <div class="avatar">
+  <div class="w-12 rounded-full">
+    <img :src="`${lanyardUser.avatar}?size=4096`">
+  </div>
+  </div>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal p-1">
+      <li class="pr-2"><button class="active"><i class="fa-solid fa-house"></i>Home</button></li>
+      <li><button @click="github()"><i class="text-white fa-brands fa-github"></i> GitHub</button></li>
+    </ul>
+  </div>
+</div>
     <body
-      class="mt-8 max-w-screen-lg p-5 py-1 mx-auto transition-all duration-300 scroll-auto"
-      data-theme="dracula"
+      class="p-5 mx-auto transition-all duration-300 scroll-auto select-none"
+      :data-theme="randomtheme"
     >
+
+    <div class="toast toast-bottom toast-end">
+      <div class="alert shadow-lg">
+  <div>
+    <i class="fa-solid fa-handshake-angle"></i>
+    <div>
+      <h3 class="font-bold">Help me to develop this website!</h3>
+      <div class="text-xs">This website is currently in early-access. Please report bugs if any.</div>
+    </div>
+  </div>
+  <div class="flex-none">
+    <button class="btn btn-sm" @click="report()">Report</button>
+    <button class="btn btn-sm" @click="source()">Source</button>
+  </div>
+</div>
+</div>
     <div class="flex flex-wrap flex-row align-items-center justify-center">
       <div
         class="card w-72 bg-base-100 shadow-xl"
@@ -34,6 +65,83 @@
             An Alone Web Developer
           </p>
       </div>
+      </div>
+      <div class="card w-96 bg-base-100 shadow-x1">
+        <div class="p-4 rounded-lg">
+          <div class="card-body">
+            <h1 class="card-title font-semibold text-3xl">
+              <span class="text-primary">Hello</span>, I’m Falsis ✌️
+            </h1><br>
+            <p>
+              I'm a
+              <a
+                href="https://en.wikipedia.org/wiki/Front-end_web_development"
+                class="duration-300 hover:text-primary"
+              >
+                Front-end Web Developer</a
+              >!<br />
+              So, I'm interested in
+              <a
+                href="https://en.wikipedia.org/wiki/HTML"
+                class="Text-primary"
+                title="Hyper Text Markup Language"
+              >
+                <font color="orange"
+                  ><i class="fa-brands fa-html5"></i></font></a
+              >,
+              <a
+                href="https://en.wikipedia.org/wiki/CSS"
+                class="Text-primary"
+                title="Cascading Style Sheets"
+              >
+                <font color="#1589FF"
+                  ><i class="fa-brands fa-css3-alt"></i></font
+              ></a>
+              and
+              <a
+                href="https://en.wikipedia.org/wiki/JavaScript"
+                title="JavaScript"
+                class="Text-primary"
+              >
+                <font color="yellow"><i class="fab fa-js-square"></i></font></a
+              >!<br />
+              Also, I know
+              <a
+                href="https://en.wikipedia.org/wiki/Go_(programming_language)"
+                class="text-primary"
+                title="The Go Programming Language"
+                ><font color="#add8e6"
+                  ><i class="fa-brands fa-golang"></i></font></a
+              >,
+              <a
+                href="https://en.wikipedia.org/wiki/TypeScript"
+                class="text-primary"
+                title="TypeScript"
+                >TypeScript</a
+              >
+              and
+              <a
+                href="https://tr.wikipedia.org/wiki/Dart_(programlama_dili)"
+                class="text-primary"
+                >Dart</a
+              >...<br />
+              If you wanna see them, visit my
+              <a href="https://github.com/falsisdev" class="Text-primary"
+                ><font color="white"><i class="fa-brands fa-github"></i> </font
+              ></a>
+              profile!
+              <br />
+              Don't forget to visit
+              <a
+                href="https://github.com/falsisdev/falsisdev/blob/main/animes.md"
+                class="animate-pulse text-primary"
+                title="My List"
+              >
+              My Anime List!!
+                </a>
+            </p>
+          </div>
+        </div>
       </div>
       <p v-if="lanyardActivities.spotify.check == false"></p>
       <div v-else-if="lanyardActivities.spotify.check == true" class="pl-[5px]">
@@ -123,87 +231,7 @@
               >
             </div>
           </div>
-      <div class="w-full align-items-center justify-center">
-        <div class="align-items-center justify-center p-4 rounded-lg">
-          <div class="mt-2">
-            <h1 class="font-semibold text-3xl text-white text-center">
-              <span class="text-primary">Hello</span>, I’m Falsis ✌️
-            </h1>
-            <p
-              style="color: white"
-              class="p-3 text-gray-200/90 text-[18px] mt-3"
-            >
-              I'm a
-              <a
-                href="https://en.wikipedia.org/wiki/Front-end_web_development"
-                class="duration-300 hover:text-primary"
-              >
-                Front-end Web Developer</a
-              >!<br />
-              So, I'm interested in
-              <a
-                href="https://en.wikipedia.org/wiki/HTML"
-                class="Text-primary"
-                title="Hyper Text Markup Language"
-              >
-                <font color="orange"
-                  ><i class="fa-brands fa-html5"></i></font></a
-              >,
-              <a
-                href="https://en.wikipedia.org/wiki/CSS"
-                class="Text-primary"
-                title="Cascading Style Sheets"
-              >
-                <font color="#1589FF"
-                  ><i class="fa-brands fa-css3-alt"></i></font
-              ></a>
-              and
-              <a
-                href="https://en.wikipedia.org/wiki/JavaScript"
-                title="JavaScript"
-                class="Text-primary"
-              >
-                <font color="yellow"><i class="fab fa-js-square"></i></font></a
-              >!<br />
-              Also, I know
-              <a
-                href="https://en.wikipedia.org/wiki/Go_(programming_language)"
-                class="text-primary"
-                title="The Go Programming Language"
-                ><font color="#add8e6"
-                  ><i class="fa-brands fa-golang"></i></font></a
-              >,
-              <a
-                href="https://en.wikipedia.org/wiki/TypeScript"
-                class="text-primary"
-                title="TypeScript"
-                >TypeScript</a
-              >
-              and
-              <a
-                href="https://tr.wikipedia.org/wiki/Dart_(programlama_dili)"
-                class="text-primary"
-                >Dart</a
-              >...<br />
-              If you wanna see them, visit my
-              <a href="https://github.com/falsisdev" class="Text-primary"
-                ><font color="white"><i class="fa-brands fa-github"></i> </font
-              ></a>
-              profile!
-              <br />
-              Don't forget to visit
-              <NuxtLink
-                to="/list"
-                class="animate-pulse text-primary"
-                title="My List"
-              >
-              My Anime List!!
-              </NuxtLink>
-            </p>
-          </div>
-        </div>
-      </div>
-     <div class="mt-5">
+     <div class="align-items-center justify-center pl-[125px] w-full mt-5">
         <div class="p-4 rounded-lg">
           <div class="mt-2">
             <h1 class="font-semibold text-3xl text-white text-center">
@@ -215,7 +243,7 @@
             >
               No results found!
             </p>
-            <div v-else class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
+            <div v-else class="w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
               <div v-for="item in github.repos" v-bind:key="item">
                 <span v-if="item.fork == true"
                   ><a :href="`https://github.com/falsisdev/${item.name}`">
@@ -264,13 +292,13 @@
           </div>
         </div>
       </div>
-      <div class="mt-5">
+      <div class="align-items-center justify-center pl-[125px] w-full mt-5">
         <div class="p-4 rounded-lg">
           <div class="mt-2">
             <h1 class="font-semibold text-3xl text-white text-center">
               <span class="text-primary">GitHub</span> Gists
             </h1>
-            <div class="grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
+            <div class="w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
               <div v-for="item in github.gists" v-bind:key="item">
                 <a :href="item.html_url">
                   <div class="rounded-lg ml-5 p-3">
@@ -479,7 +507,16 @@ size(obj){
    if (obj.hasOwnProperty(key)) size++;
  }
  return size;
-}
+},
+  github(){
+    window.location.href = 'https://github.com/falsisdev'
+  },
+  source(){
+    window.location.href = "https://github.com/falsisdev/website"
+  },
+  report() {
+    window.location.href = "https://discord.gg/BDXkSgVaXe"
+  }
    },
    async fetch() {
      try {
@@ -584,6 +621,8 @@ size(obj){
      this.github.following = this.githubf.following
      this.github.repos = await fetch(`${githubURL}/repos`).then(res => res.json()) //burda array içinde objectler oluşturuldu.
      this.github.gists = await fetch(`${githubURL}/gists`).then(res => res.json())
+     let themes = ["dracula", "night"]
+     this.randomtheme = themes[Math.floor(Math.random()*themes.length)];
    }
      }
 </script>
