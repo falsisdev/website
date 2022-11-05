@@ -243,7 +243,7 @@
             >
               No results found!
             </p>
-            <div v-else class="pl-[125px] w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
+            <div v-else class="w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
               <div v-for="item in github.repos" v-bind:key="item">
                 <span v-if="item.fork == true"
                   ><a :href="`https://github.com/falsisdev/${item.name}`">
@@ -298,7 +298,7 @@
             <h1 class="font-semibold text-3xl text-white text-center">
               <span class="text-primary">GitHub</span> Gists
             </h1>
-            <div class="pl-[125px]  w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
+            <div class=" w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
               <div v-for="item in github.gists" v-bind:key="item">
                 <a :href="item.html_url">
                   <div class="rounded-lg ml-5 p-3">
