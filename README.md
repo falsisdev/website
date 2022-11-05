@@ -1,6 +1,6 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-🎨 Theme Name: Dracula<br>
+🎨 Theme Name: Night<br>
 👁 [Live Preview](https://falsis.ga/)
 
 
