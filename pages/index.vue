@@ -131,14 +131,6 @@
               ></a>
               profile!
               <br />
-              Don't forget to visit
-              <a
-                href="https://github.com/falsisdev/falsisdev/blob/main/animes.md"
-                class="animate-pulse text-primary"
-                title="My List"
-              >
-              My Anime List!!
-                </a>
             </p>
           </div>
         </div>
