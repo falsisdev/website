@@ -1,48 +1,46 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-🎨 Theme Name: Night<br>
+🎨 Theme Name: Night by [DaiyUI](daisyui.com/)<br>
 👁 [Live Preview](https://falsis.ga/)
 
 
-<!--## 📀 Features
+## 📀 Features
 
-### 📫 Profile Card<br>
+### 🎩 Mini Menu<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231991417815041/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231302411108382/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231342873555004/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231399265980456/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843714128330823/image.png">
 
-### 🎶 Activity Card<br>
+### 🎴 Cards<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003232344385257513/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003235279479525447/unknown.png?size=4096">
+<div class="flex flex-row">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843834173497344/image.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038845899964690472/image.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843891400572979/image.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843791165108254/image.png">
+</div>
 
-### 🔔 Changeable Notify Card<br>
+### 📱 Social Medias<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231479003893810/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231538617528371/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231590819844126/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231650274103296/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843935327522886/image.png">
 
-### 📩 About Me<br>
+### 🖋️ GitHub Repos & Gists<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231700018548818/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843963156738048/image.png">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038843994660163694/image.png">
 
-### 🔭 Github Repositories and Gists<br>
+### 🤝 Notification Section<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231737171693640/unknown.png?size=4096">
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231781350277120/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038844279545675786/image.png">
 
-### 👣 Footer<br>
+### 🌙 Footer<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003235904678264852/unknown.png?size=4096">
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038844255780749312/Screenshot_2022-11-06_at_18-55-48_Home_-_FalsisDev.png">
 
-### 👁️ Full Page Preview<br>
+### 👁️ Full Page Preview (Without Notification Section)<br>
 
-<img src="https://cdn.discordapp.com/attachments/775822548519616562/1003231861801226240/unknown.png?size=4096">-->
+<img src="https://cdn.discordapp.com/attachments/775822548519616562/1038845476843311114/image.png">
 
-**Note**: `Spotify Activity takes precedence over game activity. If there is Spotify activity, the game activity will not work.`<br><br>
+**Note**: `Spotify Activity takes precedence over game activity. If there is a Spotify activity, the game activity won't work.`<br><br>
 <img src="https://img.shields.io/github/license/falsisdev/website?color=red&style=for-the-badge"> <img src="https://img.shields.io/badge/Vuejs-323330?style=for-the-badge&logo=vue.js"> <img src="https://img.shields.io/badge/Nuxtjs-323330?style=for-the-badge&logo=nuxt.js"> <img src="https://img.shields.io/badge/TailwindCSS-323330?style=for-the-badge&logo=tailwindcss">
 
 ```txt
