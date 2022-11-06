@@ -661,13 +661,125 @@ size(obj){
      this.github.following = this.githubf.following
      this.github.repos = await fetch(`${githubURL}/repos`).then(res => res.json()) //burda array içinde objectler oluşturuldu.
      this.github.gists = await fetch(`${githubURL}/gists`).then(res => res.json())
-     if(process.server) {
-      const path = require('path')
-      const fs = require('fs')
-      const top = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/database/top.json'), 'utf-8'))
-
-      this.top = top
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   const top = {
+                    "topanimes": {
+                        "monster": {
+                            "name": "Monster",
+                            "tecname": "monster",
+                            "image": "https://64.media.tumblr.com/ce04baf7907b219dab9ba7122ad086c3/b298326c57f9a2d7-f5/s400x600/7d0a8774ec8ab5113bd5319eb1d519b9384834c2.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Crime", "Mystery", "War & Politics"],
+                            "year": "2004",
+                            "details": "https://www.imdb.com/title/tt0434706/"
+                        },
+                        "rezero": {
+                            "name": "Re: Zero Kara Hajimeru Isekai Seikatsu",
+                            "tecname": "rezero",
+                            "image": "https://i.pinimg.com/originals/67/fe/51/67fe510843ab6dbf5803f8547a23dabb.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Comedy", "Action", "Adventure", "Sci-Fi", "Fantasy"],
+                            "year": "2016",
+                            "details": "https://www.imdb.com/title/tt5607616/"
+                        },
+                        "codegeass": {
+                            "name": "Code Geass: Hangyaku no Lelouch",
+                            "tecname": "codegeass",
+                            "image": "https://64.media.tumblr.com/097eddfb7fb8b04a9a969ecb441e08f8/f4d0873820fe4567-d4/s640x960/4080d9d4c061afa0ea415c98f475fe27c5cb69d5.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Mystery", "Action", "Adventure", "Sci-Fi", "Fantasy"],
+                            "year": "2006",
+                            "details": "https://www.imdb.com/title/tt0994314/"
+                        },
+                        "theendofevangelion": {
+                            "name": "Neon Genesis Evangelion: The End of Evangelion",
+                            "tecname": "theendofevangelion",
+                            "image": "https://i.pinimg.com/736x/33/ea/bd/33eabdd4d77c6af068f852835034f714.jpg",
+                            "type": "Movie",
+                            "genres": ["Drama", "Action", "Sci-Fi", "Fantasy"],
+                            "year": "1997",
+                            "details": "https://www.imdb.com/title/tt0169858/"
+                        },
+                        "evangelion": {
+                            "name": "Neon Genesis Evangelion",
+                            "tecname": "evangelion",
+                            "image": "https://i.pinimg.com/736x/34/77/01/3477019acff870e8fc0a3a3818772f20.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Action", "Sci-Fi", "Fantasy"],
+                            "year": "1995",
+                            "details": "https://www.imdb.com/title/tt0112159/"
+                        },
+                        "hxh": {
+                            "name": "Hunter x Hunter",
+                            "tecname": "hxh",
+                            "image": "https://img.wattpad.com/ea0e55a6550dd5306eca1ffc1982b2cde234fba4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f56326c674a6451446e78317136773d3d2d313035313635383735392e313638346639313439333939316539383633343139323535303930312e6a7067?s=fit&w=720&h=720",
+                            "type": "TV",
+                            "genres": ["Drama", "Comedy", "Action", "Adventure"],
+                            "year": "2011",
+                            "details": "https://www.imdb.com/title/tt2098220/"
+                        },
+                        "cote": {
+                            "name": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e",
+                            "tecname": "cote",
+                            "image": "https://i.pinimg.com/736x/40/95/6f/40956fe57ab75a469df683e8fc9fd231.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Comedy", "Mystery"],
+                            "year": "2017",
+                            "details": "https://www.imdb.com/title/tt7263328"
+                        },
+                        "mushokutensei": {
+                            "name": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+                            "tecname": "mushokutensei",
+                            "image": "https://i.pinimg.com/736x/70/34/f3/7034f3ce275a9a794d86084bbbf7dfec.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Comedy", "Sci-Fi", "Fantasy"],
+                            "year": "2021",
+                            "details": "https://www.imdb.com/title/tt13293588/"
+                        },
+                        "fmab": {
+                            "name": "Fullmetal Alchemist: Brotherhood",
+                            "tecname": "fmab",
+                            "image": "https://64.media.tumblr.com/7d791eeaf0e4af8e2636d4acf7f73e00/ce39a5669ee7518a-92/s540x810/68af350d71a26962e6949b7679f8cf51f06a1fdf.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Mystery", "Sci-Fi", "Fantasy"],
+                            "year": "2009",
+                            "details": "https://www.imdb.com/title/tt1355642"
+                        },
+                        "tensura": {
+                            "name": "Tensei Shitara Slime Datta Ken",
+                            "tecname": "tensura",
+                            "image": "https://i.pinimg.com/originals/12/dd/86/12dd86cdf5a46fd6bfffc00b51345a34.jpg",
+                            "type": "TV",
+                            "genres": ["Comedy", "Action", "Adventure", "Sci-Fi", "Fantasy"],
+                            "year": "2018",
+                            "details": "https://www.imdb.com/title/tt9054364/"
+                        },
+                        "sao": {
+                            "name": "Sword Art Online",
+                            "tecname": "sao",
+                            "image": "https://i.pinimg.com/550x/be/2a/4b/be2a4b7e8cb0170ffd46a20a110f166b.jpg",
+                            "type": "TV",
+                            "genres": ["Crime", "Action", "Adventure", "Sci-Fi", "Fantasy"],
+                            "year": "2012",
+                            "details": "https://www.imdb.com/title/tt2250192/"
+                        },
+                        "mirainikki": {
+                            "name": "Mirai Nikki",
+                            "tecname": "mirainikki",
+                            "image": "https://assets.onlinepianist.com/songs/artists/mirai_nikki_bg.jpg",
+                            "type": "TV",
+                            "genres": ["Drama", "Mystery", "Sci-Fi"],
+                            "year": "2011",
+                            "details": "https://www.imdb.com/title/tt2069441"
+                        }
+                    }
+                }
+                this.top = top
      }
-   }
-     }
+    }
 </script>
