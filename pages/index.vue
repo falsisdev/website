@@ -37,7 +37,7 @@
 </div>
     <div class="flex flex-wrap flex-row align-items-center justify-center">
       <div
-        class="card w-72 bg-base-100 shadow-xl"
+        class="card w-72 bg-neutral shadow-lg"
       >
       <div class="card-body align-items-center justify-center">
       <figure><div :class="`avatar pl-[10px]`">
@@ -314,6 +314,50 @@
             </div>
           </div>
         </div>
+      </div><br>
+      <h1 class="font-semibold text-3xl text-white text-center">
+             Top <span class="text-primary">Animes</span>
+      </h1><br>
+      <div class="overflow-x-auto w-full">
+        <table class="table w-full">
+          <thead>
+        <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Genres</th>
+        <th>Year</th>
+        <th>More</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item of top.topanimes" v-bind:key="item">
+        <th>{{ parseInt(Object.keys(top["topanimes"]).indexOf(item.tecname)) + 1 }}</th>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img :src="item.image"/>
+              </div>
+            </div>
+            <div>
+              <div class="font-bold">{{ item.name }}</div>
+              <div class="text-sm opacity-50">{{ item.type }}</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span v-for="genre of item.genres" v-bind:key="genre" class="badge badge-ghost badge-sm">{{ genre }}</span>
+          <br/>
+        </td>
+        <td>{{ item.year }}</td>
+        <th>
+          <div class="tooltip tooltip-warning" data-tip="IMDb Page">
+          <button @click="det(item.details)" class="btn btn-ghost btn-xs">Details</button>
+          </div>
+        </th>
+      </tr>
+    </tbody>
+        </table>
       </div>
       <div class="py-10 text-white border-t border-zinc-600/20 mt-5">
         <p class="float-left">
@@ -488,7 +532,8 @@
          following: [],
          repos: [], //aslında array içinde object ama burada object açmıyorum aşağıda fetch'leyince object oluşturulacak
          gists: []
-       }
+       },
+       top: {}
      }
    },
    methods: {
@@ -508,6 +553,9 @@ size(obj){
   },
   report() {
     window.location.href = "https://discord.gg/BDXkSgVaXe"
+  },
+  det(w){
+    window.location.href = w
   }
    },
    async fetch() {
@@ -613,6 +661,13 @@ size(obj){
      this.github.following = this.githubf.following
      this.github.repos = await fetch(`${githubURL}/repos`).then(res => res.json()) //burda array içinde objectler oluşturuldu.
      this.github.gists = await fetch(`${githubURL}/gists`).then(res => res.json())
+     if(process.server) {
+      const path = require('path')
+      const fs = require('fs')
+      const top = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/database/top.json'), 'utf-8'))
+
+      this.top = top
+     }
    }
      }
 </script>
