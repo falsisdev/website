@@ -1,6 +1,6 @@
 # FalsisDev's Personal Website
 🧪 My personal website's open-source codes<br>
-🎨 Theme Name: Night by [DaiyUI](daisyui.com/)<br>
+🎨 Theme Name: Night by [DaisyUI](daisyui.com/)<br>
 👁 [Live Preview](https://falsis.ga/)
 
 
