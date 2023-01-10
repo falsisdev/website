@@ -118,32 +118,7 @@
               >
                 <font color="yellow"><i class="fab fa-js-square"></i></font></a
               >!<br />
-              Also, I know
-              <a
-                href="https://en.wikipedia.org/wiki/Go_(programming_language)"
-                class="text-primary"
-                title="The Go Programming Language"
-                ><font color="#add8e6"
-                  ><i class="fa-brands fa-golang"></i></font></a
-              >,
-              <a
-                href="https://en.wikipedia.org/wiki/TypeScript"
-                class="text-primary"
-                title="TypeScript"
-                >TypeScript</a
-              >
-              and
-              <a
-                href="https://tr.wikipedia.org/wiki/Dart_(programlama_dili)"
-                class="text-primary"
-                >Dart</a
-              >...<br />
-              If you wanna see them, visit my
-              <a href="https://github.com/falsisdev" class="Text-primary"
-                ><font color="white"><i class="fa-brands fa-github"></i> </font
-              ></a>
-              profile!
-              <br />
+              I'm working on Nuxt 3 with Vue 3 for improve my Web Development skills right now. My Favorite Language is JavaScript but I love Go so much too...
             </p>
           </div>
         </div>
@@ -249,7 +224,7 @@
               No results found!
             </p>
             <div v-else class="w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
-              <div v-for="item in github.repos" v-bind:key="item" class="rounded-lg shadow-lg">
+              <div v-for="item in github.repos" v-bind:key="item" class="rounded-lg shadow-md">
                 <span v-if="item.fork == true"
                   ><a :href="`https://github.com/falsisdev/${item.name}`">
                     <div class="rounded-lg ml-5 p-3">
@@ -304,7 +279,7 @@
               <span class="text-primary">GitHub</span> Gists
             </h1>
             <div class=" w-full grid grid-cols-3 md:grid-cols-3 gap-3 mt-6">
-              <div v-for="item in github.gists" v-bind:key="item" class="rounded-lg shadow-lg">
+              <div v-for="item in github.gists" v-bind:key="item" class="rounded-lg shadow-md">
                 <a :href="item.html_url">
                   <div class="rounded-lg ml-5 p-3">
                     <h1 class="text-white text-[18px]">
@@ -372,13 +347,13 @@
       </div>
       <div class="py-10 text-white border-t border-zinc-600/20 mt-5">
         <p class="float-left">
-          © 2021 / 2022 -
+          © 2021 / 2022 / 2023 -
           <a
             class="duration-300 hover:text-primary font-medium"
             href="https://github.com/falsisdev/website"
             ><i class="fa-brands fa-github text-white mr-1"></i> FalsisDev</a
           >
-          - All Rights
+          - Some Rights
           <a
             class="duration-300 hover:text-primary font-medium"
             href="https://github.com/falsisdev/website/blob/third/LICENSE"
@@ -563,7 +538,7 @@ size(obj){
     window.location.href = "https://github.com/falsisdev/website"
   },
   report() {
-    window.location.href = "https://discord.gg/BDXkSgVaXe"
+    window.location.href = "https://github.com/falsisdev/website/issues"
   },
   det(w){
     window.location.href = w
@@ -680,13 +655,21 @@ size(obj){
    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    const top = {
     "topanimes": {
-        "monster": {
-            "name": "Monster",
-            "tecname": "monster",
-            "image": "https://i.pinimg.com/236x/20/53/e3/2053e38d09959dd9c06ef5b6afd94db5--kenzo-pilots.jpg",
+        "steinsgate": {
+            "name": "Steins;Gate",
+            "tecname": "steinsgate",
+            "image": "https://m.media-amazon.com/images/M/MV5BMjUxMzE4ZDctODNjMS00MzIwLThjNDktODkwYjc5YWU0MDc0XkEyXkFqcGdeQXVyNjc3OTE4Nzk@._V1_.jpg",
             "type": "TV",
-            "genres": ["Drama", "Crime", "Mystery", "War & Politics"],
-            "details": "https://www.imdb.com/title/tt0434706/"
+            "genres": ["Drama", "Mystery", "Comedy", "Action", "Adventure", "Sci-Fi"],
+            "details": "https://www.imdb.com/title/tt1910272/"
+        },
+        "steinsgate0": {
+            "name": "Steins;Gate 0",
+            "tecname": "steinsgate0",
+            "image": "https://www.gematsu.com/wp-content/uploads/2015/09/Steins-Gate-0-Package-Illust_09-15-15.jpg",
+            "type": "TV",
+            "genres": ["Drama", "Mystery", "Action", "Adventure", "Sci-Fi"],
+            "details": "https://www.imdb.com/title/tt5514358/"
         },
         "rezero": {
             "name": "Re: Zero Kara Hajimeru Isekai Seikatsu",
@@ -695,6 +678,22 @@ size(obj){
             "type": "TV",
             "genres": ["Drama", "Comedy", "Action", "Adventure", "Sci-Fi", "Fantasy"],
             "details": "https://www.imdb.com/title/tt5607616/"
+        },
+        "monster": {
+            "name": "Monster",
+            "tecname": "monster",
+            "image": "https://i.pinimg.com/236x/20/53/e3/2053e38d09959dd9c06ef5b6afd94db5--kenzo-pilots.jpg",
+            "type": "TV",
+            "genres": ["Drama", "Crime", "Mystery", "War & Politics"],
+            "details": "https://www.imdb.com/title/tt0434706/"
+        },
+        "hxh": {
+            "name": "Hunter x Hunter",
+            "tecname": "hxh",
+            "image": "https://img.wattpad.com/ea0e55a6550dd5306eca1ffc1982b2cde234fba4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f56326c674a6451446e78317136773d3d2d313035313635383735392e313638346639313439333939316539383633343139323535303930312e6a7067?s=fit&w=720&h=720",
+            "type": "TV",
+            "genres": ["Drama", "Comedy", "Action", "Adventure"],
+            "details": "https://www.imdb.com/title/tt2098220/"
         },
         "codegeass": {
             "name": "Code Geass: Hangyaku no Lelouch",
@@ -720,22 +719,6 @@ size(obj){
             "genres": ["Drama", "Action", "Sci-Fi", "Fantasy"],
             "details": "https://www.imdb.com/title/tt0112159/"
         },
-        "hxh": {
-            "name": "Hunter x Hunter",
-            "tecname": "hxh",
-            "image": "https://img.wattpad.com/ea0e55a6550dd5306eca1ffc1982b2cde234fba4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f56326c674a6451446e78317136773d3d2d313035313635383735392e313638346639313439333939316539383633343139323535303930312e6a7067?s=fit&w=720&h=720",
-            "type": "TV",
-            "genres": ["Drama", "Comedy", "Action", "Adventure"],
-            "details": "https://www.imdb.com/title/tt2098220/"
-        },
-        "cote": {
-            "name": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e",
-            "tecname": "cote",
-            "image": "https://i.pinimg.com/736x/40/95/6f/40956fe57ab75a469df683e8fc9fd231.jpg",
-            "type": "TV",
-            "genres": ["Drama", "Comedy", "Mystery"],
-            "details": "https://www.imdb.com/title/tt7263328"
-        },
         "mushokutensei": {
             "name": "Mushoku Tensei: Isekai Ittara Honki Dasu",
             "tecname": "mushokutensei",
@@ -751,6 +734,14 @@ size(obj){
             "type": "TV",
             "genres": ["Drama", "Mystery", "Sci-Fi", "Fantasy"],
             "details": "https://www.imdb.com/title/tt1355642"
+        },
+        "cote": {
+            "name": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e",
+            "tecname": "cote",
+            "image": "https://i.pinimg.com/736x/40/95/6f/40956fe57ab75a469df683e8fc9fd231.jpg",
+            "type": "TV",
+            "genres": ["Drama", "Comedy", "Mystery"],
+            "details": "https://www.imdb.com/title/tt7263328"
         },
         "tensura": {
             "name": "Tensei Shitara Slime Datta Ken",
