@@ -17,6 +17,9 @@
         "nuxt": "^2.15.8",
         "theme-change": "^2.2.0"
     },
+    "resolutions": {
+        "@nuxt/kit": "^2.15.8"
+    },
     "devDependencies": {
         "@nuxtjs/tailwindcss": "^5.1.3"
     }
