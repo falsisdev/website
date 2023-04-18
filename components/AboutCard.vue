@@ -2,7 +2,7 @@
     <div class="flex flex-row">
         <div class="relative mx-10 flex items-center space-x-4">
             <span>
-                <img id="avatar" class="w-12 h-12 rounded-full border border-gray-800" src="boş" alt="Yükleniyor...">
+                <img id="avatar" class="w-12 h-12 rounded-full border border-gray-800" src="-" alt="Yükleniyor...">
                 <span id="status1" class="bottom-0 left-8 absolute w-4 h-4 rounded-full animate-ping"></span>
                 <span id="status2" class="bottom-0 left-8 absolute w-4 h-4 border border-black border-opacity-50 rounded-full"></span>
             </span>
