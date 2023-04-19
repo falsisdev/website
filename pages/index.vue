@@ -5,7 +5,9 @@
     </div>
 </template>
 <script setup>
-    const fetched = await $fetch('/api/github')
+    const rc = useRuntimeConfig();
+    const fullBaseURL = `${rc.public.apis.baseURLs.github}/${rc.public.apis.endpoints.github.userinfo}/${rc.public.apis.userinfo.githubname}/${rc.public.apis.endpoints.github.repos}`
+    let fetched = await $fetch(fullBaseURL)
 
     useHead({
         title: 'Anasayfa'
