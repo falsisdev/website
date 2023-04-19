@@ -5,7 +5,7 @@
     </div>
 </template>
 <script setup>
-    const fetched = await $fetch('/api')
+    const fetched = await $fetch('/api/github')
 
     useHead({
         title: 'Anasayfa'
