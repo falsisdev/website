@@ -7,17 +7,29 @@
                 <span id="status2" class="bottom-0 left-8 absolute w-4 h-4 border border-black border-opacity-50 rounded-full"></span>
             </span>
             <div class="font-medium dark:text-white">
-                <div><span id="uname">Yükleniyor...</span><span id="discrim" class="text-sm text-gray-500 dark:text-gray-400">#0000</span></div>
+                <div><span id="uname">Yükleniyor...</span><!--<span id="discrim" class="text-sm text-gray-500 dark:text-gray-400">#0000</span>--></div>
                 <div id="spotify" class="text-sm text-gray-500 dark:text-gray-400"></div>
             </div>
         </div>
         <div class="grow"></div>
+        <span v-if="!isMobileOrTablet">
         <div id="spotifywarning" class="flex p-4 mr-10 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
             <IconsSpotify class="w-[18px] h-[18px] mx-1"/>
             <div>
                 Listening <span id="song" class="font-medium"></span> from <span id="artist" class="font-medium"></span>.
             </div>
         </div>
+        </span>
+    </div>
+    <div>
+        <span v-if="isMobileOrTablet">
+            <div id="spotifywarning" class="flex p-4 mx-10 my-3 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
+                <IconsSpotify class="w-[18px] h-[18px] mx-1"/>
+                <div>
+                    Listening <span id="song" class="font-medium"></span> from <span id="artist" class="font-medium"></span>.
+                </div>
+            </div>
+        </span>
     </div>
     <article class="prose max-w-none mx-10 my-5">
         <h1 class="mb-4 text-5xl font-extrabold leading-none tracking-tight text-white"><span class="text-primary">Hello,</span> I'm Falsis.</h1>
@@ -25,6 +37,9 @@
     </article>
         <span></span>
 </template>
+<script setup>
+const { isMobileOrTablet } = useDevice();
+</script>
 <style scoped>
 * {
     font-family: 'Arial', sans-serif;

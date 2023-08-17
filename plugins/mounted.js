@@ -48,9 +48,8 @@ export default defineNuxtPlugin((nuxtApp) => {
                     document.getElementById("spotifywarning").style.visibility = u.listening_to_spotify ? 'visible' : 'hidden'
                     document.getElementById("song").innerText = u.listening_to_spotify ? u.spotify.song : ''
                     document.getElementById("artist").innerText = u.listening_to_spotify ? u.spotify.artist : ''
-                    document.getElementById("uname").innerText = u.discord_user.username
+                    document.getElementById("uname").innerText = u.discord_user.display_name
                     document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/539843855567028227/${u.discord_user.avatar}.png?size=128`
-                    document.getElementById("discrim").innerText = `#${u.discord_user.discriminator}`
                     document.getElementById("status1").style.backgroundColor = colors[u.discord_status]
                     document.getElementById("status2").style.backgroundColor = colors[u.discord_status]
                 }else if(JSONdata.t = "PRESENCE_UPDATE") { //update
@@ -61,9 +60,8 @@ export default defineNuxtPlugin((nuxtApp) => {
                     document.getElementById("spotifywarning").style.visibility = u.listening_to_spotify ? 'visible' : 'hidden'
                     document.getElementById("song").innerText = u.listening_to_spotify ? u.spotify.song : ''
                     document.getElementById("artist").innerText = u.listening_to_spotify ? u.spotify.artist : ''
-                    document.getElementById("uname").innerText = u.discord_user.username
+                    document.getElementById("uname").innerText = u.discord_user.display_name
                     document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/539843855567028227/${u.discord_user.avatar}.png?size=128`
-                    document.getElementById("discrim").innerText = `#${u.discord_user.discriminator}`
                     document.getElementById("status1").style.backgroundColor = colors[u.discord_status]
                     document.getElementById("status2").style.backgroundColor = colors[u.discord_status]
                 }

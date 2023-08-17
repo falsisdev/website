@@ -5,11 +5,17 @@
         </div>
         <div class="flex-none">
         <label tabindex="0" class="dui-btn dui-btn-ghost dui-btn-circle hover:bg-white hover:bg-opacity-5 no-animation normal-case text-xl">
-            <IconsDiscord />
+            <a href="https://discord.gg/BDXkSgVaXe"><IconsDiscord /></a>
         </label>
         <label tabindex="0" class="dui-btn dui-btn-ghost dui-btn-circle hover:bg-white hover:bg-opacity-5 no-animation normal-case text-xl">
-            <IconsGithub />
+            <a href="https://github.com/falsisdev"><IconsGithub /></a>
+        </label>
+        <label tabindex="0" class="dui-btn dui-btn-ghost dui-btn-circle hover:bg-white hover:bg-opacity-5 no-animation normal-case text-xl">
+            <a href="/list/anime"><IconsMal /></a>
+        </label>
+        <label tabindex="0" class="dui-btn dui-btn-ghost dui-btn-circle hover:bg-white hover:bg-opacity-5 no-animation normal-case text-xl">
+            <a href="/list/manga"><IconsMangadex /></a>
         </label>
         </div>
     </div>
-</template>
+</template> 

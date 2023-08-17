@@ -1,13 +1,19 @@
 export default defineNuxtConfig({
-    modules: ['@nuxtjs/tailwindcss', 'nuxt-icons'],
+    modules: ['@nuxtjs/tailwindcss', 'nuxt-icons', '@nuxtjs/device'],
     css: [
         '@fortawesome/fontawesome-svg-core/styles.css'
     ],
+    app: {
+        head: {
+            link: [{ rel: "icon", href: "https://cdn.discordapp.com/attachments/775822548519616562/1141676766130348062/turkiye_country_icon.png"}],
+        }
+    },
     runtimeConfig: {
         public: {
+            apiurl: process.env.listapi,
             apis: {
                 baseURLs: {
-                    github: "https://api.github.com"
+                    github: "https://api.github.com",
                 },
                 endpoints: {
                     github: {
