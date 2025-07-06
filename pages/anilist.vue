@@ -63,6 +63,33 @@ function handleError(error) {
   alert("Error, check console");
   console.error(error);
 }
+
+import { ref, onMounted } from "vue";
+
+const contextMenu = ref({
+  visible: false,
+  x: 0,
+  y: 0,
+  mediaId: null,
+});
+
+function openContextMenu(e, mediaId) {
+  contextMenu.value.visible = true;
+  contextMenu.value.x = e.clientX;
+  contextMenu.value.y = e.clientY;
+  contextMenu.value.mediaId = mediaId;
+  document.addEventListener("click", closeContextMenu);
+}
+
+function closeContextMenu() {
+  contextMenu.value.visible = false;
+  document.removeEventListener("click", closeContextMenu);
+}
+
+function goToAnilistPage(mediaId) {
+  window.open(`https://anilist.co/anime/${mediaId}`, "_blank");
+  closeContextMenu();
+}
 </script>
 <template>
   <main>
@@ -71,12 +98,13 @@ function handleError(error) {
       <h1>Ani<span class="text-primary">List</span></h1>
       <p>
         This page visualizes my AniList data. It shows the animes i've watched
-        so far. But this data doesn't have 100% accuarcy about my data because
-        of the missed series in the Anilist data. Also you can visit my
+        so far. But this data doesn't have 100% accuracy about my data because
+        of the missed series in the Anilist data. Right click for more info. Also you can visit my
         <a href="https://myanimelist.net/profile/falsis"
           ><Icon name="simple-icons:myanimelist" class="w-5 h-5 -mb-1 mx-1"
         /></a>
         profile.
+        The order is based on score and it starts with Completed Series. Then it continues with Completed Movies, Completed OVA, Completed Special, Dropped, Planning, On Hold and Watching.
       </p>
     </article>
     <article class="prose max-w-none mb-10">
@@ -92,6 +120,7 @@ function handleError(error) {
           v-for="item of list.entries"
           :key="item"
           class="card w-72 mx-2 basis-1/4 mb-2 border border-base-200 rounded-2xl"
+          @contextmenu.prevent="openContextMenu($event, item.media.id)"
         >
           <figure class="w-full h-64">
             <img :src="item.media.coverImage.extraLarge" alt="Cover" />
@@ -148,6 +177,17 @@ function handleError(error) {
             </div>
           </div>
         </div>
+      </div>
+      <!-- Context Menu -->
+      <div
+        v-if="contextMenu.visible"
+        :style="{ top: contextMenu.y + 'px', left: contextMenu.x + 'px' }"
+        class="fixed z-50 bg-base-200 border border-base-300 rounded shadow-lg"
+        @click="goToAnilistPage(contextMenu.mediaId)"
+        @contextmenu.prevent
+        style="min-width: 140px; cursor: pointer;"
+      >
+        <div class="px-4 py-2 hover:bg-base-300"><Icon name="simple-icons:anilist" class="text-sm mr-1" /> Details</div>
       </div>
     </div>
     <div v-else>
