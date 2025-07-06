@@ -102,6 +102,28 @@ export default defineNuxtPlugin((nuxtApp) => {
               document.getElementById("title").innerText = u.spotify.song;
               document.getElementById("artist").innerText = u.spotify.artist;
 
+              // Şarkı ilerlemesini ilet
+              if (u.spotify.timestamps?.start && u.spotify.timestamps?.end) {
+                const event = new CustomEvent("spotify-progress", {
+                  detail: {
+                    start: u.spotify.timestamps.start,
+                    end: u.spotify.timestamps.end,
+                    isPlaying: true
+                  }
+                });
+                window.dispatchEvent(event);
+              } else {
+                // Şarkı yoksa ilerlemeyi sıfırla
+                const event = new CustomEvent("spotify-progress", {
+                  detail: {
+                    start: 0,
+                    end: 0,
+                    isPlaying: false
+                  }
+                });
+                window.dispatchEvent(event);
+              }
+
               // Alert class güncelle
               getDominantColor(albumArtUrl, (rgb) => {
                 const alertDiv = document.getElementById("alertDiv");
@@ -118,6 +140,16 @@ export default defineNuxtPlugin((nuxtApp) => {
                   if (newClass) alertDiv.classList.add(newClass);
                 }
               });
+            } else {
+              // Spotify dinlenmiyorsa ilerlemeyi sıfırla
+              const event = new CustomEvent("spotify-progress", {
+                detail: {
+                  start: 0,
+                  end: 0,
+                  isPlaying: false
+                }
+              });
+              window.dispatchEvent(event);
             }
           };
 
