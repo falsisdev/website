@@ -85,8 +85,8 @@ export default defineNuxtPlugin((nuxtApp) => {
             if (h >= 160 && h < 250) return "alert-info"; //Mavi Tonları
             if ((h >= 0 && h < 20) || (h >= 340 && h <= 360)) return "alert-error"; // Kırmızı/Pembe Tonları
             if (h >= 20 && h < 60) return "alert-warning";// Sarı/Turuncu Tonları
-            if (h >= 250 && h < 300) return "alert-secondary"; //Mor Tonları
-            if (h >= 300 && h < 340) return "alert-secondary"; //Eflatun Tonları
+            if (h >= 250 && h < 300) return "alert-accent"; //Mor Tonları
+            if (h >= 300 && h < 340) return "alert-accent"; //Eflatun Tonları
             return "alert-neutral";
           };
 
