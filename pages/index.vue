@@ -4,7 +4,6 @@
       <div class="hero-content flex-col lg:flex-row-reverse">
         <img
           id="avatar"
-          src="https://i.pinimg.com/originals/ac/11/aa/ac11aa2add3b0193c8769e0a17d13535.jpg"
           class="max-w-sm rounded-lg ml-20 hover:animate-pulse w-[256px] h-[256px]"
         />
         <div class="max-w-lg">

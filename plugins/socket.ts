@@ -33,15 +33,91 @@ export default defineNuxtPlugin((nuxtApp) => {
             );
           }, JSONdata.d.heartbeat_interval);
         } else if (JSONdata.op == OPCODES.INFO) {
+          const getDominantColor = (imgUrl, cb) => {
+            const img = new window.Image();
+            img.crossOrigin = "Anonymous";
+            img.src = imgUrl;
+            img.onload = function () {
+              const canvas = document.createElement("canvas");
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0);
+              const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+              let r = 0, g = 0, b = 0, count = 0;
+              for (let i = 0; i < data.length; i += 4) {
+                r += data[i];
+                g += data[i + 1];
+                b += data[i + 2];
+                count++;
+              }
+              r = Math.round(r / count);
+              g = Math.round(g / count);
+              b = Math.round(b / count);
+              cb([r, g, b]);
+            };
+            img.onerror = function () {
+              cb([0, 0, 0]);
+            };
+          };
+
+          const getAlertClassByColor = ([r, g, b]) => {
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            const isWhite = max > 230 && min > 200;
+            const isBlack = max < 40 && min < 40;
+            if (isWhite) return "alert-outline";
+            if (isBlack) return "alert-neutral";
+            // HSV'ye çevir
+            const rr = r / 255, gg = g / 255, bb = b / 255;
+            const mx = Math.max(rr, gg, bb), mn = Math.min(rr, gg, bb);
+            const d = mx - mn;
+            let h = 0;
+            if (d === 0) h = 0;
+            else if (mx === rr) h = ((gg - bb) / d) % 6;
+            else if (mx === gg) h = (bb - rr) / d + 2;
+            else h = (rr - gg) / d + 4;
+            h = Math.round(h * 60);
+            if (h < 0) h += 360;
+
+           // En yakın renk grubu
+            if (h >= 60 && h < 160) return "alert-success"; //Yeşil tonları
+            if (h >= 160 && h < 250) return "alert-info"; //Mavi Tonları
+            if ((h >= 0 && h < 20) || (h >= 340 && h <= 360)) return "alert-error"; // Kırmızı/Pembe Tonları
+            if (h >= 20 && h < 60) return "alert-warning";// Sarı/Turuncu Tonları
+            if (h >= 250 && h < 300) return "alert-secondary"; //Mor Tonları
+            if (h >= 300 && h < 340) return "alert-secondary"; //Eflatun Tonları
+            return "alert-neutral";
+          };
+
           const updateSpotifyUI = (u) => {
             if (u.listening_to_spotify) {
               document
                 .getElementById("spotifycheck")
                 .classList.replace("hidden", "visible");
 
-              document.getElementById("albumart").src = u.spotify.album_art_url;
+              const albumArtUrl = u.spotify.album_art_url;
+              document.getElementById("albumart").src = albumArtUrl;
+              document.getElementById("albumname")?.setAttribute("data-tip", u.spotify.album);
               document.getElementById("title").innerText = u.spotify.song;
               document.getElementById("artist").innerText = u.spotify.artist;
+
+              // Alert class güncelle
+              getDominantColor(albumArtUrl, (rgb) => {
+                const alertDiv = document.getElementById("alertDiv");
+                if (alertDiv) {
+                  alertDiv.classList.remove(
+                    "alert-success",
+                    "alert-info",
+                    "alert-error",
+                    "alert-warning",
+                    "alert-neutral",
+                    "alert-outline"
+                  );
+                  const newClass = getAlertClassByColor(rgb);
+                  if (newClass) alertDiv.classList.add(newClass);
+                }
+              });
             }
           };
 

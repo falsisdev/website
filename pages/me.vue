@@ -1,8 +1,8 @@
 <template>
-  <article class="mx-20 prose max-w-none">
-    <span class="font-semibold">Let's talk</span>
+  <article class=" prose max-w-none">
+    <span class="font-semibold ml-1 text-sm">Let's talk</span>
     <h1>About <span class="text-primary">Me</span></h1>
-    <span class="text-xl">
+    <span class="text-lg">
       Hi, I'm Falsis. But that's not my name for sure. My name is Kerem. Nice to
       meet you. Currently, I'm
       <span
@@ -24,7 +24,7 @@
       }}.
     </span>
     <div class="pr-4">
-      <p class="text-xl">
+      <p class="text-md">
         I guess I should start with programming first. I am a Front-End
         developer who develops full-stack projects because sometimes uses
         back-end, but is far from being a full-stack developer due to

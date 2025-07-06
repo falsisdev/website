@@ -67,7 +67,8 @@ function handleError(error) {
 <template>
   <main>
     <article class="prose max-w-none mb-10">
-      <h1>AniList</h1>
+      <span class="font-semibold text-sm ml-1">Check out my</span>
+      <h1>Ani<span class="text-primary">List</span></h1>
       <p>
         This page visualizes my AniList data. It shows the animes i've watched
         so far. But this data doesn't have 100% accuarcy about my data because
@@ -90,12 +91,12 @@ function handleError(error) {
         <div
           v-for="item of list.entries"
           :key="item"
-          class="card w-72 mx-2 basis-1/4"
+          class="card w-72 mx-2 basis-1/4 mb-2 border border-base-200 rounded-2xl"
         >
           <figure class="w-full h-64">
             <img :src="item.media.coverImage.extraLarge" alt="Cover" />
           </figure>
-          <div class="card-body h-72">
+          <div class="card-body w-72 h-72">
             <span class="flex flex-col relative">
               <span class="whitespace-nowrap overflow-hidden">
                 <span
@@ -109,24 +110,24 @@ function handleError(error) {
                 </span>
               </span>
             </span>
-            <span class="flex flex-row no-wrap overflow-x-auto h-36">
+            <span class="overflow-y-auto max-w-64 text-xs">
+             <span class="flex flex-row no-wrap overflow-x-auto mb-2">
               <div
                 v-for="genre of item.media.genres"
                 :key="genre"
-                class="badge badge-outline mr-1 px-2 badge-sm"
+                class="badge badge-outline mr-1 badge-xs"
               >
                 {{ genre }}
               </div>
             </span>
-            <p class="overflow-y-auto max-w-64">
               <span v-html="item.media.description" />
-            </p>
+            </span>
             <div class="card-actions justify-end flex flex-row">
-              <div class="badge badge-outline mr-1 mt-3">
+              <div class="badge badge-soft badge-warning badge-sm mt-3">
                 <Icon name="material-symbols:star" class="w-5 h-5 mr-1" />
-                {{ item.score }}
+                {{ item.score == 0 ? "N/A" : item.score }}
               </div>
-              <div class="badge badge-outline mr-1 mt-3">
+              <div class="badge badge-soft badge-sm mt-3">
                 <Icon name="material-symbols:movie-info" class="w-5 h-5 mr-1" />
                 {{
                   list.status
