@@ -20,8 +20,19 @@ query ($type: MediaType!, $userId: Int!, $sort: [MediaListSort]) {
           }
           status
           meanScore
+          format
         }
-      score
+        startedAt {
+          year
+          month
+          day
+        }
+        completedAt {
+          year
+          month
+          day
+        }
+        score
       }
       status
     }
@@ -90,6 +101,12 @@ function goToAnilistPage(mediaId) {
   window.open(`https://anilist.co/anime/${mediaId}`, "_blank");
   closeContextMenu();
 }
+
+function formatDate(y, m, d) {
+  if (!y || !m || !d) return "";
+  const date = new Date(y, m - 1, d);
+  return date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+}
 </script>
 <template>
   <main>
@@ -104,7 +121,7 @@ function goToAnilistPage(mediaId) {
           ><Icon name="simple-icons:myanimelist" class="w-5 h-5 -mb-1 mx-1"
         /></a>
         profile.
-        The order is based on score and it starts with Completed Series. Then it continues with Completed Movies, Completed OVA, Completed Special, Dropped, Planning, On Hold and Watching.
+        The order is based on score and it starts with Completed TV and then it continues with Completed Movies, Completed OVA, Completed Special, Dropped, Planning, On Hold and Watching.
       </p>
     </article>
     <article class="prose max-w-none mb-10">
@@ -138,6 +155,9 @@ function goToAnilistPage(mediaId) {
                   <h2 class="card-title">{{ item.media.title.romaji }}</h2>
                 </span>
               </span>
+              <span v-if="item.media.format" class="text-xs opacity-50">
+                {{ item.media.format }}
+              </span>
             </span>
             <span class="overflow-y-auto max-w-64 text-xs">
              <span class="flex flex-row no-wrap overflow-x-auto mb-2">
@@ -151,21 +171,41 @@ function goToAnilistPage(mediaId) {
             </span>
               <span v-html="item.media.description" />
             </span>
-            <div class="card-actions justify-end flex flex-row">
-              <div class="badge badge-soft badge-warning badge-sm mt-3">
-                <Icon name="material-symbols:star" class="w-5 h-5 mr-1" />
-                {{ item.score == 0 ? "N/A" : item.score }}
+            <div class="card-actions flex flex-col flex-col-reverse items-end">
+              <div class="flex flex-row w-full gap-1">
+                <div class="badge badge-soft badge-warning badge-sm tooltip" data-tip="Score">
+                  <Icon name="material-symbols:star" class="w-5 h-5 mr-1" />
+                  {{ item.score == 0 ? "N/A" : item.score }}
+                </div>
+                <div class="badge badge-soft badge-sm tooltip" data-tip="Status">
+                  <Icon name="material-symbols:movie-info" class="w-5 h-5 mr-1" />
+                  {{
+                    list.status
+                      .replace("COMPLETED", "Completed")
+                      .replace("PLANNING", "Planning")
+                      .replace("DROPPED", "Dropped")
+                      .replace("CURRENT", "Watching")
+                      .replace("PAUSED", "On Hold")
+                  }}
+                </div>
               </div>
-              <div class="badge badge-soft badge-sm mt-3">
-                <Icon name="material-symbols:movie-info" class="w-5 h-5 mr-1" />
-                {{
-                  list.status
-                    .replace("COMPLETED", "Completed")
-                    .replace("PLANNING", "Planning")
-                    .replace("DROPPED", "Dropped")
-                    .replace("CURRENT", "Watching")
-                    .replace("PAUSED", "On Hold")
-                }}
+              <div class="flex flex-row w-full gap-1 mt-1">
+                <div
+                  v-if="item.startedAt?.year"
+                  class="badge badge-soft badge-success badge-sm tooltip"
+                  data-tip="Start Date"
+                >
+                  <Icon name="mdi:calendar-start" class="w-4 h-4 mr-1" />
+                  {{ formatDate(item.startedAt.year, item.startedAt.month, item.startedAt.day) }}
+                </div>
+                <div
+                  v-if="item.completedAt?.year"
+                  class="badge badge-soft badge-error badge-sm tooltip"
+                  data-tip="End Date"
+                >
+                  <Icon name="mdi:calendar-end" class="w-4 h-4 mr-1" />
+                  {{ formatDate(item.completedAt.year, item.completedAt.month, item.completedAt.day) }}
+                </div>
               </div>
               <span class="grow" />
               <!--<button class="btn btn-ghost btn-md">
