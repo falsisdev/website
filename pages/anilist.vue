@@ -121,7 +121,10 @@ function formatDate(y, m, d) {
           ><Icon name="simple-icons:myanimelist" class="w-5 h-5 -mb-1 mx-1"
         /></a>
         profile.
+        <br/>
         The order is based on score and it starts with Completed TV and then it continues with Completed Movies, Completed OVA, Completed Special, Dropped, Planning, On Hold and Watching.
+        <br/>
+        The start and end dates are indicated on the badges. If there are no start and end dates, I don't know about them. This means that the date I watched the series was quite old and I have no info of it.
       </p>
     </article>
     <article class="prose max-w-none mb-10">
