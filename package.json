@@ -12,7 +12,10 @@
   "dependencies": {
     "@nuxt/icon": "1.10.3",
     "@nuxtjs/sanity": "1.13.3",
+    "@sanity/client": "^7.6.0",
+    "@sanity/image-url": "^1.1.0",
     "nuxt": "^3.17.6",
+    "swiper": "^11.2.10",
     "vue": "latest",
     "vue-router": "latest"
   },

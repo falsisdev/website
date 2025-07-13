@@ -11,7 +11,7 @@
           >
         </li>
         <li>
-          <a><Icon name="mdi:blogger" class="w-5 h-5 mt-[1px]" /> Blog</a>
+          <NuxtLink to="/blog"><Icon name="mdi:blogger" class="w-5 h-5 mt-[1px]" /> Blog</NuxtLink>
         </li>
         <li>
           <details>
@@ -38,14 +38,14 @@
           </details>
         </li>
         <li>
-          <NuxtLink to="/anilist"
+          <NuxtLink to="/anilist" class="mt-[3px]"
             ><Icon name="simple-icons:anilist" class="w-5 h-5 mt-[1px]" />
-            AniList</NuxtLink
+            </NuxtLink
           >
         </li>
         <li>
-          <NuxtLink to="/me"
-            ><Icon name="mdi:person" class="w-5 h-5 mt-[1px]" /> Me</NuxtLink
+          <NuxtLink to="/me" class="mt-[3px]"
+            ><Icon name="mdi:person" class="w-5 h-5 mt-[1px]" /></NuxtLink
           >
         </li>
       </ul>

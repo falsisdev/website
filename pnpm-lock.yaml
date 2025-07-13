@@ -14,9 +14,18 @@ importers:
       '@nuxtjs/sanity':
         specifier: 1.13.3
         version: 1.13.3(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.97.1(@types/react@19.1.8))(magicast@0.3.5)(react-dom@19.0.0(react@19.0.0))(react-is@19.1.0)(react@19.0.0)(styled-components@6.1.19(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.3)
+      '@sanity/client':
+        specifier: ^7.6.0
+        version: 7.6.0
+      '@sanity/image-url':
+        specifier: ^1.1.0
+        version: 1.1.0
       nuxt:
         specifier: ^3.17.6
         version: 3.17.6(@parcel/watcher@2.5.1)(@types/node@24.0.10)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(ioredis@5.6.1)(lightningcss@1.30.1)(magicast@0.3.5)(rollup@4.44.2)(terser@5.43.1)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(yaml@2.8.0))(yaml@2.8.0)
+      swiper:
+        specifier: ^11.2.10
+        version: 11.2.10
       vue:
         specifier: latest
         version: 3.5.17(typescript@5.8.3)
@@ -966,6 +975,10 @@ packages:
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: ^18.3 || ^19.0.0-0
+
+  '@sanity/image-url@1.1.0':
+    resolution: {integrity: sha512-JHumVRxzzaZAJyOimntdukA9TjjzsJiaiq/uUBdTknMLCNvtM6KQ5OCp6W5fIdY78uyFxtQjz+MPXwK8WBIxWg==}
+    engines: {node: '>=10.0.0'}
 
   '@sanity/insert-menu@1.1.12':
     resolution: {integrity: sha512-pJyV3c+wFk1xYBD87CynhjJFi96gd5ybAWijz9z/uNU5YieywKjuFAYRcZBfBU24Ihncuf3LdOmkwtcJFG1w1A==}
@@ -3620,6 +3633,10 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
+  swiper@11.2.10:
+    resolution: {integrity: sha512-RMeVUUjTQH+6N3ckimK93oxz6Sn5la4aDlgPzB+rBrG/smPdCTicXyhxa+woIpopz+jewEloiEE3lKo1h9w2YQ==}
+    engines: {node: '>= 4.7.0'}
+
   system-architecture@0.1.0:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
     engines: {node: '>=18'}
@@ -5241,6 +5258,8 @@ snapshots:
   '@sanity/icons@3.7.4(react@19.0.0)':
     dependencies:
       react: 19.0.0
+
+  '@sanity/image-url@1.1.0': {}
 
   '@sanity/insert-menu@1.1.12(@emotion/is-prop-valid@1.2.2)(@sanity/types@3.97.1(@types/react@19.1.8))(react-dom@19.0.0(react@19.0.0))(react-is@19.1.0)(react@19.0.0)(styled-components@6.1.19(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
@@ -8174,6 +8193,8 @@ snapshots:
       css-what: 6.2.2
       csso: 5.0.5
       picocolors: 1.1.1
+
+  swiper@11.2.10: {}
 
   system-architecture@0.1.0: {}
 
