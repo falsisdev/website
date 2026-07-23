@@ -9,7 +9,7 @@ import (
 
 func main() {
 	if err := handlers.InitTemplates(); err != nil {
-		panic(fmt.Sprintf("Şablonlar yüklenirken hata oluştu: %v", err))
+		panic(fmt.Sprintf("An error occured while parsing template files: %v", err))
 	}
 
 	mux := http.NewServeMux()
@@ -19,7 +19,7 @@ func main() {
 
 	mux.HandleFunc("GET /", handlers.HomeHandler)
 
-	fmt.Println("Sunucu 8080 portunda çalışıyor... http://localhost:8080")
+	fmt.Println("Server running at the port :8080... http://localhost:8080")
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		panic(err)
 	}
@@ -27,3 +27,5 @@ func main() {
 
 // Vercel Deploy için build command kısmına yazılacak: tailwindcss -i ./web/static/css/input.css -o ./web/static/css/output.css --minify && go build -o server cmd/server/main.go
 //Geiştirme anında bir terminal sekmesine yazılacak ve terminal sekmesi aktif tutulacak: tailwindcss -i ./web/static/css/input.css -o ./web/static/css/output.css --watch
+
+//vercel deployda serverless function sorunu sebebiyle deployment render.com'a çekilebiir.

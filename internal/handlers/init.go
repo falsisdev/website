@@ -35,7 +35,7 @@ func InitTemplates() error {
 	}
 
 	if len(files) == 0 {
-		return fmt.Errorf("hiçbir HTML şablon dosyası bulunamadı")
+		return fmt.Errorf("No HTMl template files found")
 	}
 
 	var err error
