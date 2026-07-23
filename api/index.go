@@ -1,15 +1,13 @@
 package handler
 
 import (
-	"embed"
 	"fmt"
 	"html/template"
-	"io/fs"
 	"net/http"
 	"time"
-)
 
-var files embed.FS
+	"github.com/falsisdev/website/web"
+)
 
 var tmpl *template.Template
 
@@ -23,10 +21,10 @@ var funcMap = template.FuncMap{
 
 func init() {
 	var err error
-	tmpl, err = template.New("").Funcs(funcMap).ParseFS(files,
-		"web/templates/*.html",
-		"web/templates/layouts/*.html",
-		"web/templates/components/*.html",
+	tmpl, err = template.New("").Funcs(funcMap).ParseFS(web.Files,
+		"templates/*.html",
+		"templates/layouts/*.html",
+		"templates/components/*.html",
 	)
 	if err != nil {
 		panic(err)
@@ -35,16 +33,11 @@ func init() {
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	if len(r.URL.Path) >= 8 && r.URL.Path[:8] == "/static/" {
-		staticSubFS, err := fs.Sub(files, "web")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		http.FileServer(http.FS(staticSubFS)).ServeHTTP(w, r)
+		http.FileServer(http.FS(web.Files)).ServeHTTP(w, r)
 		return
 	}
 
-	data := map[string]any{
+	data := map[string]interface{}{
 		"TargetDate": int64(1199002814000),
 	}
 
