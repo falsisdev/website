@@ -1,37 +1,63 @@
 package main
 
 import (
-	"fmt"
+	"context"
+	"errors"
+	"log/slog"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/falsisdev/website/handlers"
+	"github.com/falsisdev/website/internal/config"
+	"github.com/falsisdev/website/internal/server"
 )
 
 func main() {
 	if err := handlers.InitTemplates(); err != nil {
-		panic(fmt.Sprintf("An error occured while parsing template files: %v", err))
+		slog.Error("template initialization failed", "error", err)
+		os.Exit(1)
 	}
 
-	mux := http.NewServeMux()
-
-	fs := http.FileServer(http.Dir("web/static"))
-	mux.Handle("GET /static/", http.StripPrefix("/static/", fs))
-
-	mux.HandleFunc("GET /", handlers.HomeHandler)
-
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
+	cfg, err := config.Load()
+	if err != nil {
+		slog.Error("configuration load failed", "error", err)
+		os.Exit(1)
 	}
 
-	fmt.Printf("Server running at http://localhost:%s\n", port)
-	if err := http.ListenAndServe(":"+port, mux); err != nil {
-		panic(err)
+	httpServer := &http.Server{
+		Addr:              cfg.Host + ":" + cfg.Port,
+		Handler:           server.NewMux(cfg),
+		ReadHeaderTimeout: 5 * time.Second,
+		ReadTimeout:       10 * time.Second,
+		WriteTimeout:      15 * time.Second,
+		IdleTimeout:       60 * time.Second,
 	}
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		<-stop
+		slog.Info("shutdown signal received, starting graceful shutdown")
+
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		if err := httpServer.Shutdown(ctx); err != nil {
+			slog.Error("server shutdown failed", "error", err)
+			os.Exit(1)
+		}
+		os.Exit(0)
+	}()
+
+	slog.Info("server starting", "address", httpServer.Addr, "environment", cfg.Environment)
+	if err := httpServer.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		slog.Error("server failed", "error", err)
+		os.Exit(1)
+	}
+
+	slog.Info("server stopped cleanly")
 }
-
-// Local development:
-// 1. ./build.sh
-// 2. .bin/tailwindcss -i web/static/css/input.css -o web/static/css/output.css --watch
-// 3. go run ./cmd/server
