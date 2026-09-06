@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TAILWIND_BIN="$ROOT_DIR/.bin/tailwindcss"
+PUBLIC_DIR="$ROOT_DIR/public"
 
 case "$(uname -s)-$(uname -m)" in
 	Darwin-arm64) TAILWIND_TARGET="macos-arm64" ;;
@@ -23,3 +24,7 @@ fi
 	-i "$ROOT_DIR/web/static/css/input.css" \
 	-o "$ROOT_DIR/web/static/css/output.css" \
 	--minify
+
+rm -rf "$PUBLIC_DIR"
+mkdir -p "$PUBLIC_DIR"
+cp -R "$ROOT_DIR/web/static/." "$PUBLIC_DIR/static/"

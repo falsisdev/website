@@ -1,5 +1,6 @@
 .DS_STORE
 .env
 web/static/css/output.css
+public/
 .bin/
 .vscode
