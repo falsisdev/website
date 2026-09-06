@@ -4,18 +4,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{block "title" .}}Falsis{{end}}</title>
+    <title>{{block "title" .}}{{.Title}}{{end}}</title>
     <link rel="stylesheet" href="/static/css/output.css" />
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
   </head>
   <body
     class="bg-zinc-950 text-zinc-100 min-h-screen font-sans antialiased selection:bg-violet-500 selection:text-white"
   >
-    {{template "navbar" .}}
-
-    <main class="max-w-4xl mx-auto px-4 py-12">
-      {{block "content" .}}{{end}}
-    </main>
+    {{template "page" .}}
   </body>
 </html>
+{{end}} {{define "page"}}
+<div id="page-shell">
+  {{template "navbar" .}}
+
+  <main class="max-w-4xl mx-auto px-4 py-12">{{block "content" .}}{{end}}</main>
+</div>
 {{end}}

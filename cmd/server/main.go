@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/falsisdev/website/handlers"
 )
@@ -19,8 +20,13 @@ func main() {
 
 	mux.HandleFunc("GET /", handlers.HomeHandler)
 
-	fmt.Println("Server running at the port :8080... http://localhost:8080")
-	if err := http.ListenAndServe(":8080", mux); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	fmt.Printf("Server running at http://localhost:%s\n", port)
+	if err := http.ListenAndServe(":"+port, mux); err != nil {
 		panic(err)
 	}
 }
