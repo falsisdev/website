@@ -50,7 +50,7 @@ func main() {
 		Handler:           server.NewMuxWithBus(cfg, bus),
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,
-		WriteTimeout:      15 * time.Second,
+		WriteTimeout:      0,
 		IdleTimeout:       60 * time.Second,
 	}
 

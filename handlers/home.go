@@ -40,6 +40,7 @@ type PageData struct {
 	BlogPosts       []BlogPost
 	Email           string
 	ProjectsText    string
+	GitHubProfile   github.Profile
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
@@ -52,6 +53,12 @@ func HomeHandlerWithConfig(cfg config.Config, w http.ResponseWriter, r *http.Req
 	if cfg.GitHubUsername == "" {
 		cfg.GitHubUsername = "falsisdev"
 	}
+	data.GitHubProfile = github.Profile{
+		Login:     cfg.GitHubUsername,
+		Name:      cfg.GitHubUsername,
+		AvatarURL: "https://github.com/" + cfg.GitHubUsername + ".png",
+		Bio:       "Full-stack Developer • Backend & Web systems",
+	}
 
 	if cfg.GitHubUsername != "" {
 		ghClient := github.New(github.Config{
@@ -59,6 +66,9 @@ func HomeHandlerWithConfig(cfg config.Config, w http.ResponseWriter, r *http.Req
 			Token:      cfg.GitHubToken,
 			HTTPClient: &http.Client{Timeout: 10 * time.Second},
 		})
+		if profile, err := ghClient.GetProfile(r.Context()); err == nil {
+			data.GitHubProfile = *profile
+		}
 		if repos, err := ghClient.ListRepos(r.Context()); err == nil {
 			data.Projects = githubReposToProjects(repos)
 		}

@@ -51,16 +51,17 @@
 
     <div class="flex items-center gap-4">
       <img
-        src="https://github.com/falsisdev.png"
+        src="{{.GitHubProfile.AvatarURL}}"
         alt="GitHub profile avatar"
         class="h-16 w-16 rounded-full border border-zinc-700 object-cover"
       />
       <div>
         <div id="github-profile-name" class="text-xl font-semibold text-white">
-          falsisdev
+          {{if
+          .GitHubProfile.Name}}{{.GitHubProfile.Name}}{{else}}{{.GitHubProfile.Login}}{{end}}
         </div>
         <div id="github-profile-bio" class="text-sm text-zinc-300">
-          Full-stack Developer • Backend & Web systems
+          {{.GitHubProfile.Bio}}
         </div>
       </div>
     </div>
@@ -72,7 +73,7 @@
           id="github-repos-count"
           class="mt-2 text-xl font-semibold text-white"
         >
-          0
+          {{.GitHubProfile.PublicRepos}}
         </p>
       </div>
       <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
@@ -80,7 +81,7 @@
           Followers
         </p>
         <p id="github-followers" class="mt-2 text-xl font-semibold text-white">
-          0
+          {{.GitHubProfile.Followers}}
         </p>
       </div>
       <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
@@ -88,7 +89,7 @@
           Following
         </p>
         <p id="github-following" class="mt-2 text-xl font-semibold text-white">
-          0
+          {{.GitHubProfile.Following}}
         </p>
       </div>
     </div>
@@ -122,13 +123,6 @@
             console.error("Invalid GitHub profile payload", error);
           }
         });
-
-        source.onerror = function () {
-          source.close();
-          setTimeout(function () {
-            window.location.reload();
-          }, 4000);
-        };
       })();
     </script>
   </div>
