@@ -1,5 +1,7 @@
 {
+  "buildCommand": "./build.sh",
   "rewrites": [
+    { "source": "/static/:path*", "destination": "/web/static/:path*" },
     { "source": "/(.*)", "destination": "/api" }
   ]
 }

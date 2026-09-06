@@ -1,27 +1,2 @@
-{{template "base" .}}
-
-{{define "title"}}Anasayfa — falsis{{end}}
-
-{{define "content"}}
-<div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-12">
-    <section class="space-y-4 text-center md:text-left">
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl flex items-center justify-center md:justify-start gap-3">
-            <span>👋 </span>
-            <span>Hi, <span class="relative inline-block bg-gradient-to-r from-white to-violet-400 bg-clip-text text-transparent underline decoration-violet-400 decoration-4 underline-offset-8">falsis</span> <span class="text-violet-400"> here! </span></span>
-        </h1>
-        <p class="text-lg text-zinc-400 font-medium leading-relaxed">
-            Hello there! It's falsis and only <span class="text-violet-300 font-semibold">{{ .TargetDate | age }}</span> years old!
-        </p>
-    </section>
-
-    <section class="shrink-0">
-        <div class="w-64 h-64 sm:w-72 sm:h-72 rounded-2xl overflow-hidden border border-zinc-800/80 shadow-2xl bg-zinc-900/50 hover:animate-pulse">
-            <img 
-                src="https://cdn.sanity.io/images/5nqk6zg4/production/ca7a05da5d6d2e25d5b5b0d6907421d27cad932e-256x256.png?w=2000&fit=max&auto=format&dpr=2" 
-                alt="avatar" 
-                class="w-full h-full object-cover"
-            />
-        </div>
-    </section>
-</div>
-{{end}}
+{{template "base" .}} {{define "title"}}Personal Website{{end}} {{define
+"content"}}{{end}}

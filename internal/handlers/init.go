@@ -3,27 +3,24 @@ package handlers
 import (
 	"fmt"
 	"html/template"
+	"os"
 	"path/filepath"
-	"time"
 )
 
 var tmpl *template.Template
 
-var funcMap = template.FuncMap{
-	"age": func(milliseconds int64) string {
-		pastTime := time.UnixMilli(milliseconds)
-		years := time.Since(pastTime).Hours() / (24 * 365.25)
-		return fmt.Sprintf("%.2f", years)
-	},
-}
-
 func InitTemplates() error {
+	templateRoot, err := findTemplateRoot()
+	if err != nil {
+		return err
+	}
+
 	var files []string
 
 	patterns := []string{
-		"web/templates/*.html",
-		"web/templates/layouts/*.html",
-		"web/templates/components/*.html",
+		filepath.Join(templateRoot, "templates", "*.html"),
+		filepath.Join(templateRoot, "templates", "layouts", "*.html"),
+		filepath.Join(templateRoot, "templates", "components", "*.html"),
 	}
 
 	for _, pattern := range patterns {
@@ -38,7 +35,24 @@ func InitTemplates() error {
 		return fmt.Errorf("No HTMl template files found")
 	}
 
-	var err error
-	tmpl, err = template.New("").Funcs(funcMap).ParseFiles(files...)
+	tmpl, err = template.New("").ParseFiles(files...)
 	return err
+}
+
+func findTemplateRoot() (string, error) {
+	workingDir, err := os.Getwd()
+	if err != nil {
+		return "", err
+	}
+
+	for _, candidate := range []string{
+		filepath.Join(workingDir, "web"),
+		filepath.Join(workingDir, "..", "..", "web"),
+	} {
+		if _, err := os.Stat(filepath.Join(candidate, "templates")); err == nil {
+			return candidate, nil
+		}
+	}
+
+	return "", fmt.Errorf("web/templates directory not found from %s", workingDir)
 }

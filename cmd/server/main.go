@@ -25,7 +25,7 @@ func main() {
 	}
 }
 
-// Vercel Deploy için build command kısmına yazılacak: tailwindcss -i ./web/static/css/input.css -o ./web/static/css/output.css --minify && go build -o server cmd/server/main.go
-//Geiştirme anında bir terminal sekmesine yazılacak ve terminal sekmesi aktif tutulacak: tailwindcss -i ./web/static/css/input.css -o ./web/static/css/output.css --watch
-
-//vercel deployda serverless function sorunu sebebiyle deployment render.com'a çekilebiir.
+// Local development:
+// 1. ./build.sh
+// 2. .bin/tailwindcss -i web/static/css/input.css -o web/static/css/output.css --watch
+// 3. go run ./cmd/server
