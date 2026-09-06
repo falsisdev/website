@@ -1,9 +1,15 @@
 {{define "navbar"}}
-<header
-  class="border-b border-zinc-800/80 bg-zinc-950/50 backdrop-blur-md sticky top-0 z-50"
->
-  <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-    <a href="/" class="font-semibold text-zinc-100">{{.Brand}}</a>
+<header class="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/75 backdrop-blur-md">
+  <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+    <div class="flex items-center gap-6">
+      <a href="/" class="font-semibold text-zinc-100">{{.Brand}}</a>
+      <nav class="hidden items-center gap-5 text-sm text-zinc-300 md:flex">
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#projects" class="hover:text-white">Projects</a>
+        <a href="#blog" class="hover:text-white">Blog</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+    </div>
 
     <label class="flex items-center gap-2 text-sm text-zinc-400">
       <span>{{.LanguageLabel}}</span>

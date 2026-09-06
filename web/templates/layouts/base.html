@@ -1,9 +1,10 @@
 {{define "base"}}
 <!doctype html>
-<html lang="tr" class="dark">
+<html lang="{{.Language}}" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{.HeroSubtitle}}" />
     <title>{{block "title" .}}{{.Title}}{{end}}</title>
     <link rel="stylesheet" href="/static/css/output.css" />
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
@@ -17,7 +18,8 @@
 {{end}} {{define "page"}}
 <div id="page-shell">
   {{template "navbar" .}}
-
-  <main class="max-w-4xl mx-auto px-4 py-12">{{block "content" .}}{{end}}</main>
+  <main class="max-w-5xl mx-auto px-4 py-10 md:py-16">
+    {{block "content" .}}{{end}}
+  </main>
 </div>
 {{end}}

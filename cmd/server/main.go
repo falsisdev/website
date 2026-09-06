@@ -12,6 +12,8 @@ import (
 
 	"github.com/falsisdev/website/handlers"
 	"github.com/falsisdev/website/internal/config"
+	"github.com/falsisdev/website/internal/github"
+	"github.com/falsisdev/website/internal/realtime"
 	"github.com/falsisdev/website/internal/server"
 )
 
@@ -27,9 +29,25 @@ func main() {
 		os.Exit(1)
 	}
 
+	bus := realtime.NewBus()
+	poller := github.NewPoller(github.PollerConfig{
+		Username: cfg.GitHubUsername,
+		Token:    cfg.GitHubToken,
+		Bus:      bus,
+		Interval: 30 * time.Second,
+	})
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	go poller.Start(ctx)
+
+	if err := poller.PollOnce(context.Background()); err != nil {
+		slog.Warn("initial github poll failed", "error", err)
+	}
+
 	httpServer := &http.Server{
 		Addr:              cfg.Host + ":" + cfg.Port,
-		Handler:           server.NewMux(cfg),
+		Handler:           server.NewMuxWithBus(cfg, bus),
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		WriteTimeout:      15 * time.Second,

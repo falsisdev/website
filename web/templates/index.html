@@ -1,2 +1,216 @@
-{{template "base" .}} {{define "title"}}Personal Website{{end}} {{define
-"content"}}{{end}}
+{{define "title"}}{{.Title}}{{end}} {{define "content"}}
+<section class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+  <div class="space-y-7">
+    <div
+      class="inline-flex items-center rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-violet-200"
+    >
+      ECE undergrad • Full-stack Dev
+    </div>
+
+    <div class="space-y-4">
+      <h1 class="text-4xl font-semibold tracking-tight text-white">
+        {{.HeroTitle}}
+      </h1>
+      <p class="max-w-xl text-base leading-7 text-zinc-300 md:text-lg">
+        {{.HeroSubtitle}}
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <a
+        href="#projects"
+        class="rounded-md bg-violet-500 px-5 py-3 text-sm font-medium text-white transition hover:bg-violet-400"
+      >
+        {{.PrimaryAction}}
+      </a>
+      <a
+        href="mailto:{{.Email}}"
+        class="rounded-md border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-medium text-zinc-100 transition hover:border-zinc-500"
+      >
+        {{.SecondaryAction}}
+      </a>
+    </div>
+  </div>
+
+  <div
+    id="github-profile-card"
+    class="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6 shadow-lg shadow-zinc-950/40"
+  >
+    <div
+      class="mb-5 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-zinc-400"
+    >
+      <span>GitHub</span>
+      <span class="inline-flex items-center gap-2">
+        <span
+          class="h-2.5 w-2.5 rounded-full bg-emerald-400"
+          aria-hidden="true"
+        ></span>
+        live
+      </span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <img
+        src="https://github.com/falsisdev.png"
+        alt="GitHub profile avatar"
+        class="h-16 w-16 rounded-full border border-zinc-700 object-cover"
+      />
+      <div>
+        <div id="github-profile-name" class="text-xl font-semibold text-white">
+          falsisdev
+        </div>
+        <div id="github-profile-bio" class="text-sm text-zinc-300">
+          Full-stack Developer • Backend & Web systems
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 grid gap-3 sm:grid-cols-3">
+      <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+        <p class="text-xs uppercase tracking-[0.16em] text-zinc-500">Repos</p>
+        <p
+          id="github-repos-count"
+          class="mt-2 text-xl font-semibold text-white"
+        >
+          0
+        </p>
+      </div>
+      <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+        <p class="text-xs uppercase tracking-[0.16em] text-zinc-500">
+          Followers
+        </p>
+        <p id="github-followers" class="mt-2 text-xl font-semibold text-white">
+          0
+        </p>
+      </div>
+      <div class="rounded-xl border border-zinc-800 bg-zinc-950/70 p-4">
+        <p class="text-xs uppercase tracking-[0.16em] text-zinc-500">
+          Following
+        </p>
+        <p id="github-following" class="mt-2 text-xl font-semibold text-white">
+          0
+        </p>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const source = new EventSource("/events/github");
+        const card = document.getElementById("github-profile-card");
+        const nameEl = document.getElementById("github-profile-name");
+        const bioEl = document.getElementById("github-profile-bio");
+        const reposEl = document.getElementById("github-repos-count");
+        const followersEl = document.getElementById("github-followers");
+        const followingEl = document.getElementById("github-following");
+
+        source.addEventListener("github_profile_updated", function (event) {
+          try {
+            const data = JSON.parse(event.data);
+            if (data.name) nameEl.textContent = data.name;
+            if (data.bio) bioEl.textContent = data.bio;
+            if (typeof data.public_repos !== "undefined")
+              reposEl.textContent = String(data.public_repos);
+            if (typeof data.followers !== "undefined")
+              followersEl.textContent = String(data.followers);
+            if (typeof data.following !== "undefined")
+              followingEl.textContent = String(data.following);
+            if (data.avatar_url) {
+              const img = card.querySelector("img");
+              if (img) img.src = data.avatar_url;
+            }
+          } catch (error) {
+            console.error("Invalid GitHub profile payload", error);
+          }
+        });
+
+        source.onerror = function () {
+          source.close();
+          setTimeout(function () {
+            window.location.reload();
+          }, 4000);
+        };
+      })();
+    </script>
+  </div>
+</section>
+
+<section id="about" class="mt-20">
+  <div
+    class="mb-6 flex items-center justify-between gap-4 border-b border-zinc-800 pb-3"
+  >
+    <h2 class="text-2xl font-semibold text-white">{{.AboutTitle}}</h2>
+  </div>
+  <p class="max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
+    {{.AboutText}}
+  </p>
+</section>
+
+<section id="projects" class="mt-20">
+  <div
+    class="mb-8 flex items-center justify-between gap-4 border-b border-zinc-800 pb-3"
+  >
+    <h2 class="text-2xl font-semibold text-white">{{.ProjectsText}}</h2>
+  </div>
+  <div class="grid gap-5 md:grid-cols-2">
+    {{range .Projects}}
+    <article
+      class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 shadow-sm shadow-zinc-950/30"
+    >
+      <div class="mb-3 flex items-center justify-between gap-3">
+        <h3 class="text-xl font-medium text-white">{{.Name}}</h3>
+        <a
+          href="{{.Link}}"
+          class="text-sm text-violet-300 hover:text-violet-200"
+          >↗</a
+        >
+      </div>
+      <p class="text-sm leading-7 text-zinc-300">{{.Description}}</p>
+      <div class="mt-4 text-xs uppercase tracking-[0.16em] text-zinc-400">
+        {{.Stack}}
+      </div>
+    </article>
+    {{end}}
+  </div>
+</section>
+
+<section id="blog" class="mt-20">
+  <div
+    class="mb-8 flex items-center justify-between gap-4 border-b border-zinc-800 pb-3"
+  >
+    <h2 class="text-2xl font-semibold text-white">Blog</h2>
+  </div>
+  <div class="space-y-4">
+    {{range .BlogPosts}}
+    <article class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5">
+      <div class="text-xs uppercase tracking-[0.18em] text-zinc-500">
+        {{.Published}}
+      </div>
+      <h3 class="mt-2 text-xl font-medium text-white">{{.Title}}</h3>
+      <p class="mt-3 text-sm leading-7 text-zinc-300">{{.Summary}}</p>
+      <a
+        href="#"
+        class="mt-4 inline-block text-sm font-medium text-violet-300 hover:text-violet-200"
+        >{{.ReadMore}}</a
+      >
+    </article>
+    {{end}}
+  </div>
+</section>
+
+<section id="contact" class="mt-20 pb-8">
+  <div
+    class="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-6 md:p-8"
+  >
+    <p class="text-sm uppercase tracking-[0.18em] text-violet-200">Contact</p>
+    <h2 class="mt-3 text-2xl font-semibold text-white">
+      Let’s build something useful.
+    </h2>
+    <a
+      href="mailto:{{.Email}}"
+      class="mt-6 inline-flex rounded-md bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+    >
+      {{.Email}}
+    </a>
+  </div>
+</section>
+{{end}}
