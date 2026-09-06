@@ -32,7 +32,7 @@ func InitTemplates() error {
 	}
 
 	if len(files) == 0 {
-		return fmt.Errorf("No HTMl template files found")
+		return fmt.Errorf("No HTML template files found")
 	}
 
 	tmpl, err = template.New("").ParseFiles(files...)

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/falsisdev/website/internal/handlers"
+	"github.com/falsisdev/website/handlers"
 )
 
 func main() {

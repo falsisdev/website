@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/falsisdev/website/internal/handlers"
+	"github.com/falsisdev/website/handlers"
 )
 
 var (
