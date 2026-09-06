@@ -2,7 +2,7 @@
 <section class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
   <div class="space-y-7">
     <div
-      class="inline-flex items-center rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-violet-200"
+      class="inline-flex items-center rounded-full border border-zinc-600 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-zinc-200"
     >
       A student & a self-taught dev
     </div>
@@ -19,7 +19,7 @@
     <div class="flex flex-wrap items-center gap-3">
       <a
         href="#projects"
-        class="rounded-md bg-violet-500 px-5 py-3 text-sm font-medium text-white transition hover:bg-violet-400"
+        class="rounded-md bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
       >
         {{.PrimaryAction}}
       </a>
@@ -152,11 +152,7 @@
     >
       <div class="mb-3 flex items-center justify-between gap-3">
         <h3 class="text-xl font-medium text-white">{{.Name}}</h3>
-        <a
-          href="{{.Link}}"
-          class="text-sm text-violet-300 hover:text-violet-200"
-          >↗</a
-        >
+        <a href="{{.Link}}" class="text-sm text-zinc-300 hover:text-white">↗</a>
       </div>
       <p class="text-sm leading-7 text-zinc-300">{{.Description}}</p>
       <div class="mt-4 text-xs uppercase tracking-[0.16em] text-zinc-400">
@@ -183,7 +179,7 @@
       <p class="mt-3 text-sm leading-7 text-zinc-300">{{.Summary}}</p>
       <a
         href="#"
-        class="mt-4 inline-block text-sm font-medium text-violet-300 hover:text-violet-200"
+        class="mt-4 inline-block text-sm font-medium text-zinc-300 hover:text-white"
         >{{.ReadMore}}</a
       >
     </article>
@@ -192,10 +188,8 @@
 </section>
 
 <section id="contact" class="mt-20 pb-8">
-  <div
-    class="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-6 md:p-8"
-  >
-    <p class="text-sm uppercase tracking-[0.18em] text-violet-200">Contact</p>
+  <div class="rounded-2xl border border-white/20 bg-white/5 p-6 md:p-8">
+    <p class="text-sm uppercase tracking-[0.18em] text-zinc-200">Contact</p>
     <h2 class="mt-3 text-2xl font-semibold text-white">
       Let’s build something useful.
     </h2>
