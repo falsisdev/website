@@ -1,5 +1,0 @@
-{
-  "buildCommand": "./build.sh",
-  "outputDirectory": "public",
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
-}

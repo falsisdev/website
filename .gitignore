@@ -1,6 +1,20 @@
-.DS_STORE
+# Dependencies
+node_modules/
+
+# Astro build output
+dist/
+.astro/
+
+# Environment
 .env
-web/static/css/output.css
-public/
-.bin/
-.vscode
+.env.*
+
+# OS / Editor
+.DS_Store
+.vscode/
+*.swp
+*~
+
+# Architecture docs (local only)
+ARCHITECTURE.md
+AGENTS.md
