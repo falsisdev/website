@@ -1,9 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.svelte';
+import ProjectCard from '../components/ProjectCard.svelte';
+import SkillBar from '../components/SkillBar.svelte';
 ---
 
-<Layout title="Hello Astro">
-  <main class="flex min-h-screen items-center justify-center">
-    <h1 class="text-4xl font-bold">Hello Astro</h1>
-  </main>
+<Layout title="falsisdev — Developer & Creator">
+  <!-- Hero: client:load — sayfa açılır açılmaz animasyon başlasın -->
+  <Hero client:load />
+
+  <!-- Projects: client:visible — kullanıcı scroll edip görene kadar hydrate etme -->
+  <ProjectCard client:visible />
+
+  <!-- Skills: client:visible — scroll animasyonu için -->
+  <SkillBar client:visible />
+
+  <!-- Footer: Statik içerik, Svelte'e gerek yok — Astro template yeterli -->
+  <footer class="border-t border-border px-6 py-12">
+    <div class="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
+      <p class="text-sm text-zinc-500">
+        © 2026 falsisdev. Built with
+        <span class="text-brand-light">Astro</span>,
+        <span class="text-brand-light">Svelte</span> &
+        <span class="text-brand-light">Tailwind CSS</span>.
+      </p>
+      <div class="flex gap-6">
+        <a href="https://github.com/falsisdev" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-500 transition-colors hover:text-white">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
 </Layout>
