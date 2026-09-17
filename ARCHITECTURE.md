@@ -13,7 +13,7 @@ Bu aşamadaki amaç anasayfanın temel yapısını kurmak ve Astro + Svelte + Ta
 | Teknoloji | Rol | Durum |
 |---|---|---|
 | **Astro** | Ana framework — routing, sayfa üretimi, static build | ✅ Kurulu |
-| **Svelte** | İnteraktif UI component'leri için framework | ✅ Kurulu (3 component mevcut) |
+| **Svelte** | İnteraktif UI component'leri için framework | ✅ Kurulu (4 component mevcut) |
 | **Tailwind CSS** | Utility-first CSS framework — stillendirme | ✅ Kurulu |
 | **Sanity** | Headless CMS — içerik yönetimi | ⏳ Planlanan (henüz entegre değil) |
 
@@ -95,7 +95,7 @@ import Counter from '../components/Counter.svelte';
 <Counter client:load />
 ```
 
-> **Not**: Projede şu anda 3 Svelte component'i bulunmaktadır: `Hero.svelte`, `ProjectCard.svelte`, `SkillBar.svelte`. Tümü Svelte 5 runes söz dizimi (`$props()`, `$state()`, `$effect()`) kullanmaktadır.
+> **Not**: Projede şu anda 4 Svelte component'i bulunmaktadır: `Navbar.svelte`, `Hero.svelte`, `ProjectCard.svelte`, `SkillBar.svelte`. Tümü Svelte 5 runes söz dizimi (`$props()`, `$state()`, `$effect()`, `$derived()`) kullanmaktadır.
 
 ---
 
@@ -228,15 +228,18 @@ website/
 │   └── favicon.svg         # Site favicon'u
 └── src/                    # Kaynak kodlar
     ├── components/         # Svelte component'leri
-    │   ├── Hero.svelte     # Anasayfa hero section (animasyonlu giriş)
-    │   ├── ProjectCard.svelte  # Proje kartları grid'i
-    │   └── SkillBar.svelte # Animasyonlu yetenek barları
+    │   ├── Navbar.svelte   # Yüzen glassmorphic navigasyon çubuğu
+    │   ├── Hero.svelte     # Anasayfa hero section (GitHub avatar, animasyonlu giriş)
+    │   ├── ProjectCard.svelte  # Proje kartları grid'i (kategori filtreleme, yıldızlar)
+    │   └── SkillBar.svelte # Canlı GitHub dil analitiği ve teknoloji ekosistemi
     ├── layouts/            # Sayfa layout'ları
-    │   └── Layout.astro    # Ana layout (HTML boilerplate, dark theme)
+    │   └── Layout.astro    # Ana layout (HTML boilerplate, dark theme, dot-matrix grid)
+    ├── lib/                # Yardımcı modüller
+    │   └── github.ts       # GitHub API veri çekme ve fallback önbellek katmanı
     ├── pages/              # Sayfalar (file-based routing)
-    │   └── index.astro     # Ana sayfa (Hero + Projects + Skills + Footer)
+    │   └── index.astro     # Ana sayfa (Navbar + Hero + Projects + TechStack + Footer)
     └── styles/             # Global stiller
-        └── global.css      # Tailwind CSS import'u ve tema tanımları
+        └── global.css      # Tailwind CSS import'u, tema token'ları ve animasyonlar
 ```
 
 ### Gelecekte Eklenebilecek Klasörler (planlanan)
@@ -397,14 +400,16 @@ Tailwind v4'te özel değerler CSS dosyasında `@theme` ile tanımlanabilir:
 ### Mevcut Durum
 
 ```
-Tarayıcı (Browser)
-    ↓ HTTP isteği
-GitHub Pages
+GitHub API (api.github.com/users/falsisdev)
+    ↓ Build-time fetch (src/lib/github.ts)
+Astro build (SSG) [Fallback cache garantisi]
+    ↓ statik dosya üretimi (dist/)
+GitHub Pages (statik hosting)
     ↓ statik dosya sunumu
-Statik HTML / CSS / JS
+Tarayıcı (Browser) + Svelte Islands (Hydration)
 ```
 
-Şu anda herhangi bir veri kaynağı veya API çağrısı bulunmamaktadır.
+Proje, build zamanında GitHub API üzerinden profil bilgilerini (avatar, bio, takipçi ve repo sayısı), repository dil istatistiklerini (Go, Vue, JavaScript, TypeScript, Svelte vb.) ve açık kaynak proje repository'lerini (`getGitHubProjects`) çeker. API erişilemediğinde veya rate-limit oluştuğunda sistemin kesintisiz çalışması için `src/lib/github.ts` içinde tip tanımlı bir fallback önbellek katmanı (`FALLBACK_PROFILE`, `FALLBACK_TECH_STACK`, `FALLBACK_PROJECTS`) bulunur.
 
 ### Gelecekte (Sanity entegrasyonundan sonra)
 
@@ -529,10 +534,8 @@ Kullanılan type'lar:
 
 ### Bu Görev
 
-Bu scaffold kurulumu tek bir commit altında yapılmıştır:
-
 ```
-feat: initialize portfolio architecture
+feat: center hero avatar and fetch projects from GitHub API
 ```
 
-Eski Go backend projesi kaldırılmış ve Astro + Svelte + Tailwind CSS tabanlı yeni proje sıfırdan oluşturulmuştur.
+Hero bölümündeki avatar tam merkeze hizalandı ve "ECE Undergrad @ YTU • Systems & Full-Stack Developer" unvan rozeti dikey hizada doğrudan avatarın altına yerleştirildi. GitHub API üzerinden repolar çekilerek (`getGitHubProjects`) ProjectCard bileşenine canlı aktarıldı, kategori filtreleme ve fallback desteği sağlandı.

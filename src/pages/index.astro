@@ -1,32 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.svelte';
 import Hero from '../components/Hero.svelte';
 import ProjectCard from '../components/ProjectCard.svelte';
 import SkillBar from '../components/SkillBar.svelte';
+import { getGitHubProfile, getGitHubTechStack, getGitHubProjects } from '../lib/github';
+
+const profile = await getGitHubProfile('falsisdev');
+const techStack = await getGitHubTechStack('falsisdev');
+const projects = await getGitHubProjects('falsisdev');
 ---
 
-<Layout title="falsisdev — Developer & Creator">
-  <!-- Hero: client:load — sayfa açılır açılmaz animasyon başlasın -->
-  <Hero client:load />
+<Layout
+  title="falsisdev — Software Engineer & Creator"
+  description="ECE undergraduate at YTU. Building high-performance backends in Go, reactive interfaces with Vue and Svelte, and modern developer tooling."
+>
+  <!-- Floating Glass Navbar -->
+  <Navbar profile={profile} client:load />
 
-  <!-- Projects: client:visible — kullanıcı scroll edip görene kadar hydrate etme -->
-  <ProjectCard client:visible />
+  <main>
+    <!-- Hero: client:load for immediate entrance animation and avatar -->
+    <Hero profile={profile} client:load />
 
-  <!-- Skills: client:visible — scroll animasyonu için -->
-  <SkillBar client:visible />
+    <!-- Projects: client:visible for interactive category filtering with live GitHub repos -->
+    <ProjectCard projects={projects} client:visible />
 
-  <!-- Footer: Statik içerik, Svelte'e gerek yok — Astro template yeterli -->
-  <footer class="border-t border-border px-6 py-12">
-    <div class="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 sm:flex-row">
-      <p class="text-sm text-zinc-500">
-        © 2026 falsisdev. Built with
-        <span class="text-brand-light">Astro</span>,
-        <span class="text-brand-light">Svelte</span> &
-        <span class="text-brand-light">Tailwind CSS</span>.
-      </p>
-      <div class="flex gap-6">
-        <a href="https://github.com/falsisdev" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-500 transition-colors hover:text-white">
+    <!-- Tech Stack: client:visible for scroll animation and GitHub language analytics -->
+    <SkillBar techStack={techStack} client:visible />
+  </main>
+
+  <!-- Modern English Footer -->
+  <footer class="relative mt-16 border-t border-white/10 bg-surface-alt/60 px-6 py-12 backdrop-blur-md">
+    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
+      <div class="flex flex-col items-center sm:items-start gap-1">
+        <div class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-brand-light"></span>
+          <span class="text-sm font-semibold tracking-tight text-white">falsis<span class="text-brand-light">.dev</span></span>
+        </div>
+        <p class="text-xs text-zinc-500">
+          &copy; 2026 falsisdev. Crafted with
+          <span class="text-brand-light">Astro</span>,
+          <span class="text-brand-light">Svelte 5</span> &
+          <span class="text-brand-light">Tailwind CSS v4</span>.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-zinc-400">
+        <a
+          href="https://github.com/falsisdev"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-colors hover:text-white hover:text-brand-light"
+        >
           GitHub
+        </a>
+        <a
+          href="https://github.com/falsisdev/website"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-colors hover:text-white hover:text-brand-light"
+        >
+          Source Code
+        </a>
+        <a
+          href="#about"
+          class="flex items-center gap-1 rounded-full border border-white/10 bg-surface-card px-3 py-1 text-zinc-400 transition-colors hover:border-brand/40 hover:text-white"
+        >
+          <span>Back to top</span>
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
         </a>
       </div>
     </div>

@@ -6,7 +6,10 @@ interface Props {
   description?: string;
 }
 
-const { title = 'falsisdev', description = 'Developer & Creator' } = Astro.props;
+const {
+  title = 'falsisdev — Systems Engineer & Full-Stack Developer',
+  description = 'ECE undergraduate at YTU building high-performance systems in Go, reactive web platforms with Vue and Svelte, and open-source developer tooling.',
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,13 +18,28 @@ const { title = 'falsisdev', description = 'Developer & Creator' } = Astro.props
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#08080a" />
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="falsisdev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <link rel="icon" type="image/svg+xml" href="/website/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="bg-surface text-zinc-100 font-sans antialiased">
-    <slot />
+  <body class="relative min-h-screen bg-surface text-zinc-100 font-sans antialiased selection:bg-brand selection:text-white">
+    <!-- Subtle matrix dot grid overlay across entire layout -->
+    <div class="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-40"></div>
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>
